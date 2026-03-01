@@ -224,32 +224,32 @@ jobs:
                       "copilot",
                       "--allow-all",
                       "--no-ask-user",
-                  "--model",
-                  "gpt-4.1",
-                  "-p",
-                  prompt,
-                ]
-                fallback_result = subprocess.run(fallback_cmd, capture_output=True, text=True, check=False)
-                if fallback_result.returncode != 0:
-                  fallback_cmd = [
-                    "copilot",
-                    "--allow-all",
-                    "--no-ask-user",
-                    "-p",
-                    prompt,
-                  ]
-                  fallback_result = subprocess.run(fallback_cmd, capture_output=True, text=True, check=False)
-              else:
-                fallback_cmd = [
-                  "copilot",
-                  "--allow-all",
-                  "--no-ask-user",
-                  "--model",
-                  "gpt-4.1",
+                      "--model",
+                      "gpt-4.1",
                       "-p",
                       prompt,
                   ]
-                fallback_result = subprocess.run(fallback_cmd, capture_output=True, text=True, check=False)
+                  fallback_result = subprocess.run(fallback_cmd, capture_output=True, text=True, check=False)
+                  if fallback_result.returncode != 0:
+                      fallback_cmd = [
+                          "copilot",
+                          "--allow-all",
+                          "--no-ask-user",
+                          "-p",
+                          prompt,
+                      ]
+                      fallback_result = subprocess.run(fallback_cmd, capture_output=True, text=True, check=False)
+              else:
+                  fallback_cmd = [
+                      "copilot",
+                      "--allow-all",
+                      "--no-ask-user",
+                      "--model",
+                      "gpt-4.1",
+                      "-p",
+                      prompt,
+                  ]
+                  fallback_result = subprocess.run(fallback_cmd, capture_output=True, text=True, check=False)
               combined = (
                   "PRIMARY_CMD_STDOUT:\n"
                   + (result.stdout or "")
