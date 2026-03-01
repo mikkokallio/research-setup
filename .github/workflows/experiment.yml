@@ -193,6 +193,10 @@ jobs:
           - Return ONLY valid JSON.
           - JSON schema:
             {{
+              "shared_context": {{
+                "critical_contracts": ["..."],
+                "cross_slice_assumptions": ["..."]
+              }},
               \"slices\": [
                 {{
                   \"id\": \"slice_1\",
@@ -202,6 +206,8 @@ jobs:
                   \"dependencies\": [\"slice_2\"],
                   \"implementation_dependencies\": [\"slice_2\"],
                   \"validation_dependencies\": [\"slice_2\"],
+                  \"source_requirements\": [\"verbatim requirement text from spec\"],
+                  \"critical_contracts_needed\": [\"only contracts needed by this slice\"],
                   \"tests_to_author_now\": [\"...\"],
                   \"tests_to_run_now\": [\"...\"],
                   \"tests_deferred_until_dependencies\": [\"...\"],
@@ -217,6 +223,9 @@ jobs:
           - Use `dependencies` and `implementation_dependencies` only for hard blockers that prevent coding work.
           - Use `validation_dependencies` for checks that can be authored now but executed later.
           - If API contract/interface is known, frontend coding should not depend on backend implementation.
+          - Prevent information loss: every important requirement from the spec must appear in at least one slice `source_requirements`.
+          - Prevent bloat: duplicate only contracts/assumptions that are required by more than one slice.
+          - `shared_context` must contain ONLY critical contracts and cross-slice assumptions, not the full spec.
           - Every slice must include tests that can be authored immediately (`tests_to_author_now`).
           - Prefer writing tests early, and defer only execution when blocked.
           - Balance work across slices with roughly similar effort_points.
@@ -296,7 +305,8 @@ jobs:
           shared_context = data.get("shared_context")
           if not isinstance(shared_context, dict):
               shared_context = {}
-          shared_context.setdefault("full_spec", spec)
+            shared_context.setdefault("critical_contracts", [])
+            shared_context.setdefault("cross_slice_assumptions", [])
           data["shared_context"] = shared_context
 
           slices = data.get("slices", [])
@@ -316,12 +326,16 @@ jobs:
               tests_author_now = item.get("tests_to_author_now", []) or []
               tests_run_now = item.get("tests_to_run_now", []) or []
               tests_deferred = item.get("tests_deferred_until_dependencies", []) or []
+                source_requirements = item.get("source_requirements", []) or []
+                contracts_needed = item.get("critical_contracts_needed", []) or []
 
               text = "\n\n".join(
                   [
                       f"# {item.get('title','').strip()}",
                       f"\nGoal:\n{item.get('goal','').strip()}",
                       f"\nInstructions:\n{item.get('instructions','').strip()}",
+                    f"\nSource Requirements (owned by this slice):\n{json.dumps(source_requirements, indent=2)}",
+                    f"\nCritical Contracts Needed:\n{json.dumps(contracts_needed, indent=2)}",
                       f"\nDependencies:\n{', '.join(deps) or 'none'}",
                       f"\nImplementation Dependencies (hard blockers):\n{', '.join(impl_deps) or 'none'}",
                       f"\nValidation Dependencies (can author now, run later):\n{', '.join(val_deps) or 'none'}",
@@ -329,9 +343,10 @@ jobs:
                       f"\nTests To Run Now:\n{json.dumps(tests_run_now, indent=2)}",
                       f"\nTests Deferred Until Dependencies:\n{json.dumps(tests_deferred, indent=2)}",
                       f"\nEffort Points:\n{item.get('effort_points', 'n/a')}",
-                      f"\nSlice JSON (authoritative):\n{json.dumps(item, indent=2)}",
-                      f"\nShared Context JSON:\n{json.dumps(shared_context, indent=2)}",
-                      f"\nAuthoritative Full Spec:\n{spec}",
+                    f"\nGlobal Critical Contracts (shared):\n{json.dumps(shared_context.get('critical_contracts', []), indent=2)}",
+                    f"\nCross-Slice Assumptions (shared):\n{json.dumps(shared_context.get('cross_slice_assumptions', []), indent=2)}",
+                    f"\nSpec Reference:\nwork/spec.md",
+                    f"\nSlice JSON (authoritative):\n{json.dumps(item, indent=2)}",
                   ]
               ).strip() + "\n"
               path = out_dir / f"slice_{index}.md"

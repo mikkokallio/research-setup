@@ -70,7 +70,8 @@ def main():
             shared_context = split_plan.get("shared_context")
             if not isinstance(shared_context, dict):
                 shared_context = {}
-            shared_context.setdefault("full_spec", spec_text)
+            shared_context.setdefault("critical_contracts", [])
+            shared_context.setdefault("cross_slice_assumptions", [])
 
             for index in range(1, args.k + 1):
                 slice_id = f"slice_{index}"
@@ -83,7 +84,7 @@ def main():
                     "slice_id": slice_id,
                     "slice": item,
                     "shared_context": shared_context,
-                    "full_spec": spec_text,
+                    "spec_reference": args.spec,
                     "run_context": {
                         "run_key": args.run_key,
                         "condition": args.condition,
@@ -119,7 +120,7 @@ Rules:
 - At the end, print a short JSON object only:
     {{"slice_index": {index}, "summary": "...", "changed_files": ["..."], "tests_authored": ["..."], "tests_ran": ["..."], "tests_deferred": ["..."]}}
 
-Work package (authoritative; includes slice object, shared context, and full spec):
+Work package (authoritative; includes slice object and minimal shared context):
 {slice_text}
 """.strip()
 
