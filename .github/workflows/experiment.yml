@@ -667,7 +667,7 @@ jobs:
         id: run
         run: |
           RUN_KEY="${MODEL}-${CONDITION}-${TIER}"
-          REV_SUFFIX=$(echo -n "$RUN_KEY" | sha256sum | cut -c1-8)
+          REV_SUFFIX=$(echo -n "${RUN_KEY}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" | sha256sum | cut -c1-8)
           echo "run_key=$RUN_KEY" >> "$GITHUB_OUTPUT"
           echo "rev_suffix=$REV_SUFFIX" >> "$GITHUB_OUTPUT"
 
