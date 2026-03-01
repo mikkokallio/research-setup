@@ -100,6 +100,8 @@ jobs:
             cat work/copilot_auth_check.txt
             exit 1
           fi
+        env:
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_PAT }}
 
       - name: Stage start
         id: stage_start
