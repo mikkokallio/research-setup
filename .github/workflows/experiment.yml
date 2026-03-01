@@ -109,7 +109,7 @@ jobs:
           import os
           from datetime import datetime, timezone
 
-            run_key = os.environ["RUN_KEY"]
+          run_key = os.environ["RUN_KEY"]
           payload = {
               "run_key": run_key,
               "model": os.environ["MODEL"],
@@ -612,25 +612,28 @@ jobs:
       - deploy
     steps:
       - name: Download split artifact
+        if: ${{ needs.split.result == 'success' }}
         uses: actions/download-artifact@v4
         with:
           name: split-${{ needs.split.outputs.run_key }}
           path: aggregate/split
 
       - name: Download slice artifacts
+        if: ${{ needs.implement_slice.result == 'success' }}
         uses: actions/download-artifact@v4
         with:
           pattern: slice-${{ needs.split.outputs.run_key }}-*
           path: aggregate/slices
 
       - name: Download integrate artifact
+        if: ${{ needs.integrate_and_test.result == 'success' }}
         uses: actions/download-artifact@v4
         with:
           name: integrate-${{ needs.split.outputs.run_key }}
           path: aggregate/integrate
 
       - name: Download deploy artifact
-        if: ${{ inputs.deploy != false }}
+        if: ${{ inputs.deploy != false && needs.deploy.result == 'success' }}
         uses: actions/download-artifact@v4
         with:
           name: deploy-${{ needs.split.outputs.run_key }}
