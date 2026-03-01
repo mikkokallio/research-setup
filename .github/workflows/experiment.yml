@@ -82,11 +82,13 @@ jobs:
       - name: Check Copilot auth token
         run: |
           if [ -z "$COPILOT_GITHUB_TOKEN" ]; then
-            echo "::error::Missing required secret COPILOT_PAT (used as COPILOT_GITHUB_TOKEN)."
+            echo "::error::Missing required secret COPILOT_GITHUB_TOKEN (or fallback COPILOT_PAT)."
             exit 1
           fi
         env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_PAT }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
 
       - name: Validate Copilot request permission
         run: |
@@ -96,12 +98,14 @@ jobs:
           CODE=$?
           set -e
           if [ $CODE -ne 0 ]; then
-            echo "::error::Copilot CLI request failed. Ensure COPILOT_PAT has Copilot Requests permission and the account has Copilot access."
+            echo "::error::Copilot CLI request failed. Ensure COPILOT_GITHUB_TOKEN is from an account with Copilot access and has Copilot Requests permission."
             cat work/copilot_auth_check.txt
             exit 1
           fi
         env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_PAT }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
 
       - name: Stage start
         id: stage_start
@@ -251,7 +255,9 @@ jobs:
           Path("work/slices/slices.txt").write_text("\n".join(listed) + "\n", encoding="utf-8")
           PY
         env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_PAT }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
           MODEL: ${{ env.MODEL }}
           CONDITION: ${{ env.CONDITION }}
           K: ${{ steps.k.outputs.k }}
@@ -365,11 +371,13 @@ jobs:
       - name: Check Copilot auth token
         run: |
           if [ -z "$COPILOT_GITHUB_TOKEN" ]; then
-            echo "::error::Missing required secret COPILOT_PAT (used as COPILOT_GITHUB_TOKEN)."
+            echo "::error::Missing required secret COPILOT_GITHUB_TOKEN (or fallback COPILOT_PAT)."
             exit 1
           fi
         env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_PAT }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
 
       - name: Download split artifact
         uses: actions/download-artifact@v4
@@ -393,7 +401,9 @@ jobs:
             --slices-dir "work/slices" \
             --out-dir "work/agentic"
         env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_PAT }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
           MODEL: ${{ env.MODEL }}
           CONDITION: ${{ env.CONDITION }}
 
@@ -480,6 +490,23 @@ jobs:
       - name: ACR login
         run: |
           az acr login --name $AZ_ACR
+
+      - name: Ensure ACA registry pull access
+        run: |
+          ACR_ID=$(az acr show --name $AZ_ACR --resource-group $AZ_RG --query id -o tsv)
+          ACR_LOGIN=$(az acr show --name $AZ_ACR --resource-group $AZ_RG --query loginServer -o tsv)
+
+          az containerapp identity assign --name $AZ_API_APP --resource-group $AZ_RG >/dev/null
+          az containerapp identity assign --name $AZ_WEB_APP --resource-group $AZ_RG >/dev/null
+
+          API_PRINCIPAL=$(az containerapp identity show --name $AZ_API_APP --resource-group $AZ_RG --query principalId -o tsv)
+          WEB_PRINCIPAL=$(az containerapp identity show --name $AZ_WEB_APP --resource-group $AZ_RG --query principalId -o tsv)
+
+          az role assignment create --assignee-object-id "$API_PRINCIPAL" --assignee-principal-type ServicePrincipal --role AcrPull --scope "$ACR_ID" >/dev/null || true
+          az role assignment create --assignee-object-id "$WEB_PRINCIPAL" --assignee-principal-type ServicePrincipal --role AcrPull --scope "$ACR_ID" >/dev/null || true
+
+          az containerapp registry set --name $AZ_API_APP --resource-group $AZ_RG --server "$ACR_LOGIN" --identity system >/dev/null
+          az containerapp registry set --name $AZ_WEB_APP --resource-group $AZ_RG --server "$ACR_LOGIN" --identity system >/dev/null
 
       - name: Build and push API
         run: |
