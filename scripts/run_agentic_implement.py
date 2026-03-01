@@ -97,15 +97,25 @@ Work item:
         result = run_cmd(cmd)
         raw = (result.stdout or "") + "\n" + (result.stderr or "")
         if result.returncode != 0:
-            fallback_cmd = [
-                "copilot",
-                "--allow-all",
-                "--no-ask-user",
-                "--model",
-                "gpt-5.3-codex",
-                "-p",
-                prompt,
-            ]
+            error_blob = raw.lower()
+            if "interactive mode to enable this model" in error_blob:
+                fallback_cmd = [
+                    "copilot",
+                    "--allow-all",
+                    "--no-ask-user",
+                    "-p",
+                    prompt,
+                ]
+            else:
+                fallback_cmd = [
+                    "copilot",
+                    "--allow-all",
+                    "--no-ask-user",
+                    "--model",
+                    "gpt-5.3-codex",
+                    "-p",
+                    prompt,
+                ]
             fallback_result = run_cmd(fallback_cmd)
             fallback_raw = (fallback_result.stdout or "") + "\n" + (fallback_result.stderr or "")
             raw = (

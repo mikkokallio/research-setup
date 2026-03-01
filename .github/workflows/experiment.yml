@@ -96,10 +96,20 @@ jobs:
           set +e
           copilot --model "$MODEL" -p "Reply with OK only." > work/copilot_auth_check.txt 2>&1
           CODE=$?
+          if [ $CODE -ne 0 ] && grep -qi "interactive mode to enable this model" work/copilot_auth_check.txt; then
+            copilot -p "Reply with OK only." > work/copilot_auth_check_default_model.txt 2>&1
+            CODE=$?
+            if [ $CODE -eq 0 ]; then
+              echo "Model '$MODEL' is gated for this token in non-interactive mode; continuing with default model selection."
+            fi
+          fi
           set -e
           if [ $CODE -ne 0 ]; then
             echo "::error::Copilot CLI request failed. Ensure COPILOT_GITHUB_TOKEN is from an account with Copilot access and has Copilot Requests permission."
             cat work/copilot_auth_check.txt
+            if [ -f work/copilot_auth_check_default_model.txt ]; then
+              cat work/copilot_auth_check_default_model.txt
+            fi
             exit 1
           fi
         env:
@@ -196,32 +206,41 @@ jobs:
               "-p",
               prompt,
           ]
-
-            result = subprocess.run(cmd, capture_output=True, text=True, check=False)
-            if result.returncode != 0:
-              fallback_cmd = [
-                "copilot",
-                "--allow-all",
-                "--no-ask-user",
-                  "--model",
-                  "gpt-5.3-codex",
-                "-p",
-                prompt,
-              ]
+          result = subprocess.run(cmd, capture_output=True, text=True, check=False)
+          if result.returncode != 0:
+              stderr_blob = ((result.stdout or "") + "\n" + (result.stderr or "")).lower()
+              if "interactive mode to enable this model" in stderr_blob:
+                  fallback_cmd = [
+                      "copilot",
+                      "--allow-all",
+                      "--no-ask-user",
+                      "-p",
+                      prompt,
+                  ]
+              else:
+                  fallback_cmd = [
+                      "copilot",
+                      "--allow-all",
+                      "--no-ask-user",
+                      "--model",
+                      "gpt-5.3-codex",
+                      "-p",
+                      prompt,
+                  ]
               fallback_result = subprocess.run(fallback_cmd, capture_output=True, text=True, check=False)
               combined = (
-                "PRIMARY_CMD_STDOUT:\n"
-                + (result.stdout or "")
-                + "\nPRIMARY_CMD_STDERR:\n"
-                + (result.stderr or "")
-                + "\nFALLBACK_CMD_STDOUT:\n"
-                + (fallback_result.stdout or "")
-                + "\nFALLBACK_CMD_STDERR:\n"
-                + (fallback_result.stderr or "")
+                  "PRIMARY_CMD_STDOUT:\n"
+                  + (result.stdout or "")
+                  + "\nPRIMARY_CMD_STDERR:\n"
+                  + (result.stderr or "")
+                  + "\nFALLBACK_CMD_STDOUT:\n"
+                  + (fallback_result.stdout or "")
+                  + "\nFALLBACK_CMD_STDERR:\n"
+                  + (fallback_result.stderr or "")
               )
               Path("work/splitter_raw.txt").write_text(combined, encoding="utf-8")
               if fallback_result.returncode != 0:
-                raise RuntimeError("Copilot splitter call failed for both requested model and fallback model")
+                  raise RuntimeError("Copilot splitter call failed for both requested model and fallback model")
               result = fallback_result
           raw = (result.stdout or "") + "\n" + (result.stderr or "")
           Path("work/splitter_raw.txt").write_text(raw, encoding="utf-8")
