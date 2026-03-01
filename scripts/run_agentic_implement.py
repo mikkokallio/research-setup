@@ -101,6 +101,8 @@ Work item:
                 "copilot",
                 "--allow-all",
                 "--no-ask-user",
+                "--model",
+                "gpt-5.3-codex",
                 "-p",
                 prompt,
             ]

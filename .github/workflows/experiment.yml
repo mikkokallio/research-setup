@@ -94,7 +94,7 @@ jobs:
         run: |
           mkdir -p work
           set +e
-          copilot -p "Reply with OK only." > work/copilot_auth_check.txt 2>&1
+          copilot --model "$MODEL" -p "Reply with OK only." > work/copilot_auth_check.txt 2>&1
           CODE=$?
           set -e
           if [ $CODE -ne 0 ]; then
@@ -106,6 +106,7 @@ jobs:
           COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
           GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
           GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          MODEL: ${{ env.MODEL }}
 
       - name: Stage start
         id: stage_start
@@ -202,6 +203,8 @@ jobs:
                 "copilot",
                 "--allow-all",
                 "--no-ask-user",
+                  "--model",
+                  "gpt-5.3-codex",
                 "-p",
                 prompt,
               ]
