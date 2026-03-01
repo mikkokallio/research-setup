@@ -40,6 +40,7 @@ on:
 permissions:
   contents: read
   id-token: write
+  models: read
 
 env:
   EXP_PREFIX: ${{ vars.EXP_PREFIX || 'exp' }}
@@ -86,9 +87,9 @@ jobs:
             exit 1
           fi
         env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          COPILOT_GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GH_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
 
       - name: Validate Copilot request permission
         run: |
@@ -113,9 +114,9 @@ jobs:
             exit 1
           fi
         env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          COPILOT_GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GH_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
           MODEL: ${{ env.MODEL }}
 
       - name: Stage start
@@ -277,9 +278,9 @@ jobs:
           Path("work/slices/slices.txt").write_text("\n".join(listed) + "\n", encoding="utf-8")
           PY
         env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          COPILOT_GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GH_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
           MODEL: ${{ env.MODEL }}
           CONDITION: ${{ env.CONDITION }}
           K: ${{ steps.k.outputs.k }}
@@ -397,9 +398,9 @@ jobs:
             exit 1
           fi
         env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          COPILOT_GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GH_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
 
       - name: Download split artifact
         uses: actions/download-artifact@v4
@@ -423,9 +424,9 @@ jobs:
             --slices-dir "work/slices" \
             --out-dir "work/agentic"
         env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          COPILOT_GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GH_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
           MODEL: ${{ env.MODEL }}
           CONDITION: ${{ env.CONDITION }}
 
