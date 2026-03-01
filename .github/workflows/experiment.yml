@@ -88,6 +88,19 @@ jobs:
         env:
           COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_PAT }}
 
+      - name: Validate Copilot request permission
+        run: |
+          mkdir -p work
+          set +e
+          copilot -p "Reply with OK only." > work/copilot_auth_check.txt 2>&1
+          CODE=$?
+          set -e
+          if [ $CODE -ne 0 ]; then
+            echo "::error::Copilot CLI request failed. Ensure COPILOT_PAT has Copilot Requests permission and the account has Copilot access."
+            cat work/copilot_auth_check.txt
+            exit 1
+          fi
+
       - name: Stage start
         id: stage_start
         run: |
@@ -177,7 +190,30 @@ jobs:
               prompt,
           ]
 
-          result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+            result = subprocess.run(cmd, capture_output=True, text=True, check=False)
+            if result.returncode != 0:
+              fallback_cmd = [
+                "copilot",
+                "--allow-all",
+                "--no-ask-user",
+                "-p",
+                prompt,
+              ]
+              fallback_result = subprocess.run(fallback_cmd, capture_output=True, text=True, check=False)
+              combined = (
+                "PRIMARY_CMD_STDOUT:\n"
+                + (result.stdout or "")
+                + "\nPRIMARY_CMD_STDERR:\n"
+                + (result.stderr or "")
+                + "\nFALLBACK_CMD_STDOUT:\n"
+                + (fallback_result.stdout or "")
+                + "\nFALLBACK_CMD_STDERR:\n"
+                + (fallback_result.stderr or "")
+              )
+              Path("work/splitter_raw.txt").write_text(combined, encoding="utf-8")
+              if fallback_result.returncode != 0:
+                raise RuntimeError("Copilot splitter call failed for both requested model and fallback model")
+              result = fallback_result
           raw = (result.stdout or "") + "\n" + (result.stderr or "")
           Path("work/splitter_raw.txt").write_text(raw, encoding="utf-8")
 

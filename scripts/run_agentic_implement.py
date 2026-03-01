@@ -96,6 +96,27 @@ Work item:
 
         result = run_cmd(cmd)
         raw = (result.stdout or "") + "\n" + (result.stderr or "")
+        if result.returncode != 0:
+            fallback_cmd = [
+                "copilot",
+                "--allow-all",
+                "--no-ask-user",
+                "-p",
+                prompt,
+            ]
+            fallback_result = run_cmd(fallback_cmd)
+            fallback_raw = (fallback_result.stdout or "") + "\n" + (fallback_result.stderr or "")
+            raw = (
+                "PRIMARY_CMD_STDOUT:\n"
+                + (result.stdout or "")
+                + "\nPRIMARY_CMD_STDERR:\n"
+                + (result.stderr or "")
+                + "\nFALLBACK_CMD_STDOUT:\n"
+                + (fallback_result.stdout or "")
+                + "\nFALLBACK_CMD_STDERR:\n"
+                + (fallback_result.stderr or "")
+            )
+            result = fallback_result
         (logs_dir / f"slice_{index}_copilot_output.txt").write_text(raw, encoding="utf-8")
 
         diff_res = run_cmd(["git", "diff", "--", "."])
@@ -159,7 +180,7 @@ Work item:
         (timings_dir / f"slice_{index}_timing.json").write_text(json.dumps(timing_payload, indent=2), encoding="utf-8")
 
         if result.returncode != 0:
-            raise RuntimeError(f"Copilot coding step failed for slice {index}")
+            raise RuntimeError(f"Copilot coding step failed for slice {index}. See logs/slice_{index}_copilot_output.txt")
 
 
 if __name__ == "__main__":
