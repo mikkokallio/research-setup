@@ -677,11 +677,37 @@ jobs:
 
       - name: Ensure ACA registry pull access
         run: |
+          retry_aca() {
+            local cmd="$1"
+            local attempts=10
+            local delay=20
+            local n=1
+            while [ $n -le $attempts ]; do
+              set +e
+              out=$(eval "$cmd" 2>&1)
+              code=$?
+              set -e
+              if [ $code -eq 0 ]; then
+                return 0
+              fi
+              if echo "$out" | grep -q "ContainerAppOperationInProgress"; then
+                echo "Container app operation in progress, retry $n/$attempts after ${delay}s..."
+                sleep $delay
+                n=$((n+1))
+                continue
+              fi
+              echo "$out"
+              return $code
+            done
+            echo "$out"
+            return 1
+          }
+
           ACR_ID=$(az acr show --name $AZ_ACR --resource-group $AZ_RG --query id -o tsv)
           ACR_LOGIN=$(az acr show --name $AZ_ACR --resource-group $AZ_RG --query loginServer -o tsv)
 
-          az containerapp identity assign --name $AZ_API_APP --resource-group $AZ_RG >/dev/null
-          az containerapp identity assign --name $AZ_WEB_APP --resource-group $AZ_RG >/dev/null
+          retry_aca "az containerapp identity assign --name $AZ_API_APP --resource-group $AZ_RG >/dev/null"
+          retry_aca "az containerapp identity assign --name $AZ_WEB_APP --resource-group $AZ_RG >/dev/null"
 
           API_PRINCIPAL=$(az containerapp identity show --name $AZ_API_APP --resource-group $AZ_RG --query principalId -o tsv)
           WEB_PRINCIPAL=$(az containerapp identity show --name $AZ_WEB_APP --resource-group $AZ_RG --query principalId -o tsv)
@@ -689,8 +715,8 @@ jobs:
           az role assignment create --assignee-object-id "$API_PRINCIPAL" --assignee-principal-type ServicePrincipal --role AcrPull --scope "$ACR_ID" >/dev/null || true
           az role assignment create --assignee-object-id "$WEB_PRINCIPAL" --assignee-principal-type ServicePrincipal --role AcrPull --scope "$ACR_ID" >/dev/null || true
 
-          az containerapp registry set --name $AZ_API_APP --resource-group $AZ_RG --server "$ACR_LOGIN" --identity system >/dev/null
-          az containerapp registry set --name $AZ_WEB_APP --resource-group $AZ_RG --server "$ACR_LOGIN" --identity system >/dev/null
+          retry_aca "az containerapp registry set --name $AZ_API_APP --resource-group $AZ_RG --server '$ACR_LOGIN' --identity system >/dev/null"
+          retry_aca "az containerapp registry set --name $AZ_WEB_APP --resource-group $AZ_RG --server '$ACR_LOGIN' --identity system >/dev/null"
 
       - name: Build and push API
         run: |
