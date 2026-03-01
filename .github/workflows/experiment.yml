@@ -293,6 +293,12 @@ jobs:
               raise RuntimeError("Could not locate JSON object in splitter output")
 
           data = json.loads(raw[start : end + 1])
+            shared_context = data.get("shared_context")
+            if not isinstance(shared_context, dict):
+              shared_context = {}
+            shared_context.setdefault("full_spec", spec)
+            data["shared_context"] = shared_context
+
           slices = data.get("slices", [])
           if len(slices) != k:
               raise RuntimeError(f"Splitter returned {len(slices)} slices, expected {k}")
@@ -303,12 +309,29 @@ jobs:
               item = next((s for s in slices if s.get("id") == expected_id), None)
               if item is None:
                   raise RuntimeError(f"Missing {expected_id} in splitter output")
+
+                deps = item.get("dependencies", []) or []
+                impl_deps = item.get("implementation_dependencies", deps) or []
+                val_deps = item.get("validation_dependencies", []) or []
+                tests_author_now = item.get("tests_to_author_now", []) or []
+                tests_run_now = item.get("tests_to_run_now", []) or []
+                tests_deferred = item.get("tests_deferred_until_dependencies", []) or []
+
               text = "\n\n".join(
                   [
                       f"# {item.get('title','').strip()}",
                       f"\nGoal:\n{item.get('goal','').strip()}",
                       f"\nInstructions:\n{item.get('instructions','').strip()}",
-                      f"\nDependencies:\n{', '.join(item.get('dependencies', [])) or 'none'}",
+                    f"\nDependencies:\n{', '.join(deps) or 'none'}",
+                    f"\nImplementation Dependencies (hard blockers):\n{', '.join(impl_deps) or 'none'}",
+                    f"\nValidation Dependencies (can author now, run later):\n{', '.join(val_deps) or 'none'}",
+                    f"\nTests To Author Now:\n{json.dumps(tests_author_now, indent=2)}",
+                    f"\nTests To Run Now:\n{json.dumps(tests_run_now, indent=2)}",
+                    f"\nTests Deferred Until Dependencies:\n{json.dumps(tests_deferred, indent=2)}",
+                    f"\nEffort Points:\n{item.get('effort_points', 'n/a')}",
+                    f"\nSlice JSON (authoritative):\n{json.dumps(item, indent=2)}",
+                    f"\nShared Context JSON:\n{json.dumps(shared_context, indent=2)}",
+                    f"\nAuthoritative Full Spec:\n{spec}",
                   ]
               ).strip() + "\n"
               path = out_dir / f"slice_{index}.md"
@@ -463,6 +486,7 @@ jobs:
             --k "${{ needs.split.outputs.k }}" \
             --spec "work/spec.md" \
             --slices-dir "work/slices" \
+            --split-plan "work/split_plan.json" \
             --out-dir "work/agentic"
         env:
           COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}

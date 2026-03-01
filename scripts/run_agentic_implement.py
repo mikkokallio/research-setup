@@ -42,6 +42,7 @@ def main():
     parser.add_argument("--k", type=int, required=True)
     parser.add_argument("--spec", required=True)
     parser.add_argument("--slices-dir", required=True)
+    parser.add_argument("--split-plan", required=False)
     parser.add_argument("--out-dir", required=True)
     args = parser.parse_args()
 
@@ -58,9 +59,42 @@ def main():
 
     if args.condition == "k3":
         work_items = []
-        for index in range(1, args.k + 1):
-            slice_path = Path(args.slices_dir) / f"slice_{index}.md"
-            work_items.append((index, read_text(slice_path)))
+        split_plan = None
+        if args.split_plan and Path(args.split_plan).exists():
+            try:
+                split_plan = json.loads(read_text(Path(args.split_plan)))
+            except Exception:
+                split_plan = None
+
+        if isinstance(split_plan, dict) and isinstance(split_plan.get("slices"), list):
+            shared_context = split_plan.get("shared_context")
+            if not isinstance(shared_context, dict):
+                shared_context = {}
+            shared_context.setdefault("full_spec", spec_text)
+
+            for index in range(1, args.k + 1):
+                slice_id = f"slice_{index}"
+                item = next((s for s in split_plan.get("slices", []) if s.get("id") == slice_id), None)
+                if item is None:
+                    raise RuntimeError(f"Missing {slice_id} in split plan")
+
+                payload = {
+                    "slice_index": index,
+                    "slice_id": slice_id,
+                    "slice": item,
+                    "shared_context": shared_context,
+                    "full_spec": spec_text,
+                    "run_context": {
+                        "run_key": args.run_key,
+                        "condition": args.condition,
+                        "k": args.k,
+                    },
+                }
+                work_items.append((index, json.dumps(payload, indent=2)))
+        else:
+            for index in range(1, args.k + 1):
+                slice_path = Path(args.slices_dir) / f"slice_{index}.md"
+                work_items.append((index, read_text(slice_path)))
     else:
         work_items = [(1, spec_text)]
 
@@ -85,7 +119,7 @@ Rules:
 - At the end, print a short JSON object only:
     {{"slice_index": {index}, "summary": "...", "changed_files": ["..."], "tests_authored": ["..."], "tests_ran": ["..."], "tests_deferred": ["..."]}}
 
-Work item:
+Work package (authoritative; includes slice object, shared context, and full spec):
 {slice_text}
 """.strip()
 
