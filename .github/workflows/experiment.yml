@@ -2,6 +2,40 @@ name: experiment
 
 on:
   workflow_dispatch:
+    inputs:
+      model:
+        description: Model identifier
+        required: true
+        default: gpt-5.3-codex
+        type: choice
+        options:
+          - gpt-5.3-codex
+      condition:
+        description: Execution condition
+        required: true
+        default: k3
+        type: choice
+        options:
+          - single
+          - single_plan
+          - k3
+      tier:
+        description: Tier label
+        required: true
+        default: tier0
+        type: choice
+        options:
+          - tier0
+      tier_spec_file:
+        description: Path to tier spec file
+        required: true
+        default: specs/tiers/tier0_proposed.md
+        type: string
+      deploy:
+        description: Deploy to Azure Container Apps
+        required: true
+        default: true
+        type: boolean
 
 permissions:
   contents: read
@@ -20,18 +54,25 @@ env:
   AZ_API_APP: ${{ vars.AZ_API_APP }}
   RUN_SCOPE: ${{ vars.RUN_SCOPE || 'shared' }}
   RETENTION_DAYS: ${{ vars.RETENTION_DAYS || '30' }}
+  MODEL: ${{ inputs.model || 'gpt-5.3-codex' }}
+  CONDITION: ${{ inputs.condition || 'k3' }}
+  TIER: ${{ inputs.tier || 'tier0' }}
+  TIER_SPEC_FILE: ${{ inputs.tier_spec_file || 'specs/tiers/tier0_proposed.md' }}
 
 jobs:
   split:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        model: [gpt-5.3-codex, claude-opus-latest]
-        condition: [single, single_plan, k3, k5, k7]
-        tier: [tier0, tier1, tier2, tier3]
+    outputs:
+      k: ${{ steps.k.outputs.k }}
+      run_key: ${{ steps.meta.outputs.run_key }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Stage start
+        id: stage_start
+        run: |
+          echo "epoch=$(date +%s)" >> "$GITHUB_OUTPUT"
+          echo "iso=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
 
       - uses: actions/setup-python@v5
         with:
@@ -40,15 +81,19 @@ jobs:
       - name: Build spec
         run: |
           mkdir -p work
-          cat specs/base_prd.md specs/tiers/${{ matrix.tier }}.md > work/spec.md
+          cat specs/base_prd.md "$TIER_SPEC_FILE" > work/spec.md
+
+      - name: Resolve run metadata
+        id: meta
+        run: |
+          RUN_KEY="${MODEL}-${CONDITION}-${TIER}"
+          echo "run_key=$RUN_KEY" >> "$GITHUB_OUTPUT"
 
       - name: Resolve K
         id: k
         run: |
-          case "${{ matrix.condition }}" in
+          case "$CONDITION" in
             k3) K=3 ;;
-            k5) K=5 ;;
-            k7) K=7 ;;
             *) K=1 ;;
           esac
           echo "k=$K" >> "$GITHUB_OUTPUT"
@@ -64,7 +109,7 @@ jobs:
           import os
           from datetime import datetime, timezone
 
-          run_key = f"{os.environ['MODEL']}-{os.environ['CONDITION']}-{os.environ['TIER']}"
+            run_key = os.environ["RUN_KEY"]
           payload = {
               "run_key": run_key,
               "model": os.environ["MODEL"],
@@ -81,126 +126,89 @@ jobs:
               json.dump(payload, f, indent=2)
           PY
         env:
-          MODEL: ${{ matrix.model }}
-          CONDITION: ${{ matrix.condition }}
-          TIER: ${{ matrix.tier }}
+          RUN_KEY: ${{ steps.meta.outputs.run_key }}
 
       - name: Stage metrics
         run: |
           python scripts/metrics_stub.py --stage split --out work/metrics.json
 
+      - name: Stage telemetry
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import time
+          from datetime import datetime, timezone
+
+          start_epoch = int(os.environ["START_EPOCH"])
+          end_epoch = int(time.time())
+          start_iso = os.environ["START_ISO"]
+          end_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+          timing = {
+              "stage": "split",
+              "start_epoch": start_epoch,
+              "end_epoch": end_epoch,
+              "start_iso": start_iso,
+              "end_iso": end_iso,
+              "duration_seconds": end_epoch - start_epoch,
+              "run_key": os.environ["RUN_KEY"],
+          }
+          usage = {
+              "stage": "split",
+              "run_key": os.environ["RUN_KEY"],
+              "model": os.environ["MODEL"],
+              "condition": os.environ["CONDITION"],
+              "tier": os.environ["TIER"],
+              "token_usage": {
+                  "prompt_tokens": None,
+                  "completion_tokens": None,
+                  "total_tokens": None,
+              },
+              "cost": {
+                  "currency": "USD",
+                  "amount": None,
+              },
+              "notes": "No model token/cost telemetry is wired in this stage yet.",
+          }
+
+          with open("work/stage_timing_split.json", "w", encoding="utf-8") as f:
+              json.dump(timing, f, indent=2)
+          with open("work/usage_split.json", "w", encoding="utf-8") as f:
+              json.dump(usage, f, indent=2)
+          PY
+        env:
+          START_EPOCH: ${{ steps.stage_start.outputs.epoch }}
+          START_ISO: ${{ steps.stage_start.outputs.iso }}
+          RUN_KEY: ${{ steps.meta.outputs.run_key }}
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: split-${{ matrix.model }}-${{ matrix.condition }}-${{ matrix.tier }}
+          name: split-${{ steps.meta.outputs.run_key }}
           path: |
             work/slices
             work/spec.md
             work/run_manifest.json
             work/metrics.json
+            work/stage_timing_split.json
+            work/usage_split.json
 
-  implement_slice_single:
+  implement_slice:
     runs-on: ubuntu-latest
     needs: split
     strategy:
       fail-fast: false
       matrix:
-        model: [gpt-5.3-codex, claude-opus-latest]
-        condition: [single, single_plan]
-        tier: [tier0, tier1, tier2, tier3]
-        slice_index: [1]
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Download slices
-        uses: actions/download-artifact@v4
-        with:
-          name: split-${{ matrix.model }}-${{ matrix.condition }}-${{ matrix.tier }}
-          path: work
-
-      - name: Implement slice
-        run: |
-          mkdir -p work/implemented
-          SLICE_FILE="work/slices/slice_${{ matrix.slice_index }}.md"
-          if [ -f "$SLICE_FILE" ]; then
-            cat "$SLICE_FILE" > "work/implemented/slice_${{ matrix.slice_index }}.md"
-          else
-            echo "Missing slice ${{ matrix.slice_index }}" > "work/implemented/slice_${{ matrix.slice_index }}.md"
-          fi
-
-      - name: Stage metrics
-        run: |
-          python scripts/metrics_stub.py --stage implement_slice --out work/metrics.json
-
-      - name: Upload slice artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: slice-${{ matrix.model }}-${{ matrix.condition }}-${{ matrix.tier }}-${{ matrix.slice_index }}
-          path: |
-            work/implemented
-            work/metrics.json
-
-  implement_slice_k3:
-    runs-on: ubuntu-latest
-    needs: split
-    strategy:
-      fail-fast: false
-      matrix:
-        model: [gpt-5.3-codex, claude-opus-latest]
-        condition: [k3]
-        tier: [tier0, tier1, tier2, tier3]
         slice_index: [1, 2, 3]
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Download slices
-        uses: actions/download-artifact@v4
-        with:
-          name: split-${{ matrix.model }}-${{ matrix.condition }}-${{ matrix.tier }}
-          path: work
-
-      - name: Implement slice
+      - name: Stage start
+        id: stage_start
         run: |
-          mkdir -p work/implemented
-          SLICE_FILE="work/slices/slice_${{ matrix.slice_index }}.md"
-          if [ -f "$SLICE_FILE" ]; then
-            cat "$SLICE_FILE" > "work/implemented/slice_${{ matrix.slice_index }}.md"
-          else
-            echo "Missing slice ${{ matrix.slice_index }}" > "work/implemented/slice_${{ matrix.slice_index }}.md"
-          fi
-
-      - name: Stage metrics
-        run: |
-          python scripts/metrics_stub.py --stage implement_slice --out work/metrics.json
-
-      - name: Upload slice artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: slice-${{ matrix.model }}-${{ matrix.condition }}-${{ matrix.tier }}-${{ matrix.slice_index }}
-          path: |
-            work/implemented
-            work/metrics.json
-
-  implement_slice_k5:
-    runs-on: ubuntu-latest
-    needs: split
-    strategy:
-      fail-fast: false
-      matrix:
-        model: [gpt-5.3-codex, claude-opus-latest]
-        condition: [k5]
-        tier: [tier0, tier1, tier2, tier3]
-        slice_index: [1, 2, 3, 4, 5]
-    steps:
-      - uses: actions/checkout@v4
+          echo "epoch=$(date +%s)" >> "$GITHUB_OUTPUT"
+          echo "iso=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
 
       - uses: actions/setup-python@v5
         with:
@@ -209,91 +217,100 @@ jobs:
       - name: Download slices
         uses: actions/download-artifact@v4
         with:
-          name: split-${{ matrix.model }}-${{ matrix.condition }}-${{ matrix.tier }}
+          name: split-${{ needs.split.outputs.run_key }}
           path: work
 
       - name: Implement slice
         run: |
           mkdir -p work/implemented
-          SLICE_FILE="work/slices/slice_${{ matrix.slice_index }}.md"
-          if [ -f "$SLICE_FILE" ]; then
+          if [ ${{ matrix.slice_index }} -le ${{ needs.split.outputs.k }} ]; then
+            SLICE_FILE="work/slices/slice_${{ matrix.slice_index }}.md"
             cat "$SLICE_FILE" > "work/implemented/slice_${{ matrix.slice_index }}.md"
           else
-            echo "Missing slice ${{ matrix.slice_index }}" > "work/implemented/slice_${{ matrix.slice_index }}.md"
+            echo "Skipped slice_${{ matrix.slice_index }} for k=${{ needs.split.outputs.k }}" > "work/implemented/slice_${{ matrix.slice_index }}.md"
           fi
 
       - name: Stage metrics
         run: |
           python scripts/metrics_stub.py --stage implement_slice --out work/metrics.json
 
+      - name: Stage telemetry
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import time
+          from datetime import datetime, timezone
+
+          start_epoch = int(os.environ["START_EPOCH"])
+          end_epoch = int(time.time())
+          start_iso = os.environ["START_ISO"]
+          end_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+          slice_index = int(os.environ["SLICE_INDEX"])
+
+          timing = {
+              "stage": "implement_slice",
+              "slice_index": slice_index,
+              "start_epoch": start_epoch,
+              "end_epoch": end_epoch,
+              "start_iso": start_iso,
+              "end_iso": end_iso,
+              "duration_seconds": end_epoch - start_epoch,
+              "run_key": os.environ["RUN_KEY"],
+          }
+          usage = {
+              "stage": "implement_slice",
+              "slice_index": slice_index,
+              "run_key": os.environ["RUN_KEY"],
+              "model": os.environ["MODEL"],
+              "condition": os.environ["CONDITION"],
+              "tier": os.environ["TIER"],
+              "token_usage": {
+                  "prompt_tokens": None,
+                  "completion_tokens": None,
+                  "total_tokens": None,
+              },
+              "cost": {
+                  "currency": "USD",
+                  "amount": None,
+              },
+              "notes": "No model token/cost telemetry is wired in this stage yet.",
+          }
+
+          with open("work/stage_timing_implement.json", "w", encoding="utf-8") as f:
+              json.dump(timing, f, indent=2)
+          with open("work/usage_implement.json", "w", encoding="utf-8") as f:
+              json.dump(usage, f, indent=2)
+          PY
+        env:
+          START_EPOCH: ${{ steps.stage_start.outputs.epoch }}
+          START_ISO: ${{ steps.stage_start.outputs.iso }}
+          RUN_KEY: ${{ needs.split.outputs.run_key }}
+          SLICE_INDEX: ${{ matrix.slice_index }}
+
       - name: Upload slice artifact
         uses: actions/upload-artifact@v4
         with:
-          name: slice-${{ matrix.model }}-${{ matrix.condition }}-${{ matrix.tier }}-${{ matrix.slice_index }}
+          name: slice-${{ needs.split.outputs.run_key }}-${{ matrix.slice_index }}
           path: |
             work/implemented
             work/metrics.json
-
-  implement_slice_k7:
-    runs-on: ubuntu-latest
-    needs: split
-    strategy:
-      fail-fast: false
-      matrix:
-        model: [gpt-5.3-codex, claude-opus-latest]
-        condition: [k7]
-        tier: [tier0, tier1, tier2, tier3]
-        slice_index: [1, 2, 3, 4, 5, 6, 7]
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Download slices
-        uses: actions/download-artifact@v4
-        with:
-          name: split-${{ matrix.model }}-${{ matrix.condition }}-${{ matrix.tier }}
-          path: work
-
-      - name: Implement slice
-        run: |
-          mkdir -p work/implemented
-          SLICE_FILE="work/slices/slice_${{ matrix.slice_index }}.md"
-          if [ -f "$SLICE_FILE" ]; then
-            cat "$SLICE_FILE" > "work/implemented/slice_${{ matrix.slice_index }}.md"
-          else
-            echo "Missing slice ${{ matrix.slice_index }}" > "work/implemented/slice_${{ matrix.slice_index }}.md"
-          fi
-
-      - name: Stage metrics
-        run: |
-          python scripts/metrics_stub.py --stage implement_slice --out work/metrics.json
-
-      - name: Upload slice artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: slice-${{ matrix.model }}-${{ matrix.condition }}-${{ matrix.tier }}-${{ matrix.slice_index }}
-          path: |
-            work/implemented
-            work/metrics.json
+            work/stage_timing_implement.json
+            work/usage_implement.json
 
   integrate_and_test:
     runs-on: ubuntu-latest
     needs:
-      - implement_slice_single
-      - implement_slice_k3
-      - implement_slice_k5
-      - implement_slice_k7
-    strategy:
-      fail-fast: false
-      matrix:
-        model: [gpt-5.3-codex, claude-opus-latest]
-        condition: [single, single_plan, k3, k5, k7]
-        tier: [tier0, tier1, tier2, tier3]
+      - split
+      - implement_slice
     steps:
       - uses: actions/checkout@v4
+
+      - name: Stage start
+        id: stage_start
+        run: |
+          echo "epoch=$(date +%s)" >> "$GITHUB_OUTPUT"
+          echo "iso=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
 
       - uses: actions/setup-python@v5
         with:
@@ -302,13 +319,13 @@ jobs:
       - name: Download split artifact
         uses: actions/download-artifact@v4
         with:
-          name: split-${{ matrix.model }}-${{ matrix.condition }}-${{ matrix.tier }}
+          name: split-${{ needs.split.outputs.run_key }}
           path: work
 
       - name: Download implemented slices
         uses: actions/download-artifact@v4
         with:
-          pattern: slice-${{ matrix.model }}-${{ matrix.condition }}-${{ matrix.tier }}-*
+          pattern: slice-${{ needs.split.outputs.run_key }}-*
           path: work/impl
           merge-multiple: true
 
@@ -353,25 +370,81 @@ jobs:
         run: |
           python scripts/metrics_stub.py --stage integrate_and_test --out work/metrics.json
 
+      - name: Stage telemetry
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import time
+          from datetime import datetime, timezone
+
+          start_epoch = int(os.environ["START_EPOCH"])
+          end_epoch = int(time.time())
+          start_iso = os.environ["START_ISO"]
+          end_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+          timing = {
+              "stage": "integrate_and_test",
+              "start_epoch": start_epoch,
+              "end_epoch": end_epoch,
+              "start_iso": start_iso,
+              "end_iso": end_iso,
+              "duration_seconds": end_epoch - start_epoch,
+              "run_key": os.environ["RUN_KEY"],
+          }
+          usage = {
+              "stage": "integrate_and_test",
+              "run_key": os.environ["RUN_KEY"],
+              "model": os.environ["MODEL"],
+              "condition": os.environ["CONDITION"],
+              "tier": os.environ["TIER"],
+              "token_usage": {
+                  "prompt_tokens": None,
+                  "completion_tokens": None,
+                  "total_tokens": None,
+              },
+              "cost": {
+                  "currency": "USD",
+                  "amount": None,
+              },
+              "notes": "No model token/cost telemetry is wired in this stage yet.",
+          }
+
+          with open("work/stage_timing_integrate.json", "w", encoding="utf-8") as f:
+              json.dump(timing, f, indent=2)
+          with open("work/usage_integrate.json", "w", encoding="utf-8") as f:
+              json.dump(usage, f, indent=2)
+          PY
+        env:
+          START_EPOCH: ${{ steps.stage_start.outputs.epoch }}
+          START_ISO: ${{ steps.stage_start.outputs.iso }}
+          RUN_KEY: ${{ needs.split.outputs.run_key }}
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: integrate-${{ matrix.model }}-${{ matrix.condition }}-${{ matrix.tier }}
+          name: integrate-${{ needs.split.outputs.run_key }}
           path: |
             work/combined.md
+            work/merged
             work/metrics.json
+            work/stage_timing_integrate.json
+            work/usage_integrate.json
 
   deploy:
+    if: ${{ inputs.deploy != false }}
     runs-on: ubuntu-latest
-    needs: integrate_and_test
-    strategy:
-      fail-fast: false
-      matrix:
-        model: [gpt-5.3-codex, claude-opus-latest]
-        condition: [single, single_plan, k3, k5, k7]
-        tier: [tier0, tier1, tier2, tier3]
+    needs:
+      - split
+      - integrate_and_test
     steps:
       - uses: actions/checkout@v4
+
+      - name: Stage start
+        id: stage_start
+        run: |
+          echo "epoch=$(date +%s)" >> "$GITHUB_OUTPUT"
+          echo "iso=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
 
       - name: Azure login
         uses: azure/login@v2
@@ -383,7 +456,7 @@ jobs:
       - name: Resolve run metadata
         id: run
         run: |
-          RUN_KEY="${{ matrix.model }}-${{ matrix.condition }}-${{ matrix.tier }}"
+          RUN_KEY="${MODEL}-${CONDITION}-${TIER}"
           REV_SUFFIX=$(echo -n "$RUN_KEY" | sha256sum | cut -c1-8)
           echo "run_key=$RUN_KEY" >> "$GITHUB_OUTPUT"
           echo "rev_suffix=$REV_SUFFIX" >> "$GITHUB_OUTPUT"
@@ -423,9 +496,9 @@ jobs:
           WEB_IMAGE="$AZ_ACR.azurecr.io/${{ env.REPO_NAME }}-web:${{ steps.run.outputs.run_key }}"
           docker build \
             --build-arg VITE_RUN_KEY=${{ steps.run.outputs.run_key }} \
-            --build-arg VITE_MODEL=${{ matrix.model }} \
-            --build-arg VITE_CONDITION=${{ matrix.condition }} \
-            --build-arg VITE_TIER=${{ matrix.tier }} \
+            --build-arg VITE_MODEL=${MODEL} \
+            --build-arg VITE_CONDITION=${CONDITION} \
+            --build-arg VITE_TIER=${TIER} \
             --build-arg VITE_API_URL=https://${{ steps.api.outputs.api_fqdn }} \
             -t "$WEB_IMAGE" apps/web
           docker push "$WEB_IMAGE"
@@ -470,8 +543,154 @@ jobs:
           WEB_FQDN: ${{ steps.web.outputs.web_fqdn }}
           API_FQDN: ${{ steps.api.outputs.api_fqdn }}
 
+      - name: Stage telemetry
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import time
+          from datetime import datetime, timezone
+
+          start_epoch = int(os.environ["START_EPOCH"])
+          end_epoch = int(time.time())
+          start_iso = os.environ["START_ISO"]
+          end_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+          timing = {
+              "stage": "deploy",
+              "start_epoch": start_epoch,
+              "end_epoch": end_epoch,
+              "start_iso": start_iso,
+              "end_iso": end_iso,
+              "duration_seconds": end_epoch - start_epoch,
+              "run_key": os.environ["RUN_KEY"],
+          }
+          usage = {
+              "stage": "deploy",
+              "run_key": os.environ["RUN_KEY"],
+              "model": os.environ["MODEL"],
+              "condition": os.environ["CONDITION"],
+              "tier": os.environ["TIER"],
+              "token_usage": {
+                  "prompt_tokens": None,
+                  "completion_tokens": None,
+                  "total_tokens": None,
+              },
+              "cost": {
+                  "currency": "USD",
+                  "amount": None,
+              },
+              "notes": "No model token/cost telemetry is wired in this stage yet.",
+          }
+
+          with open("stage_timing_deploy.json", "w", encoding="utf-8") as f:
+              json.dump(timing, f, indent=2)
+          with open("usage_deploy.json", "w", encoding="utf-8") as f:
+              json.dump(usage, f, indent=2)
+          PY
+        env:
+          START_EPOCH: ${{ steps.stage_start.outputs.epoch }}
+          START_ISO: ${{ steps.stage_start.outputs.iso }}
+          RUN_KEY: ${{ steps.run.outputs.run_key }}
+
       - name: Upload deployment artifact
         uses: actions/upload-artifact@v4
         with:
-          name: deploy-${{ matrix.model }}-${{ matrix.condition }}-${{ matrix.tier }}
-          path: deploy_info.json
+          name: deploy-${{ steps.run.outputs.run_key }}
+          path: |
+            deploy_info.json
+            stage_timing_deploy.json
+            usage_deploy.json
+
+  summarize_run:
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs:
+      - split
+      - implement_slice
+      - integrate_and_test
+      - deploy
+    steps:
+      - name: Download split artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: split-${{ needs.split.outputs.run_key }}
+          path: aggregate/split
+
+      - name: Download slice artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: slice-${{ needs.split.outputs.run_key }}-*
+          path: aggregate/slices
+
+      - name: Download integrate artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: integrate-${{ needs.split.outputs.run_key }}
+          path: aggregate/integrate
+
+      - name: Download deploy artifact
+        if: ${{ inputs.deploy != false }}
+        uses: actions/download-artifact@v4
+        with:
+          name: deploy-${{ needs.split.outputs.run_key }}
+          path: aggregate/deploy
+
+      - name: Build run summary
+        run: |
+          python - <<'PY'
+          import glob
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path("aggregate")
+
+          def read_json_files(pattern):
+              out = []
+              for file_path in glob.glob(str(root / pattern), recursive=True):
+                  with open(file_path, "r", encoding="utf-8") as f:
+                      out.append(json.load(f))
+              return out
+
+          timings = read_json_files("**/stage_timing_*.json")
+          usages = read_json_files("**/usage_*.json")
+
+          start_values = [x["start_epoch"] for x in timings if isinstance(x, dict) and "start_epoch" in x]
+          end_values = [x["end_epoch"] for x in timings if isinstance(x, dict) and "end_epoch" in x]
+          wall_clock = None
+          if start_values and end_values:
+              wall_clock = max(end_values) - min(start_values)
+
+          deploy_info = None
+          deploy_info_path = root / "deploy" / "deploy_info.json"
+          if deploy_info_path.exists():
+              with open(deploy_info_path, "r", encoding="utf-8") as f:
+                  deploy_info = json.load(f)
+
+          summary = {
+              "run_key": os.environ["RUN_KEY"],
+              "model": os.environ["MODEL"],
+              "condition": os.environ["CONDITION"],
+              "tier": os.environ["TIER"],
+              "timings": timings,
+              "total_wall_clock_seconds": wall_clock,
+              "usage": usages,
+              "deploy": deploy_info,
+          }
+
+          out_path = root / "run_summary.json"
+          out_path.parent.mkdir(parents=True, exist_ok=True)
+          with open(out_path, "w", encoding="utf-8") as f:
+              json.dump(summary, f, indent=2)
+          PY
+        env:
+          RUN_KEY: ${{ needs.split.outputs.run_key }}
+
+      - name: Upload run summary artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: summary-${{ needs.split.outputs.run_key }}
+          path: |
+            aggregate/run_summary.json
+            aggregate/split/slices
