@@ -103,21 +103,35 @@ Work item:
                     "copilot",
                     "--allow-all",
                     "--no-ask-user",
+                    "--model",
+                    "gpt-4.1",
                     "-p",
                     prompt,
                 ]
+                fallback_result = run_cmd(fallback_cmd)
+                fallback_raw = (fallback_result.stdout or "") + "\n" + (fallback_result.stderr or "")
+                if fallback_result.returncode != 0:
+                    fallback_cmd = [
+                        "copilot",
+                        "--allow-all",
+                        "--no-ask-user",
+                        "-p",
+                        prompt,
+                    ]
+                    fallback_result = run_cmd(fallback_cmd)
+                    fallback_raw = (fallback_result.stdout or "") + "\n" + (fallback_result.stderr or "")
             else:
                 fallback_cmd = [
                     "copilot",
                     "--allow-all",
                     "--no-ask-user",
                     "--model",
-                    "gpt-5.3-codex",
+                    "gpt-4.1",
                     "-p",
                     prompt,
                 ]
-            fallback_result = run_cmd(fallback_cmd)
-            fallback_raw = (fallback_result.stdout or "") + "\n" + (fallback_result.stderr or "")
+                fallback_result = run_cmd(fallback_cmd)
+                fallback_raw = (fallback_result.stdout or "") + "\n" + (fallback_result.stderr or "")
             raw = (
                 "PRIMARY_CMD_STDOUT:\n"
                 + (result.stdout or "")

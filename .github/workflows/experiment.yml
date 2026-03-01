@@ -87,9 +87,9 @@ jobs:
             exit 1
           fi
         env:
-          COPILOT_GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GH_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
+          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
 
       - name: Validate Copilot request permission
         run: |
@@ -98,25 +98,34 @@ jobs:
           copilot --model "$MODEL" -p "Reply with OK only." > work/copilot_auth_check.txt 2>&1
           CODE=$?
           if [ $CODE -ne 0 ] && grep -qi "interactive mode to enable this model" work/copilot_auth_check.txt; then
-            copilot -p "Reply with OK only." > work/copilot_auth_check_default_model.txt 2>&1
+            copilot --model "gpt-4.1" -p "Reply with OK only." > work/copilot_auth_check_gpt41.txt 2>&1
             CODE=$?
             if [ $CODE -eq 0 ]; then
-              echo "Model '$MODEL' is gated for this token in non-interactive mode; continuing with default model selection."
+              echo "Model '$MODEL' is gated for this token in non-interactive mode; continuing with gpt-4.1 fallback availability."
+            else
+              copilot -p "Reply with OK only." > work/copilot_auth_check_default_model.txt 2>&1
+              CODE=$?
+              if [ $CODE -eq 0 ]; then
+                echo "Model '$MODEL' is gated; continuing with default model selection."
+              fi
             fi
           fi
           set -e
           if [ $CODE -ne 0 ]; then
             echo "::error::Copilot CLI request failed. Ensure COPILOT_GITHUB_TOKEN is from an account with Copilot access and has Copilot Requests permission."
             cat work/copilot_auth_check.txt
+            if [ -f work/copilot_auth_check_gpt41.txt ]; then
+              cat work/copilot_auth_check_gpt41.txt
+            fi
             if [ -f work/copilot_auth_check_default_model.txt ]; then
               cat work/copilot_auth_check_default_model.txt
             fi
             exit 1
           fi
         env:
-          COPILOT_GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GH_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
+          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
           MODEL: ${{ env.MODEL }}
 
       - name: Stage start
@@ -215,20 +224,32 @@ jobs:
                       "copilot",
                       "--allow-all",
                       "--no-ask-user",
-                      "-p",
-                      prompt,
-                  ]
-              else:
+                  "--model",
+                  "gpt-4.1",
+                  "-p",
+                  prompt,
+                ]
+                fallback_result = subprocess.run(fallback_cmd, capture_output=True, text=True, check=False)
+                if fallback_result.returncode != 0:
                   fallback_cmd = [
-                      "copilot",
-                      "--allow-all",
-                      "--no-ask-user",
-                      "--model",
-                      "gpt-5.3-codex",
+                    "copilot",
+                    "--allow-all",
+                    "--no-ask-user",
+                    "-p",
+                    prompt,
+                  ]
+                  fallback_result = subprocess.run(fallback_cmd, capture_output=True, text=True, check=False)
+              else:
+                fallback_cmd = [
+                  "copilot",
+                  "--allow-all",
+                  "--no-ask-user",
+                  "--model",
+                  "gpt-4.1",
                       "-p",
                       prompt,
                   ]
-              fallback_result = subprocess.run(fallback_cmd, capture_output=True, text=True, check=False)
+                fallback_result = subprocess.run(fallback_cmd, capture_output=True, text=True, check=False)
               combined = (
                   "PRIMARY_CMD_STDOUT:\n"
                   + (result.stdout or "")
@@ -278,9 +299,9 @@ jobs:
           Path("work/slices/slices.txt").write_text("\n".join(listed) + "\n", encoding="utf-8")
           PY
         env:
-          COPILOT_GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GH_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
+          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
           MODEL: ${{ env.MODEL }}
           CONDITION: ${{ env.CONDITION }}
           K: ${{ steps.k.outputs.k }}
@@ -398,9 +419,9 @@ jobs:
             exit 1
           fi
         env:
-          COPILOT_GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GH_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
+          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
 
       - name: Download split artifact
         uses: actions/download-artifact@v4
@@ -424,9 +445,9 @@ jobs:
             --slices-dir "work/slices" \
             --out-dir "work/agentic"
         env:
-          COPILOT_GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GH_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
-          GITHUB_TOKEN: ${{ github.token || secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
+          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
           MODEL: ${{ env.MODEL }}
           CONDITION: ${{ env.CONDITION }}
 
