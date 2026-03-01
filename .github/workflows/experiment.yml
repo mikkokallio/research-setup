@@ -346,7 +346,6 @@ jobs:
                       f"\nGlobal Critical Contracts (shared):\n{json.dumps(shared_context.get('critical_contracts', []), indent=2)}",
                       f"\nCross-Slice Assumptions (shared):\n{json.dumps(shared_context.get('cross_slice_assumptions', []), indent=2)}",
                       f"\nSpec Reference:\nwork/spec.md",
-                      f"\nSlice JSON (authoritative):\n{json.dumps(item, indent=2)}",
                   ]
               ).strip() + "\n"
               path = out_dir / f"slice_{index}.md"
