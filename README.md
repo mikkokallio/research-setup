@@ -35,6 +35,13 @@ See .env.example for a local reference.
 - The workflow uses Container Apps revisions to provide per-run URLs without creating 40 separate apps.
 - Keep resources and naming consistent across runs.
 
+## Provision Azure
+Run the provisioning script after setting env vars or repo variables.
+
+```powershell
+./scripts/provision.ps1
+```
+
 ## Public References
 - https://docs.github.com/en/copilot/reference/cli-command-reference
 - https://docs.github.com/en/copilot/how-tos/copilot-cli/automate-with-actions
