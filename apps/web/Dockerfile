@@ -1,0 +1,24 @@
+FROM node:22-alpine
+
+WORKDIR /app
+
+COPY package.json package-lock.json* ./
+RUN npm install
+
+COPY . .
+
+ARG VITE_RUN_KEY
+ARG VITE_MODEL
+ARG VITE_CONDITION
+ARG VITE_TIER
+ARG VITE_API_URL
+ENV VITE_RUN_KEY=$VITE_RUN_KEY \
+	VITE_MODEL=$VITE_MODEL \
+	VITE_CONDITION=$VITE_CONDITION \
+	VITE_TIER=$VITE_TIER \
+	VITE_API_URL=$VITE_API_URL
+
+RUN npm run build
+
+EXPOSE 8080
+CMD ["npm", "run", "preview"]
