@@ -77,8 +77,13 @@ Rules:
 - Keep changes minimal and consistent.
 - Do not add unrelated features.
 - You may run local build/test commands as needed.
+- You may dynamically re-order tasks inside this slice to maximize progress when blocked.
+- Prefer authoring tests early, even if some cannot pass yet.
+- If execution is blocked by missing dependencies, still write deferred tests and mark assumptions clearly in test names/messages.
+- Run all tests/checks that are runnable now; defer only blocked ones.
+- If a task is blocked, continue with independent contract-first or mock/stub-based work instead of waiting.
 - At the end, print a short JSON object only:
-  {{"slice_index": {index}, "summary": "...", "changed_files": ["..."]}}
+    {{"slice_index": {index}, "summary": "...", "changed_files": ["..."], "tests_authored": ["..."], "tests_ran": ["..."], "tests_deferred": ["..."]}}
 
 Work item:
 {slice_text}

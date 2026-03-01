@@ -194,13 +194,33 @@ jobs:
           - JSON schema:
             {{
               \"slices\": [
-                {{\"id\": \"slice_1\", \"title\": \"...\", \"goal\": \"...\", \"instructions\": \"...\", \"dependencies\": [\"slice_2\"]}},
+                {{
+                  \"id\": \"slice_1\",
+                  \"title\": \"...\",
+                  \"goal\": \"...\",
+                  \"instructions\": \"...\",
+                  \"dependencies\": [\"slice_2\"],
+                  \"implementation_dependencies\": [\"slice_2\"],
+                  \"validation_dependencies\": [\"slice_2\"],
+                  \"tests_to_author_now\": [\"...\"],
+                  \"tests_to_run_now\": [\"...\"],
+                  \"tests_deferred_until_dependencies\": [\"...\"],
+                  \"effort_points\": 3
+                }},
                 ...
               ],
               \"integration_notes\": \"...\"
             }}
           - Provide exactly {k} slices with ids slice_1..slice_{k}.
           - Keep each slice concrete, implementation oriented, and testable.
+          - Optimize for concurrency: minimize hard implementation dependencies.
+          - Use `dependencies` and `implementation_dependencies` only for hard blockers that prevent coding work.
+          - Use `validation_dependencies` for checks that can be authored now but executed later.
+          - If API contract/interface is known, frontend coding should not depend on backend implementation.
+          - Every slice must include tests that can be authored immediately (`tests_to_author_now`).
+          - Prefer writing tests early, and defer only execution when blocked.
+          - Balance work across slices with roughly similar effort_points.
+          - Avoid a final integration-only mega-slice; distribute test authoring earlier and keep final integration thin.
           - Do not include markdown fences.
 
           SPEC:
