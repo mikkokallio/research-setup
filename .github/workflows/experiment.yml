@@ -585,6 +585,8 @@ jobs:
         with:
           name: implement-${{ needs.split.outputs.run_key }}
           path: |
+            apps/web
+            apps/api
             work/agentic
             work/stage_timing_implement_and_test.json
 
@@ -596,6 +598,12 @@ jobs:
       - implement_and_test
     steps:
       - uses: actions/checkout@v4
+
+      - name: Download implement artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: implement-${{ needs.split.outputs.run_key }}
+          path: .
 
       - name: Azure login
         uses: azure/login@v2
