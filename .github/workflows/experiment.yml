@@ -763,6 +763,16 @@ jobs:
             -o tsv)
           echo "web_fqdn=$WEB_FQDN" >> "$GITHUB_OUTPUT"
 
+      - name: Configure API ingress CORS for web origin
+        run: |
+          az containerapp ingress cors enable \
+            --name $AZ_API_APP \
+            --resource-group $AZ_RG \
+            --allowed-origins https://${{ steps.web.outputs.web_fqdn }} http://127.0.0.1:5173 http://localhost:5173 \
+            --allowed-methods '*' \
+            --allowed-headers '*' \
+            --allow-credentials true >/dev/null
+
       - name: Deployment manifest
         run: |
           python - <<'PY'
