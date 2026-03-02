@@ -699,10 +699,7 @@ jobs:
         run: |
           if [ ! -f apps/api/requirements.txt ]; then
             echo "apps/api/requirements.txt missing; writing minimal runtime requirements"
-            cat > apps/api/requirements.txt <<'EOF'
-            fastapi
-            uvicorn[standard]
-            EOF
+            printf 'fastapi\nuvicorn[standard]\n' > apps/api/requirements.txt
           fi
           API_IMAGE="$AZ_ACR.azurecr.io/${{ env.REPO_NAME }}-api:${{ steps.run.outputs.run_key }}"
           docker build -t "$API_IMAGE" apps/api
