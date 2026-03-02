@@ -3,6 +3,7 @@ import json
 import os
 import re
 import subprocess
+import tempfile
 import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -33,30 +34,66 @@ class CmdResult:
     stdout: str
     stderr: str
     timed_out: bool = False
+    elapsed_seconds: int = 0
 
 
-def run_cmd(cmd, cwd=None, timeout_seconds=None):
-    try:
-        completed = subprocess.run(
+def run_cmd(cmd, cwd=None, timeout_seconds=None, heartbeat_label=None, heartbeat_every_seconds=30):
+    start = time.time()
+    with tempfile.NamedTemporaryFile(mode="w+", encoding="utf-8", delete=True) as out_tmp, tempfile.NamedTemporaryFile(
+        mode="w+", encoding="utf-8", delete=True
+    ) as err_tmp:
+        process = subprocess.Popen(
             cmd,
             cwd=cwd,
             text=True,
-            capture_output=True,
-            check=False,
-            timeout=timeout_seconds,
+            stdout=out_tmp,
+            stderr=err_tmp,
         )
+
+        last_heartbeat_mark = -1
+        timed_out = False
+
+        while True:
+            code = process.poll()
+            elapsed = int(time.time() - start)
+            if heartbeat_label and elapsed // heartbeat_every_seconds != last_heartbeat_mark:
+                last_heartbeat_mark = elapsed // heartbeat_every_seconds
+                print(f"[agentic] heartbeat label={heartbeat_label} elapsed_sec={elapsed}", flush=True)
+
+            if code is not None:
+                break
+
+            if timeout_seconds is not None and elapsed >= timeout_seconds:
+                timed_out = True
+                process.kill()
+                process.wait()
+                break
+
+            time.sleep(1)
+
+        out_tmp.flush()
+        err_tmp.flush()
+        out_tmp.seek(0)
+        err_tmp.seek(0)
+        stdout_text = out_tmp.read()
+        stderr_text = err_tmp.read()
+        final_elapsed = int(time.time() - start)
+
+        if timed_out:
+            return CmdResult(
+                returncode=124,
+                stdout=stdout_text,
+                stderr=stderr_text,
+                timed_out=True,
+                elapsed_seconds=final_elapsed,
+            )
+
         return CmdResult(
-            returncode=completed.returncode,
-            stdout=completed.stdout or "",
-            stderr=completed.stderr or "",
+            returncode=process.returncode,
+            stdout=stdout_text,
+            stderr=stderr_text,
             timed_out=False,
-        )
-    except subprocess.TimeoutExpired as exc:
-        return CmdResult(
-            returncode=124,
-            stdout=(exc.stdout or "") if isinstance(exc.stdout, str) else "",
-            stderr=(exc.stderr or "") if isinstance(exc.stderr, str) else "",
-            timed_out=True,
+            elapsed_seconds=final_elapsed,
         )
 
 
@@ -170,7 +207,11 @@ Work package (authoritative; includes slice object and minimal shared context):
         ]
 
         print(f"[agentic] invoking copilot for slice {index} with timeout {slice_timeout_seconds}s", flush=True)
-        result = run_cmd(cmd, timeout_seconds=slice_timeout_seconds)
+        result = run_cmd(
+            cmd,
+            timeout_seconds=slice_timeout_seconds,
+            heartbeat_label=f"slice_{index}:primary",
+        )
         raw = (result.stdout or "") + "\n" + (result.stderr or "")
         if result.timed_out:
             raw = (
@@ -189,7 +230,11 @@ Work package (authoritative; includes slice object and minimal shared context):
                     "-p",
                     prompt,
                 ]
-                fallback_result = run_cmd(fallback_cmd, timeout_seconds=slice_timeout_seconds)
+                fallback_result = run_cmd(
+                    fallback_cmd,
+                    timeout_seconds=slice_timeout_seconds,
+                    heartbeat_label=f"slice_{index}:fallback_gpt41",
+                )
                 fallback_raw = (fallback_result.stdout or "") + "\n" + (fallback_result.stderr or "")
                 if fallback_result.returncode != 0:
                     fallback_cmd = [
@@ -199,7 +244,11 @@ Work package (authoritative; includes slice object and minimal shared context):
                         "-p",
                         prompt,
                     ]
-                    fallback_result = run_cmd(fallback_cmd, timeout_seconds=slice_timeout_seconds)
+                    fallback_result = run_cmd(
+                        fallback_cmd,
+                        timeout_seconds=slice_timeout_seconds,
+                        heartbeat_label=f"slice_{index}:fallback_default_model",
+                    )
                     fallback_raw = (fallback_result.stdout or "") + "\n" + (fallback_result.stderr or "")
             else:
                 fallback_cmd = [
@@ -211,7 +260,11 @@ Work package (authoritative; includes slice object and minimal shared context):
                     "-p",
                     prompt,
                 ]
-                fallback_result = run_cmd(fallback_cmd, timeout_seconds=slice_timeout_seconds)
+                fallback_result = run_cmd(
+                    fallback_cmd,
+                    timeout_seconds=slice_timeout_seconds,
+                    heartbeat_label=f"slice_{index}:fallback_gpt41",
+                )
                 fallback_raw = (fallback_result.stdout or "") + "\n" + (fallback_result.stderr or "")
             raw = (
                 "PRIMARY_CMD_STDOUT:\n"
@@ -289,7 +342,10 @@ Work package (authoritative; includes slice object and minimal shared context):
         if result.returncode != 0:
             raise RuntimeError(f"Copilot coding step failed for slice {index}. See logs/slice_{index}_copilot_output.txt")
 
-        print(f"[agentic] completed slice {index}/{len(work_items)}", flush=True)
+        print(
+            f"[agentic] completed slice {index}/{len(work_items)} elapsed_sec={result.elapsed_seconds}",
+            flush=True,
+        )
 
 
 if __name__ == "__main__":
