@@ -607,6 +607,32 @@ jobs:
           name: implement-${{ needs.split.outputs.run_key }}
           path: .
 
+      - name: Inspect generated app files
+        run: |
+          echo "=== Generated API tree (apps/api) ==="
+          if [ -d apps/api ]; then
+            find apps/api -maxdepth 3 -type f | sort
+          else
+            echo "apps/api directory missing"
+          fi
+          echo "=== Generated WEB tree (apps/web) ==="
+          if [ -d apps/web ]; then
+            find apps/web -maxdepth 4 -type f | sort
+          else
+            echo "apps/web directory missing"
+          fi
+          echo "=== Dockerfile checks ==="
+          if [ -f apps/api/Dockerfile ]; then
+            echo "apps/api/Dockerfile present"
+          else
+            echo "apps/api/Dockerfile MISSING"
+          fi
+          if [ -f apps/web/Dockerfile ]; then
+            echo "apps/web/Dockerfile present"
+          else
+            echo "apps/web/Dockerfile MISSING"
+          fi
+
       - name: Azure login
         uses: azure/login@v2
         with:
