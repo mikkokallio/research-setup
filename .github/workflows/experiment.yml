@@ -741,6 +741,12 @@ jobs:
 
       - name: Deploy web revision
         run: |
+          az containerapp ingress enable \
+            --name $AZ_WEB_APP \
+            --resource-group $AZ_RG \
+            --type external \
+            --target-port 80 >/dev/null
+
           az containerapp update \
             --name $AZ_WEB_APP \
             --resource-group $AZ_RG \
