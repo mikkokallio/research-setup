@@ -1,0 +1,31 @@
+{
+  "slices": [
+    {
+      "id": "slice_1",
+      "title": "FastAPI Backend Implementation",
+      "goal": "Implement a deterministic FastAPI backend with four endpoints and OpenAPI docs.",
+      "instructions": "Create a FastAPI app with endpoints: /healthz (GET, returns {\"status\": \"ok\"}), /info (GET, returns {\"version\": \"1.0.0\", \"environment\": \"dev\"}), /metrics (GET, returns {\"uptime\": 3600, \"requests_total\": 42}), and /data (GET, returns {\"items\": [{\"id\": 1, \"label\": \"System Logic\", \"status\": \"Stable\"}, {\"id\": 2, \"label\": \"Network Latency\", \"status\": \"Optimal\"}]}). Ensure all responses are deterministic and types match the spec. Enable CORS for local frontend development and verify /docs exposes all endpoints.",
+      "dependencies": []
+    },
+    {
+      "id": "slice_2",
+      "title": "React + Vite Frontend Dashboard",
+      "goal": "Build a single-page React app that fetches and displays backend data with state handling.",
+      "instructions": "Set up a Vite React (TypeScript) project. Implement a Dashboard view that fetches /info, /healthz, and /data from the backend. Display the app name, system version, a status bar (green for ok, red for error), and a grid/list of items from /data. Handle and visually distinguish Loading, Empty, Error (with Retry), and Success states as specified.",
+      "dependencies": [
+        "slice_1"
+      ]
+    },
+    {
+      "id": "slice_3",
+      "title": "Integration and Resilience Testing",
+      "goal": "Ensure seamless frontend-backend integration and robust error handling.",
+      "instructions": "Configure the frontend to communicate with the FastAPI backend using correct CORS and base URL settings. Test and verify that the UI updates dynamically with backend data, handles backend downtime (showing Error state and supporting Retry), and that all acceptance criteria are met. Validate that both npm run dev (Vite) and uvicorn (FastAPI) workflows operate as expected.",
+      "dependencies": [
+        "slice_1",
+        "slice_2"
+      ]
+    }
+  ],
+  "integration_notes": "Slices are designed for parallel development: the backend (slice_1) and frontend (slice_2) can be built independently using the fixed API contract. Integration (slice_3) focuses on connecting the two, ensuring CORS, dynamic data flow, and robust error handling. All endpoints and UI states must be strictly validated against the acceptance checklist for full compliance."
+}

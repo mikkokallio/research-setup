@@ -108,6 +108,9 @@ You are coding agent #{index} for run {args.run_key}.
 Apply ONLY the work described below to this repository.
 
 Rules:
+    - Clean-room requirement: treat `apps/web` and `apps/api` as empty targets that must be created from scratch for this run.
+    - Use only the work package/spec context below as product requirements.
+    - Do not reuse or depend on previous app scaffold code, examples, or prior run outputs.
 - Modify files directly in the current workspace.
 - Keep changes minimal and consistent.
 - Do not add unrelated features.

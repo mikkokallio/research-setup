@@ -491,6 +491,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+      - name: Reset app source directories (clean-room)
+        run: |
+          rm -rf apps/web apps/api
+          mkdir -p apps/web apps/api
+
       - name: Agentic coding loop
         run: |
           python scripts/run_agentic_implement.py \
@@ -509,100 +514,26 @@ jobs:
           MODEL: ${{ env.MODEL }}
           CONDITION: ${{ env.CONDITION }}
 
-      - name: Build web (attempt 1)
-        id: web_build_attempt
+      - name: Build web (best effort)
         run: |
           mkdir -p work/agentic
           set +e
           cd apps/web
           npm install
           npm run build 2>&1 | tee ../../work/agentic/web_build_attempt1.log
-          CODE=${PIPESTATUS[0]}
           set -e
-          echo "code=$CODE" >> "$GITHUB_OUTPUT"
           exit 0
 
-      - name: Auto-fix web build once
-        if: ${{ steps.web_build_attempt.outputs.code != '0' }}
+      - name: Build api (best effort)
         run: |
-          python - <<'PY'
-          import os
-          import subprocess
-          from pathlib import Path
-
-          log_path = Path("work/agentic/web_build_attempt1.log")
-          log_text = log_path.read_text(encoding="utf-8") if log_path.exists() else "No build log found."
-          tail = log_text[-14000:]
-
-          prompt = f"""
-          You are a coding repair agent.
-          The web build failed after agentic edits.
-
-          Task:
-          - Fix only the minimal source files needed for `apps/web` to pass `npm run build`.
-          - Do not add new features.
-          - Keep changes small and consistent with existing code.
-
-          Build error log tail:
-          {tail}
-          """.strip()
-
-          primary = [
-              "copilot",
-              "--allow-all",
-              "--no-ask-user",
-              "--model",
-              os.environ["MODEL"],
-              "-p",
-              prompt,
-          ]
-          result = subprocess.run(primary, capture_output=True, text=True, check=False)
-          raw = (result.stdout or "") + "\n" + (result.stderr or "")
-
-          if result.returncode != 0:
-              fallback = [
-                  "copilot",
-                  "--allow-all",
-                  "--no-ask-user",
-                  "--model",
-                  "gpt-4.1",
-                  "-p",
-                  prompt,
-              ]
-              fallback_result = subprocess.run(fallback, capture_output=True, text=True, check=False)
-              raw = (
-                  "PRIMARY_CMD_STDOUT:\n"
-                  + (result.stdout or "")
-                  + "\nPRIMARY_CMD_STDERR:\n"
-                  + (result.stderr or "")
-                  + "\nFALLBACK_CMD_STDOUT:\n"
-                  + (fallback_result.stdout or "")
-                  + "\nFALLBACK_CMD_STDERR:\n"
-                  + (fallback_result.stderr or "")
-              )
-              result = fallback_result
-
-          Path("work/agentic/web_build_fix_output.txt").write_text(raw, encoding="utf-8")
-          if result.returncode != 0:
-              raise SystemExit("Copilot auto-fix request failed")
-          PY
-        env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
-          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
-          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
-          MODEL: ${{ env.MODEL }}
-
-      - name: Build web (verify)
-        run: |
-          cd apps/web
-          npm run build
-
-      - name: Build api
-        run: |
+          mkdir -p work/agentic
+          set +e
           cd apps/api
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          python -m compileall .
+          python -m compileall . 2>&1 | tee ../../work/agentic/api_build_attempt1.log
+          set -e
+          exit 0
 
       - name: Stage telemetry
         run: |

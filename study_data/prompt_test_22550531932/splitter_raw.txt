@@ -1,0 +1,91 @@
+{
+  "slices": [
+    {
+      "id": "slice_1",
+      "title": "FastAPI Backend Endpoints",
+      "goal": "Implement a deterministic FastAPI backend with four endpoints: /healthz, /info, /metrics, /data, and ensure OpenAPI docs are correct.",
+      "instructions": "Create a FastAPI app with the specified endpoints, each returning fixed, deterministic JSON responses as per the spec. Ensure CORS is enabled for local frontend development. Validate that /docs reflects all endpoints and their response schemas.",
+      "dependencies": [],
+      "implementation_dependencies": [],
+      "validation_dependencies": [],
+      "tests_to_author_now": [
+        "GET /healthz returns 200 OK with {\"status\": \"ok\"}",
+        "GET /metrics returns 200 OK with integer fields uptime and requests_total",
+        "GET /info returns 200 OK with string fields version and environment",
+        "GET /data returns 200 OK with items array, each item has id (int), label (str), status (str)",
+        "GET /docs is accessible and documents all endpoints"
+      ],
+      "tests_to_run_now": [
+        "GET /healthz returns 200 OK with {\"status\": \"ok\"}",
+        "GET /metrics returns 200 OK with integer fields uptime and requests_total",
+        "GET /info returns 200 OK with string fields version and environment",
+        "GET /data returns 200 OK with items array, each item has id (int), label (str), status (str)",
+        "GET /docs is accessible and documents all endpoints"
+      ],
+      "tests_deferred_until_dependencies": [],
+      "effort_points": 3
+    },
+    {
+      "id": "slice_2",
+      "title": "React + Vite Frontend UI and State Management",
+      "goal": "Build the SPA dashboard UI in React + Vite, implementing all four UI states and static API contracts.",
+      "instructions": "Scaffold a Vite React app. Implement the Dashboard view with header, status bar, and main content area. Use mock/fake API responses matching the backend contract for initial development. Implement explicit UI states: Loading, Empty, Error (with Retry), and Success. Prepare API service layer for later backend integration.",
+      "dependencies": [],
+      "implementation_dependencies": [],
+      "validation_dependencies": [],
+      "tests_to_author_now": [
+        "App shows Loading state on mount",
+        "App displays items from mock /data",
+        "App shows Empty state if /data is empty",
+        "App shows Error state and Retry button on fetch failure",
+        "Status bar reflects mock /healthz status",
+        "Header displays mock system version from /info"
+      ],
+      "tests_to_run_now": [
+        "App shows Loading state on mount",
+        "App displays items from mock /data",
+        "App shows Empty state if /data is empty",
+        "App shows Error state and Retry button on fetch failure",
+        "Status bar reflects mock /healthz status",
+        "Header displays mock system version from /info"
+      ],
+      "tests_deferred_until_dependencies": [],
+      "effort_points": 3
+    },
+    {
+      "id": "slice_3",
+      "title": "Frontend-Backend Integration and CORS",
+      "goal": "Wire up the frontend to the FastAPI backend, enable CORS, and validate end-to-end communication and dynamic updates.",
+      "instructions": "Replace frontend mock API calls with real HTTP requests to the FastAPI backend. Ensure CORS is correctly configured on the backend. Validate that the UI updates dynamically based on live backend responses, including error handling when the backend is unreachable.",
+      "dependencies": [],
+      "implementation_dependencies": [],
+      "validation_dependencies": ["slice_1", "slice_2"],
+      "tests_to_author_now": [
+        "Frontend fetches /info and displays live version",
+        "Frontend fetches /healthz and updates status bar",
+        "Frontend fetches /data and renders items",
+        "Frontend shows Error state if backend is stopped and Retry works",
+        "Frontend works with CORS enabled"
+      ],
+      "tests_to_run_now": [],
+      "tests_deferred_until_dependencies": [
+        "Frontend fetches /info and displays live version",
+        "Frontend fetches /healthz and updates status bar",
+        "Frontend fetches /data and renders items",
+        "Frontend shows Error state if backend is stopped and Retry works",
+        "Frontend works with CORS enabled"
+      ],
+      "effort_points": 3
+    }
+  ],
+  "integration_notes": "Slices 1 and 2 can be developed and tested independently using fixed contracts and mocks. Slice 3 integrates the two, requiring both backend and frontend to be running; all end-to-end and CORS-related tests are deferred until this stage. Ensure API contracts remain stable to avoid integration friction."
+}
+
+
+
+Total usage est:        1 Premium request
+API time spent:         10s
+Total session time:     13s
+Total code changes:     +0 -0
+Breakdown by AI model:
+ gpt-4.1                 14.5k in, 1.0k out, 3.8k cached (Est. 1 Premium request)

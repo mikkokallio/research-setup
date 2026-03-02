@@ -1,0 +1,810 @@
+deploy	Set up job	﻿2026-03-01T15:05:23.7621121Z Current runner version: '2.331.0'
+deploy	Set up job	2026-03-01T15:05:23.7644814Z ##[group]Runner Image Provisioner
+deploy	Set up job	2026-03-01T15:05:23.7645667Z Hosted Compute Agent
+deploy	Set up job	2026-03-01T15:05:23.7646591Z Version: 20260213.493
+deploy	Set up job	2026-03-01T15:05:23.7647280Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+deploy	Set up job	2026-03-01T15:05:23.7647993Z Build Date: 2026-02-13T00:28:41Z
+deploy	Set up job	2026-03-01T15:05:23.7648780Z Worker ID: {af75d108-9ba7-4e4f-82d2-befd2b916fcc}
+deploy	Set up job	2026-03-01T15:05:23.7649523Z Azure Region: northcentralus
+deploy	Set up job	2026-03-01T15:05:23.7650170Z ##[endgroup]
+deploy	Set up job	2026-03-01T15:05:23.7651589Z ##[group]Operating System
+deploy	Set up job	2026-03-01T15:05:23.7652292Z Ubuntu
+deploy	Set up job	2026-03-01T15:05:23.7652873Z 24.04.3
+deploy	Set up job	2026-03-01T15:05:23.7653399Z LTS
+deploy	Set up job	2026-03-01T15:05:23.7653865Z ##[endgroup]
+deploy	Set up job	2026-03-01T15:05:23.7654442Z ##[group]Runner Image
+deploy	Set up job	2026-03-01T15:05:23.7655068Z Image: ubuntu-24.04
+deploy	Set up job	2026-03-01T15:05:23.7655673Z Version: 20260224.36.1
+deploy	Set up job	2026-03-01T15:05:23.7657328Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260224.36/images/ubuntu/Ubuntu2404-Readme.md
+deploy	Set up job	2026-03-01T15:05:23.7659076Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260224.36
+deploy	Set up job	2026-03-01T15:05:23.7660097Z ##[endgroup]
+deploy	Set up job	2026-03-01T15:05:23.7661248Z ##[group]GITHUB_TOKEN Permissions
+deploy	Set up job	2026-03-01T15:05:23.7663382Z Contents: read
+deploy	Set up job	2026-03-01T15:05:23.7663975Z Metadata: read
+deploy	Set up job	2026-03-01T15:05:23.7664533Z ##[endgroup]
+deploy	Set up job	2026-03-01T15:05:23.7666805Z Secret source: Actions
+deploy	Set up job	2026-03-01T15:05:23.7667887Z Prepare workflow directory
+deploy	Set up job	2026-03-01T15:05:23.8390779Z Prepare all required actions
+deploy	Set up job	2026-03-01T15:05:23.8446928Z Getting action download info
+deploy	Set up job	2026-03-01T15:05:24.1493169Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+deploy	Set up job	2026-03-01T15:05:24.2948276Z Download action repository 'azure/login@v2' (SHA:a457da9ea143d694b1b9c7c869ebb04ebe844ef5)
+deploy	Set up job	2026-03-01T15:05:24.5760599Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+deploy	Set up job	2026-03-01T15:05:24.7910279Z Complete job name: deploy
+deploy	Run actions/checkout@v4	﻿2026-03-01T15:05:24.8636054Z ##[group]Run actions/checkout@v4
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8637215Z with:
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8637728Z   repository: mikkokallio/research-setup
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8638522Z   token: ***
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8638961Z   ssh-strict: true
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8639428Z   ssh-user: git
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8639883Z   persist-credentials: true
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8640405Z   clean: true
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8641098Z   sparse-checkout-cone-mode: true
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8641672Z   fetch-depth: 1
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8642125Z   fetch-tags: false
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8642602Z   show-progress: true
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8643097Z   lfs: false
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8643528Z   submodules: false
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8643997Z   set-safe-directory: true
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8644802Z env:
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8645254Z   EXP_PREFIX: exp
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8645719Z   GH_ORG_OR_USER: mikkokallio
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8646565Z   REPO_NAME: research-setup
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8647335Z   AZ_SUBSCRIPTION_ID: ***
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8647883Z   AZ_LOCATION: swedencentral
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8648451Z   AZ_RG: exp-copilot-mas-rg
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8648979Z   AZ_ACR: expcopilotmasacr
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8649505Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8650082Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8650657Z   AZ_API_APP: exp-copilot-mas-api
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8651196Z   RUN_SCOPE: shared
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8651662Z   RETENTION_DAYS: 30
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8652128Z   MODEL: gpt-5.3-codex
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8652721Z   CONDITION: k3
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8653164Z   TIER: tier0
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8653660Z   TIER_SPEC_FILE: specs/tiers/tier0_proposed.md
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.8654382Z ##[endgroup]
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.9733363Z Syncing repository: mikkokallio/research-setup
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.9735508Z ##[group]Getting Git version info
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.9736593Z Working directory is '/home/runner/work/research-setup/research-setup'
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.9737792Z [command]/usr/bin/git version
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.9825927Z git version 2.53.0
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.9852695Z ##[endgroup]
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.9874014Z Temporarily overriding HOME='/home/runner/work/_temp/1352b0d7-02df-4fa1-b2b1-fb7e6a68d8fd' before making global git config changes
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.9876902Z Adding repository directory to the temporary git global config as a safe directory
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.9879469Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/research-setup/research-setup
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.9919673Z Deleting the contents of '/home/runner/work/research-setup/research-setup'
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.9923274Z ##[group]Initializing the repository
+deploy	Run actions/checkout@v4	2026-03-01T15:05:24.9927548Z [command]/usr/bin/git init /home/runner/work/research-setup/research-setup
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0054999Z hint: Using 'master' as the name for the initial branch. This default branch name
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0057308Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0059317Z hint: to use in all of your new repositories, which will suppress this warning,
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0060786Z hint: call:
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0061289Z hint:
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0061848Z hint: 	git config --global init.defaultBranch <name>
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0062692Z hint:
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0063827Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0065578Z hint: 'development'. The just-created branch can be renamed via this command:
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0067137Z hint:
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0067608Z hint: 	git branch -m <name>
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0068119Z hint:
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0069204Z hint: Disable this message with "git config set advice.defaultBranchName false"
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0071281Z Initialized empty Git repository in /home/runner/work/research-setup/research-setup/.git/
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0074751Z [command]/usr/bin/git remote add origin https://github.com/mikkokallio/research-setup
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0114933Z ##[endgroup]
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0116001Z ##[group]Disabling automatic garbage collection
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0117355Z [command]/usr/bin/git config --local gc.auto 0
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0143638Z ##[endgroup]
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0144438Z ##[group]Setting up auth
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0150793Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0182096Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0539585Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0571881Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0806575Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.0840722Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.1077023Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.1113413Z ##[endgroup]
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.1114914Z ##[group]Fetching the repository
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.1123884Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +e32b4093c8059243b7b562a837052f35f9db9dca:refs/remotes/origin/main
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.3463331Z From https://github.com/mikkokallio/research-setup
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.3465084Z  * [new ref]         e32b4093c8059243b7b562a837052f35f9db9dca -> origin/main
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.3497443Z ##[endgroup]
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.3498318Z ##[group]Determining the checkout info
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.3499849Z ##[endgroup]
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.3505400Z [command]/usr/bin/git sparse-checkout disable
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.3547297Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.3573537Z ##[group]Checking out the ref
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.3579246Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.3641949Z Switched to a new branch 'main'
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.3644812Z branch 'main' set up to track 'origin/main'.
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.3651396Z ##[endgroup]
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.3687783Z [command]/usr/bin/git log -1 --format=%H
+deploy	Run actions/checkout@v4	2026-03-01T15:05:25.3712426Z e32b4093c8059243b7b562a837052f35f9db9dca
+deploy	Stage start	﻿2026-03-01T15:05:25.3908385Z ##[group]Run echo "epoch=$(date +%s)" >> "$GITHUB_OUTPUT"
+deploy	Stage start	2026-03-01T15:05:25.3909705Z [36;1mecho "epoch=$(date +%s)" >> "$GITHUB_OUTPUT"[0m
+deploy	Stage start	2026-03-01T15:05:25.3911031Z [36;1mecho "iso=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"[0m
+deploy	Stage start	2026-03-01T15:05:25.3964403Z shell: /usr/bin/bash -e {0}
+deploy	Stage start	2026-03-01T15:05:25.3965165Z env:
+deploy	Stage start	2026-03-01T15:05:25.3965656Z   EXP_PREFIX: exp
+deploy	Stage start	2026-03-01T15:05:25.3966568Z   GH_ORG_OR_USER: mikkokallio
+deploy	Stage start	2026-03-01T15:05:25.3967383Z   REPO_NAME: research-setup
+deploy	Stage start	2026-03-01T15:05:25.3968394Z   AZ_SUBSCRIPTION_ID: ***
+deploy	Stage start	2026-03-01T15:05:25.3969095Z   AZ_LOCATION: swedencentral
+deploy	Stage start	2026-03-01T15:05:25.3969855Z   AZ_RG: exp-copilot-mas-rg
+deploy	Stage start	2026-03-01T15:05:25.3970589Z   AZ_ACR: expcopilotmasacr
+deploy	Stage start	2026-03-01T15:05:25.3971328Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy	Stage start	2026-03-01T15:05:25.3972136Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy	Stage start	2026-03-01T15:05:25.3972985Z   AZ_API_APP: exp-copilot-mas-api
+deploy	Stage start	2026-03-01T15:05:25.3973774Z   RUN_SCOPE: shared
+deploy	Stage start	2026-03-01T15:05:25.3974371Z   RETENTION_DAYS: 30
+deploy	Stage start	2026-03-01T15:05:25.3975065Z   MODEL: gpt-5.3-codex
+deploy	Stage start	2026-03-01T15:05:25.3975683Z   CONDITION: k3
+deploy	Stage start	2026-03-01T15:05:25.3976346Z   TIER: tier0
+deploy	Stage start	2026-03-01T15:05:25.3977002Z   TIER_SPEC_FILE: specs/tiers/tier0_proposed.md
+deploy	Stage start	2026-03-01T15:05:25.3977918Z ##[endgroup]
+deploy	Azure login	﻿2026-03-01T15:05:25.4301794Z ##[group]Run azure/login@v2
+deploy	Azure login	2026-03-01T15:05:25.4302563Z with:
+deploy	Azure login	2026-03-01T15:05:25.4303275Z   client-id: ***
+deploy	Azure login	2026-03-01T15:05:25.4304000Z   tenant-id: ***
+deploy	Azure login	2026-03-01T15:05:25.4304808Z   subscription-id: ***
+deploy	Azure login	2026-03-01T15:05:25.4305493Z   enable-AzPSSession: false
+deploy	Azure login	2026-03-01T15:05:25.4306365Z   environment: azurecloud
+deploy	Azure login	2026-03-01T15:05:25.4307088Z   allow-no-subscriptions: false
+deploy	Azure login	2026-03-01T15:05:25.4307910Z   audience: api://AzureADTokenExchange
+deploy	Azure login	2026-03-01T15:05:25.4308806Z   auth-type: SERVICE_PRINCIPAL
+deploy	Azure login	2026-03-01T15:05:25.4309502Z env:
+deploy	Azure login	2026-03-01T15:05:25.4309987Z   EXP_PREFIX: exp
+deploy	Azure login	2026-03-01T15:05:25.4310589Z   GH_ORG_OR_USER: mikkokallio
+deploy	Azure login	2026-03-01T15:05:25.4311324Z   REPO_NAME: research-setup
+deploy	Azure login	2026-03-01T15:05:25.4312239Z   AZ_SUBSCRIPTION_ID: ***
+deploy	Azure login	2026-03-01T15:05:25.4312938Z   AZ_LOCATION: swedencentral
+deploy	Azure login	2026-03-01T15:05:25.4313664Z   AZ_RG: exp-copilot-mas-rg
+deploy	Azure login	2026-03-01T15:05:25.4314425Z   AZ_ACR: expcopilotmasacr
+deploy	Azure login	2026-03-01T15:05:25.4315143Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy	Azure login	2026-03-01T15:05:25.4315949Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy	Azure login	2026-03-01T15:05:25.4317140Z   AZ_API_APP: exp-copilot-mas-api
+deploy	Azure login	2026-03-01T15:05:25.4317932Z   RUN_SCOPE: shared
+deploy	Azure login	2026-03-01T15:05:25.4318530Z   RETENTION_DAYS: 30
+deploy	Azure login	2026-03-01T15:05:25.4319147Z   MODEL: gpt-5.3-codex
+deploy	Azure login	2026-03-01T15:05:25.4319754Z   CONDITION: k3
+deploy	Azure login	2026-03-01T15:05:25.4320294Z   TIER: tier0
+deploy	Azure login	2026-03-01T15:05:25.4320946Z   TIER_SPEC_FILE: specs/tiers/tier0_proposed.md
+deploy	Azure login	2026-03-01T15:05:25.4321852Z ##[endgroup]
+deploy	Azure login	2026-03-01T15:05:25.4703996Z Running Azure CLI Login.
+deploy	Azure login	2026-03-01T15:05:29.7341782Z [command]/usr/bin/az cloud set -n azurecloud
+deploy	Azure login	2026-03-01T15:05:29.9664919Z Done setting cloud: "azurecloud"
+deploy	Azure login	2026-03-01T15:05:30.0902765Z Federated token details:
+deploy	Azure login	2026-03-01T15:05:30.0903848Z  issuer - https://token.actions.githubusercontent.com
+deploy	Azure login	2026-03-01T15:05:30.0907237Z  subject claim - repo:mikkokallio/research-setup:ref:refs/heads/main
+deploy	Azure login	2026-03-01T15:05:30.0908091Z  audience - api://AzureADTokenExchange
+deploy	Azure login	2026-03-01T15:05:30.0909034Z  job_workflow_ref - mikkokallio/research-setup/.github/workflows/experiment.yml@refs/heads/main
+deploy	Azure login	2026-03-01T15:05:30.0910007Z Attempting Azure CLI login by using OIDC...
+deploy	Azure login	2026-03-01T15:05:31.4664345Z Subscription is set successfully.
+deploy	Azure login	2026-03-01T15:05:31.4665712Z Azure CLI login succeeds by using OIDC.
+deploy	Resolve run metadata	﻿2026-03-01T15:05:31.4750132Z ##[group]Run RUN_KEY="${MODEL}-${CONDITION}-${TIER}"
+deploy	Resolve run metadata	2026-03-01T15:05:31.4750617Z [36;1mRUN_KEY="${MODEL}-${CONDITION}-${TIER}"[0m
+deploy	Resolve run metadata	2026-03-01T15:05:31.4751050Z [36;1mREV_SUFFIX=$(echo -n "$RUN_KEY" | sha256sum | cut -c1-8)[0m
+deploy	Resolve run metadata	2026-03-01T15:05:31.4751499Z [36;1mecho "run_key=$RUN_KEY" >> "$GITHUB_OUTPUT"[0m
+deploy	Resolve run metadata	2026-03-01T15:05:31.4751902Z [36;1mecho "rev_suffix=$REV_SUFFIX" >> "$GITHUB_OUTPUT"[0m
+deploy	Resolve run metadata	2026-03-01T15:05:31.4804821Z shell: /usr/bin/bash -e {0}
+deploy	Resolve run metadata	2026-03-01T15:05:31.4805131Z env:
+deploy	Resolve run metadata	2026-03-01T15:05:31.4805357Z   EXP_PREFIX: exp
+deploy	Resolve run metadata	2026-03-01T15:05:31.4805611Z   GH_ORG_OR_USER: mikkokallio
+deploy	Resolve run metadata	2026-03-01T15:05:31.4805896Z   REPO_NAME: research-setup
+deploy	Resolve run metadata	2026-03-01T15:05:31.4806919Z   AZ_SUBSCRIPTION_ID: ***
+deploy	Resolve run metadata	2026-03-01T15:05:31.4807257Z   AZ_LOCATION: swedencentral
+deploy	Resolve run metadata	2026-03-01T15:05:31.4807550Z   AZ_RG: exp-copilot-mas-rg
+deploy	Resolve run metadata	2026-03-01T15:05:31.4807843Z   AZ_ACR: expcopilotmasacr
+deploy	Resolve run metadata	2026-03-01T15:05:31.4808142Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy	Resolve run metadata	2026-03-01T15:05:31.4808460Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy	Resolve run metadata	2026-03-01T15:05:31.4808807Z   AZ_API_APP: exp-copilot-mas-api
+deploy	Resolve run metadata	2026-03-01T15:05:31.4809095Z   RUN_SCOPE: shared
+deploy	Resolve run metadata	2026-03-01T15:05:31.4809338Z   RETENTION_DAYS: 30
+deploy	Resolve run metadata	2026-03-01T15:05:31.4809614Z   MODEL: gpt-5.3-codex
+deploy	Resolve run metadata	2026-03-01T15:05:31.4809897Z   CONDITION: k3
+deploy	Resolve run metadata	2026-03-01T15:05:31.4810125Z   TIER: tier0
+deploy	Resolve run metadata	2026-03-01T15:05:31.4810381Z   TIER_SPEC_FILE: specs/tiers/tier0_proposed.md
+deploy	Resolve run metadata	2026-03-01T15:05:31.4810706Z ##[endgroup]
+deploy	ACR login	﻿2026-03-01T15:05:31.4942140Z ##[group]Run az acr login --name $AZ_ACR
+deploy	ACR login	2026-03-01T15:05:31.4942540Z [36;1maz acr login --name $AZ_ACR[0m
+deploy	ACR login	2026-03-01T15:05:31.4990327Z shell: /usr/bin/bash -e {0}
+deploy	ACR login	2026-03-01T15:05:31.4990639Z env:
+deploy	ACR login	2026-03-01T15:05:31.4990863Z   EXP_PREFIX: exp
+deploy	ACR login	2026-03-01T15:05:31.4991114Z   GH_ORG_OR_USER: mikkokallio
+deploy	ACR login	2026-03-01T15:05:31.4991402Z   REPO_NAME: research-setup
+deploy	ACR login	2026-03-01T15:05:31.4991827Z   AZ_SUBSCRIPTION_ID: ***
+deploy	ACR login	2026-03-01T15:05:31.4992110Z   AZ_LOCATION: swedencentral
+deploy	ACR login	2026-03-01T15:05:31.4992405Z   AZ_RG: exp-copilot-mas-rg
+deploy	ACR login	2026-03-01T15:05:31.4992682Z   AZ_ACR: expcopilotmasacr
+deploy	ACR login	2026-03-01T15:05:31.4992958Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy	ACR login	2026-03-01T15:05:31.4993257Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy	ACR login	2026-03-01T15:05:31.4993549Z   AZ_API_APP: exp-copilot-mas-api
+deploy	ACR login	2026-03-01T15:05:31.4993833Z   RUN_SCOPE: shared
+deploy	ACR login	2026-03-01T15:05:31.4994071Z   RETENTION_DAYS: 30
+deploy	ACR login	2026-03-01T15:05:31.4994309Z   MODEL: gpt-5.3-codex
+deploy	ACR login	2026-03-01T15:05:31.4994557Z   CONDITION: k3
+deploy	ACR login	2026-03-01T15:05:31.4994783Z   TIER: tier0
+deploy	ACR login	2026-03-01T15:05:31.4995064Z   TIER_SPEC_FILE: specs/tiers/tier0_proposed.md
+deploy	ACR login	2026-03-01T15:05:31.4995377Z ##[endgroup]
+deploy	ACR login	2026-03-01T15:05:35.8024967Z Login Succeeded
+deploy	Build and push API	﻿2026-03-01T15:05:35.9017050Z ##[group]Run API_IMAGE="$AZ_ACR.azurecr.io/research-setup-api:gpt-5.3-codex-k3-tier0"
+deploy	Build and push API	2026-03-01T15:05:35.9017745Z [36;1mAPI_IMAGE="$AZ_ACR.azurecr.io/research-setup-api:gpt-5.3-codex-k3-tier0"[0m
+deploy	Build and push API	2026-03-01T15:05:35.9018198Z [36;1mdocker build -t "$API_IMAGE" apps/api[0m
+deploy	Build and push API	2026-03-01T15:05:35.9018512Z [36;1mdocker push "$API_IMAGE"[0m
+deploy	Build and push API	2026-03-01T15:05:35.9018809Z [36;1mecho "API_IMAGE=$API_IMAGE" >> "$GITHUB_ENV"[0m
+deploy	Build and push API	2026-03-01T15:05:35.9066935Z shell: /usr/bin/bash -e {0}
+deploy	Build and push API	2026-03-01T15:05:35.9067204Z env:
+deploy	Build and push API	2026-03-01T15:05:35.9067396Z   EXP_PREFIX: exp
+deploy	Build and push API	2026-03-01T15:05:35.9067618Z   GH_ORG_OR_USER: mikkokallio
+deploy	Build and push API	2026-03-01T15:05:35.9067875Z   REPO_NAME: research-setup
+deploy	Build and push API	2026-03-01T15:05:35.9068254Z   AZ_SUBSCRIPTION_ID: ***
+deploy	Build and push API	2026-03-01T15:05:35.9068497Z   AZ_LOCATION: swedencentral
+deploy	Build and push API	2026-03-01T15:05:35.9068755Z   AZ_RG: exp-copilot-mas-rg
+deploy	Build and push API	2026-03-01T15:05:35.9068994Z   AZ_ACR: expcopilotmasacr
+deploy	Build and push API	2026-03-01T15:05:35.9069235Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy	Build and push API	2026-03-01T15:05:35.9069491Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy	Build and push API	2026-03-01T15:05:35.9069773Z   AZ_API_APP: exp-copilot-mas-api
+deploy	Build and push API	2026-03-01T15:05:35.9070004Z   RUN_SCOPE: shared
+deploy	Build and push API	2026-03-01T15:05:35.9070211Z   RETENTION_DAYS: 30
+deploy	Build and push API	2026-03-01T15:05:35.9070419Z   MODEL: gpt-5.3-codex
+deploy	Build and push API	2026-03-01T15:05:35.9070624Z   CONDITION: k3
+deploy	Build and push API	2026-03-01T15:05:35.9070982Z   TIER: tier0
+deploy	Build and push API	2026-03-01T15:05:35.9071198Z   TIER_SPEC_FILE: specs/tiers/tier0_proposed.md
+deploy	Build and push API	2026-03-01T15:05:35.9071809Z ##[endgroup]
+deploy	Build and push API	2026-03-01T15:05:36.4382602Z #0 building with "default" instance using docker driver
+deploy	Build and push API	2026-03-01T15:05:36.4383231Z 
+deploy	Build and push API	2026-03-01T15:05:36.4383533Z #1 [internal] load build definition from Dockerfile
+deploy	Build and push API	2026-03-01T15:05:36.4384252Z #1 transferring dockerfile: 242B done
+deploy	Build and push API	2026-03-01T15:05:36.4384692Z #1 DONE 0.0s
+deploy	Build and push API	2026-03-01T15:05:36.4384849Z 
+deploy	Build and push API	2026-03-01T15:05:36.4385068Z #2 [auth] library/python:pull token for registry-1.docker.io
+deploy	Build and push API	2026-03-01T15:05:36.4385522Z #2 DONE 0.0s
+deploy	Build and push API	2026-03-01T15:05:36.4385678Z 
+deploy	Build and push API	2026-03-01T15:05:36.4385911Z #3 [internal] load metadata for docker.io/library/python:3.11-slim
+deploy	Build and push API	2026-03-01T15:05:36.8262030Z #3 DONE 0.6s
+deploy	Build and push API	2026-03-01T15:05:36.9432079Z 
+deploy	Build and push API	2026-03-01T15:05:36.9432799Z #4 [internal] load .dockerignore
+deploy	Build and push API	2026-03-01T15:05:36.9433340Z #4 transferring context: 2B done
+deploy	Build and push API	2026-03-01T15:05:36.9433777Z #4 DONE 0.0s
+deploy	Build and push API	2026-03-01T15:05:36.9434006Z 
+deploy	Build and push API	2026-03-01T15:05:36.9434188Z #5 [internal] load build context
+deploy	Build and push API	2026-03-01T15:05:36.9434668Z #5 transferring context: 825B done
+deploy	Build and push API	2026-03-01T15:05:36.9434927Z #5 DONE 0.0s
+deploy	Build and push API	2026-03-01T15:05:36.9435040Z 
+deploy	Build and push API	2026-03-01T15:05:36.9435707Z #6 [1/5] FROM docker.io/library/python:3.11-slim@sha256:c8271b1f627d0068857dce5b53e14a9558603b527e46f1f901722f935b786a39
+deploy	Build and push API	2026-03-01T15:05:36.9437373Z #6 resolve docker.io/library/python:3.11-slim@sha256:c8271b1f627d0068857dce5b53e14a9558603b527e46f1f901722f935b786a39 done
+deploy	Build and push API	2026-03-01T15:05:36.9438420Z #6 sha256:c8271b1f627d0068857dce5b53e14a9558603b527e46f1f901722f935b786a39 10.37kB / 10.37kB done
+deploy	Build and push API	2026-03-01T15:05:36.9439077Z #6 sha256:fa7a862d74b4decf68fb7d3a85147efc14dbcd3779c0abd56c071d27a1ffee04 1.75kB / 1.75kB done
+deploy	Build and push API	2026-03-01T15:05:36.9439722Z #6 sha256:992921a8b23a7d2fd769908f7646e7cccd583fea96486a99ace92c7399768847 5.48kB / 5.48kB done
+deploy	Build and push API	2026-03-01T15:05:36.9440450Z #6 sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419 12.58MB / 29.78MB 0.1s
+deploy	Build and push API	2026-03-01T15:05:36.9441097Z #6 sha256:13159fd0b0512a3ecefe5d5e51affb0ef7eb36b371459c75e34f5c090a0870f4 1.29MB / 1.29MB 0.1s done
+deploy	Build and push API	2026-03-01T15:05:36.9442011Z #6 sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f 0B / 14.36MB 0.1s
+deploy	Build and push API	2026-03-01T15:05:37.0760002Z #6 sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419 29.78MB / 29.78MB 0.2s done
+deploy	Build and push API	2026-03-01T15:05:37.0761344Z #6 sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f 14.36MB / 14.36MB 0.2s done
+deploy	Build and push API	2026-03-01T15:05:37.0762765Z #6 sha256:28c7e2bc4784ae35d32ed16d30b72e35df3c3f6a0214492f5be2b11e4b5ae2b0 250B / 250B 0.2s done
+deploy	Build and push API	2026-03-01T15:05:37.0763910Z #6 extracting sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419
+deploy	Build and push API	2026-03-01T15:05:38.1484367Z #6 extracting sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419 0.9s done
+deploy	Build and push API	2026-03-01T15:05:38.1486378Z #6 extracting sha256:13159fd0b0512a3ecefe5d5e51affb0ef7eb36b371459c75e34f5c090a0870f4 0.1s
+deploy	Build and push API	2026-03-01T15:05:38.3045439Z #6 extracting sha256:13159fd0b0512a3ecefe5d5e51affb0ef7eb36b371459c75e34f5c090a0870f4 0.1s done
+deploy	Build and push API	2026-03-01T15:05:39.4082259Z #6 extracting sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f
+deploy	Build and push API	2026-03-01T15:05:40.2085776Z #6 extracting sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f 0.7s done
+deploy	Build and push API	2026-03-01T15:05:40.2087209Z #6 extracting sha256:28c7e2bc4784ae35d32ed16d30b72e35df3c3f6a0214492f5be2b11e4b5ae2b0
+deploy	Build and push API	2026-03-01T15:05:40.3997190Z #6 extracting sha256:28c7e2bc4784ae35d32ed16d30b72e35df3c3f6a0214492f5be2b11e4b5ae2b0 done
+deploy	Build and push API	2026-03-01T15:05:40.3998722Z #6 DONE 3.4s
+deploy	Build and push API	2026-03-01T15:05:40.3998974Z 
+deploy	Build and push API	2026-03-01T15:05:40.3999117Z #7 [2/5] WORKDIR /app
+deploy	Build and push API	2026-03-01T15:05:40.3999497Z #7 DONE 0.0s
+deploy	Build and push API	2026-03-01T15:05:40.3999647Z 
+deploy	Build and push API	2026-03-01T15:05:40.3999788Z #8 [3/5] COPY requirements.txt ./
+deploy	Build and push API	2026-03-01T15:05:40.4000041Z #8 DONE 0.0s
+deploy	Build and push API	2026-03-01T15:05:40.4000167Z 
+deploy	Build and push API	2026-03-01T15:05:40.4000582Z #9 [4/5] RUN pip install --no-cache-dir -r requirements.txt
+deploy	Build and push API	2026-03-01T15:05:41.8161029Z #9 1.567 Collecting fastapi==0.115.2 (from -r requirements.txt (line 1))
+deploy	Build and push API	2026-03-01T15:05:41.9697985Z #9 1.616   Downloading fastapi-0.115.2-py3-none-any.whl.metadata (27 kB)
+deploy	Build and push API	2026-03-01T15:05:41.9698954Z #9 1.653 Collecting uvicorn==0.30.6 (from -r requirements.txt (line 2))
+deploy	Build and push API	2026-03-01T15:05:41.9699585Z #9 1.667   Downloading uvicorn-0.30.6-py3-none-any.whl.metadata (6.6 kB)
+deploy	Build and push API	2026-03-01T15:05:41.9700299Z #9 1.721 Collecting starlette<0.41.0,>=0.37.2 (from fastapi==0.115.2->-r requirements.txt (line 1))
+deploy	Build and push API	2026-03-01T15:05:42.1344710Z #9 1.735   Downloading starlette-0.40.0-py3-none-any.whl.metadata (6.0 kB)
+deploy	Build and push API	2026-03-01T15:05:42.1535783Z #9 1.905 Collecting pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4 (from fastapi==0.115.2->-r requirements.txt (line 1))
+deploy	Build and push API	2026-03-01T15:05:42.2658304Z #9 1.919   Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+deploy	Build and push API	2026-03-01T15:05:42.2661019Z #9 1.934      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 5.9 MB/s eta 0:00:00
+deploy	Build and push API	2026-03-01T15:05:42.2662095Z #9 1.958 Collecting typing-extensions>=4.8.0 (from fastapi==0.115.2->-r requirements.txt (line 1))
+deploy	Build and push API	2026-03-01T15:05:42.2663252Z #9 1.972   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+deploy	Build and push API	2026-03-01T15:05:42.2664288Z #9 2.003 Collecting click>=7.0 (from uvicorn==0.30.6->-r requirements.txt (line 2))
+deploy	Build and push API	2026-03-01T15:05:42.2665225Z #9 2.017   Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+deploy	Build and push API	2026-03-01T15:05:42.4779686Z #9 2.030 Collecting h11>=0.8 (from uvicorn==0.30.6->-r requirements.txt (line 2))
+deploy	Build and push API	2026-03-01T15:05:42.4780596Z #9 2.043   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+deploy	Build and push API	2026-03-01T15:05:42.4781749Z #9 2.065 Collecting annotated-types>=0.6.0 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy	Build and push API	2026-03-01T15:05:42.4782986Z #9 2.078   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+deploy	Build and push API	2026-03-01T15:05:43.0494412Z #9 2.800 Collecting pydantic-core==2.41.5 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy	Build and push API	2026-03-01T15:05:43.1645773Z #9 2.814   Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+deploy	Build and push API	2026-03-01T15:05:43.1647441Z #9 2.829 Collecting typing-inspection>=0.4.2 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy	Build and push API	2026-03-01T15:05:43.1648409Z #9 2.843   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+deploy	Build and push API	2026-03-01T15:05:43.1649100Z #9 2.877 Collecting anyio<5,>=3.4.0 (from starlette<0.41.0,>=0.37.2->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy	Build and push API	2026-03-01T15:05:43.1649739Z #9 2.891   Downloading anyio-4.12.1-py3-none-any.whl.metadata (4.3 kB)
+deploy	Build and push API	2026-03-01T15:05:43.1650670Z #9 2.916 Collecting idna>=2.8 (from anyio<5,>=3.4.0->starlette<0.41.0,>=0.37.2->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy	Build and push API	2026-03-01T15:05:43.2727617Z #9 2.930   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+deploy	Build and push API	2026-03-01T15:05:43.2729172Z #9 2.958 Downloading fastapi-0.115.2-py3-none-any.whl (94 kB)
+deploy	Build and push API	2026-03-01T15:05:43.2730698Z #9 2.962    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 94.7/94.7 kB 34.3 MB/s eta 0:00:00
+deploy	Build and push API	2026-03-01T15:05:43.2731456Z #9 2.976 Downloading uvicorn-0.30.6-py3-none-any.whl (62 kB)
+deploy	Build and push API	2026-03-01T15:05:43.2731973Z #9 2.978    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.8/62.8 kB 62.0 MB/s eta 0:00:00
+deploy	Build and push API	2026-03-01T15:05:43.2732387Z #9 2.992 Downloading click-8.3.1-py3-none-any.whl (108 kB)
+deploy	Build and push API	2026-03-01T15:05:43.2732852Z #9 2.996    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 108.3/108.3 kB 52.1 MB/s eta 0:00:00
+deploy	Build and push API	2026-03-01T15:05:43.2733251Z #9 3.010 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+deploy	Build and push API	2026-03-01T15:05:43.2734256Z #9 3.024 Downloading pydantic-2.12.5-py3-none-any.whl (463 kB)
+deploy	Build and push API	2026-03-01T15:05:43.3838150Z #9 3.040    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 463.6/463.6 kB 31.3 MB/s eta 0:00:00
+deploy	Build and push API	2026-03-01T15:05:43.3839293Z #9 3.054 Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+deploy	Build and push API	2026-03-01T15:05:43.3840893Z #9 3.074    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 112.3 MB/s eta 0:00:00
+deploy	Build and push API	2026-03-01T15:05:43.3841711Z #9 3.088 Downloading starlette-0.40.0-py3-none-any.whl (73 kB)
+deploy	Build and push API	2026-03-01T15:05:43.3842665Z #9 3.090    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.3/73.3 kB 261.8 MB/s eta 0:00:00
+deploy	Build and push API	2026-03-01T15:05:43.3843505Z #9 3.105 Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+deploy	Build and push API	2026-03-01T15:05:43.3844504Z #9 3.107    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.6/44.6 kB 281.0 MB/s eta 0:00:00
+deploy	Build and push API	2026-03-01T15:05:43.3845314Z #9 3.121 Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+deploy	Build and push API	2026-03-01T15:05:43.3846068Z #9 3.135 Downloading anyio-4.12.1-py3-none-any.whl (113 kB)
+deploy	Build and push API	2026-03-01T15:05:43.5370612Z #9 3.137    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 113.6/113.6 kB 219.7 MB/s eta 0:00:00
+deploy	Build and push API	2026-03-01T15:05:43.5371559Z #9 3.151 Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+deploy	Build and push API	2026-03-01T15:05:43.5372364Z #9 3.165 Downloading idna-3.11-py3-none-any.whl (71 kB)
+deploy	Build and push API	2026-03-01T15:05:43.5373360Z #9 3.167    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 71.0/71.0 kB 264.0 MB/s eta 0:00:00
+deploy	Build and push API	2026-03-01T15:05:43.5374830Z #9 3.288 Installing collected packages: typing-extensions, idna, h11, click, annotated-types, uvicorn, typing-inspection, pydantic-core, anyio, starlette, pydantic, fastapi
+deploy	Build and push API	2026-03-01T15:05:44.2464932Z #9 3.997 Successfully installed annotated-types-0.7.0 anyio-4.12.1 click-8.3.1 fastapi-0.115.2 h11-0.16.0 idna-3.11 pydantic-2.12.5 pydantic-core-2.41.5 starlette-0.40.0 typing-extensions-4.15.0 typing-inspection-0.4.2 uvicorn-0.30.6
+deploy	Build and push API	2026-03-01T15:05:44.4710042Z #9 3.997 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+deploy	Build and push API	2026-03-01T15:05:44.4711654Z #9 4.071 
+deploy	Build and push API	2026-03-01T15:05:44.4712065Z #9 4.071 [notice] A new release of pip is available: 24.0 -> 26.0.1
+deploy	Build and push API	2026-03-01T15:05:44.4712672Z #9 4.071 [notice] To update, run: pip install --upgrade pip
+deploy	Build and push API	2026-03-01T15:05:44.5336924Z #9 DONE 4.3s
+deploy	Build and push API	2026-03-01T15:05:44.6961325Z 
+deploy	Build and push API	2026-03-01T15:05:44.6961913Z #10 [5/5] COPY . .
+deploy	Build and push API	2026-03-01T15:05:44.6962308Z #10 DONE 0.0s
+deploy	Build and push API	2026-03-01T15:05:44.6962520Z 
+deploy	Build and push API	2026-03-01T15:05:44.6962666Z #11 exporting to image
+deploy	Build and push API	2026-03-01T15:05:44.6963048Z #11 exporting layers
+deploy	Build and push API	2026-03-01T15:05:45.0677288Z #11 exporting layers 0.5s done
+deploy	Build and push API	2026-03-01T15:05:45.0883284Z #11 writing image sha256:871a50cb4f6932101191f5b80d11adad8ff8657fcd6ae01555d5b7b4d9d2b495 done
+deploy	Build and push API	2026-03-01T15:05:45.0884785Z #11 naming to expcopilotmasacr.azurecr.io/research-setup-api:gpt-5.3-codex-k3-tier0 done
+deploy	Build and push API	2026-03-01T15:05:45.0885630Z #11 DONE 0.5s
+deploy	Build and push API	2026-03-01T15:05:45.1203483Z The push refers to repository [expcopilotmasacr.azurecr.io/research-setup-api]
+deploy	Build and push API	2026-03-01T15:05:45.4702262Z 87d5cf9530f8: Preparing
+deploy	Build and push API	2026-03-01T15:05:45.4702920Z d4f0a1b37512: Preparing
+deploy	Build and push API	2026-03-01T15:05:45.4703345Z bb633a61f4f8: Preparing
+deploy	Build and push API	2026-03-01T15:05:45.4703726Z 9a697b1bc159: Preparing
+deploy	Build and push API	2026-03-01T15:05:45.4704126Z 3780204f6b74: Preparing
+deploy	Build and push API	2026-03-01T15:05:45.4704512Z 11eedb262098: Preparing
+deploy	Build and push API	2026-03-01T15:05:45.4704911Z 6400845f12ab: Preparing
+deploy	Build and push API	2026-03-01T15:05:45.4705278Z a257f20c716c: Preparing
+deploy	Build and push API	2026-03-01T15:05:45.4705643Z 11eedb262098: Waiting
+deploy	Build and push API	2026-03-01T15:05:45.4705983Z 6400845f12ab: Waiting
+deploy	Build and push API	2026-03-01T15:05:45.4706533Z a257f20c716c: Waiting
+deploy	Build and push API	2026-03-01T15:05:46.3076037Z 3780204f6b74: Layer already exists
+deploy	Build and push API	2026-03-01T15:05:46.7492974Z 11eedb262098: Layer already exists
+deploy	Build and push API	2026-03-01T15:05:47.1281955Z 6400845f12ab: Layer already exists
+deploy	Build and push API	2026-03-01T15:05:47.5647183Z 87d5cf9530f8: Pushed
+deploy	Build and push API	2026-03-01T15:05:47.5724259Z bb633a61f4f8: Pushed
+deploy	Build and push API	2026-03-01T15:05:47.5967223Z 9a697b1bc159: Pushed
+deploy	Build and push API	2026-03-01T15:05:48.9298592Z d4f0a1b37512: Pushed
+deploy	Build and push API	2026-03-01T15:05:52.4490635Z a257f20c716c: Pushed
+deploy	Build and push API	2026-03-01T15:05:55.2775606Z gpt-5.3-codex-k3-tier0: digest: sha256:55ed98c2d8617d9877e44d0ead780d323a3d240a474fa3134d866e450f838415 size: 1990
+deploy	Deploy API revision	﻿2026-03-01T15:05:55.2833630Z ##[group]Run az containerapp update \
+deploy	Deploy API revision	2026-03-01T15:05:55.2834130Z [36;1maz containerapp update \[0m
+deploy	Deploy API revision	2026-03-01T15:05:55.2834393Z [36;1m  --name $AZ_API_APP \[0m
+deploy	Deploy API revision	2026-03-01T15:05:55.2834652Z [36;1m  --resource-group $AZ_RG \[0m
+deploy	Deploy API revision	2026-03-01T15:05:55.2834910Z [36;1m  --image "$API_IMAGE" \[0m
+deploy	Deploy API revision	2026-03-01T15:05:55.2835173Z [36;1m  --revision-suffix 93b7b606 \[0m
+deploy	Deploy API revision	2026-03-01T15:05:55.2835493Z [36;1m  --set-env-vars RUN_KEY=gpt-5.3-codex-k3-tier0[0m
+deploy	Deploy API revision	2026-03-01T15:05:55.2883545Z shell: /usr/bin/bash -e {0}
+deploy	Deploy API revision	2026-03-01T15:05:55.2883789Z env:
+deploy	Deploy API revision	2026-03-01T15:05:55.2883971Z   EXP_PREFIX: exp
+deploy	Deploy API revision	2026-03-01T15:05:55.2884183Z   GH_ORG_OR_USER: mikkokallio
+deploy	Deploy API revision	2026-03-01T15:05:55.2884431Z   REPO_NAME: research-setup
+deploy	Deploy API revision	2026-03-01T15:05:55.2884798Z   AZ_SUBSCRIPTION_ID: ***
+deploy	Deploy API revision	2026-03-01T15:05:55.2885034Z   AZ_LOCATION: swedencentral
+deploy	Deploy API revision	2026-03-01T15:05:55.2885276Z   AZ_RG: exp-copilot-mas-rg
+deploy	Deploy API revision	2026-03-01T15:05:55.2885510Z   AZ_ACR: expcopilotmasacr
+deploy	Deploy API revision	2026-03-01T15:05:55.2885745Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy	Deploy API revision	2026-03-01T15:05:55.2886022Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy	Deploy API revision	2026-03-01T15:05:55.2886394Z   AZ_API_APP: exp-copilot-mas-api
+deploy	Deploy API revision	2026-03-01T15:05:55.2886628Z   RUN_SCOPE: shared
+deploy	Deploy API revision	2026-03-01T15:05:55.2886825Z   RETENTION_DAYS: 30
+deploy	Deploy API revision	2026-03-01T15:05:55.2887032Z   MODEL: gpt-5.3-codex
+deploy	Deploy API revision	2026-03-01T15:05:55.2887232Z   CONDITION: k3
+deploy	Deploy API revision	2026-03-01T15:05:55.2887418Z   TIER: tier0
+deploy	Deploy API revision	2026-03-01T15:05:55.2887633Z   TIER_SPEC_FILE: specs/tiers/tier0_proposed.md
+deploy	Deploy API revision	2026-03-01T15:05:55.2888071Z   API_IMAGE: expcopilotmasacr.azurecr.io/research-setup-api:gpt-5.3-codex-k3-tier0
+deploy	Deploy API revision	2026-03-01T15:05:55.2888481Z ##[endgroup]
+deploy	Deploy API revision	2026-03-01T15:05:58.0520808Z 
+deploy	Deploy API revision	2026-03-01T15:06:00.8438672Z / Running ..
+deploy	Deploy API revision	2026-03-01T15:06:03.2710367Z | Running ..
+deploy	Deploy API revision	2026-03-01T15:06:05.9032626Z \ Running ..
+deploy	Deploy API revision	2026-03-01T15:06:08.9538381Z - Running ..
+deploy	Deploy API revision	2026-03-01T15:06:11.5427985Z / Running ..
+deploy	Deploy API revision	2026-03-01T15:06:12.1591902Z | Running ..
+deploy	Deploy API revision	2026-03-01T15:06:12.3743738Z {
+deploy	Deploy API revision	2026-03-01T15:06:12.3744983Z   "id": "/subscriptions/***/resourceGroups/exp-copilot-mas-rg/providers/Microsoft.App/containerapps/exp-copilot-mas-api",
+deploy	Deploy API revision	2026-03-01T15:06:12.3745975Z   "identity": {
+deploy	Deploy API revision	2026-03-01T15:06:12.3746575Z     "principalId": "935cc6c6-2df9-4a84-a01a-a5cfdfcf2037",
+deploy	Deploy API revision	2026-03-01T15:06:12.3747153Z     "tenantId": "***",
+deploy	Deploy API revision	2026-03-01T15:06:12.3747479Z     "type": "SystemAssigned"
+deploy	Deploy API revision	2026-03-01T15:06:12.3747805Z   },
+deploy	Deploy API revision	2026-03-01T15:06:12.3748068Z   "location": "Sweden Central",
+deploy	Deploy API revision	2026-03-01T15:06:12.3748457Z   "name": "exp-copilot-mas-api",
+deploy	Deploy API revision	2026-03-01T15:06:12.3748833Z   "properties": {
+deploy	Deploy API revision	2026-03-01T15:06:12.3749147Z     "configuration": {
+deploy	Deploy API revision	2026-03-01T15:06:12.3749488Z       "activeRevisionsMode": "Single",
+deploy	Deploy API revision	2026-03-01T15:06:12.3749881Z       "dapr": null,
+deploy	Deploy API revision	2026-03-01T15:06:12.3750190Z       "identitySettings": [],
+deploy	Deploy API revision	2026-03-01T15:06:12.3750527Z       "ingress": {
+deploy	Deploy API revision	2026-03-01T15:06:12.3750849Z         "additionalPortMappings": null,
+deploy	Deploy API revision	2026-03-01T15:06:12.3751243Z         "allowInsecure": false,
+deploy	Deploy API revision	2026-03-01T15:06:12.3751622Z         "clientCertificateMode": null,
+deploy	Deploy API revision	2026-03-01T15:06:12.3752014Z         "corsPolicy": null,
+deploy	Deploy API revision	2026-03-01T15:06:12.3752353Z         "customDomains": null,
+deploy	Deploy API revision	2026-03-01T15:06:12.3752715Z         "exposedPort": 0,
+deploy	Deploy API revision	2026-03-01T15:06:12.3753031Z         "external": true,
+deploy	Deploy API revision	2026-03-01T15:06:12.3753643Z         "fqdn": "exp-copilot-mas-api.bravebay-c746dcd5.swedencentral.azurecontainerapps.io",
+deploy	Deploy API revision	2026-03-01T15:06:12.3754386Z         "ipSecurityRestrictions": null,
+deploy	Deploy API revision	2026-03-01T15:06:12.3754774Z         "stickySessions": null,
+deploy	Deploy API revision	2026-03-01T15:06:12.3755121Z         "targetPort": 8000,
+deploy	Deploy API revision	2026-03-01T15:06:12.3755432Z         "traffic": [
+deploy	Deploy API revision	2026-03-01T15:06:12.3755733Z           {
+deploy	Deploy API revision	2026-03-01T15:06:12.3756009Z             "latestRevision": true,
+deploy	Deploy API revision	2026-03-01T15:06:12.3756554Z             "weight": 100
+deploy	Deploy API revision	2026-03-01T15:06:12.3756851Z           }
+deploy	Deploy API revision	2026-03-01T15:06:12.3757084Z         ],
+deploy	Deploy API revision	2026-03-01T15:06:12.3757355Z         "transport": "Auto"
+deploy	Deploy API revision	2026-03-01T15:06:12.3757667Z       },
+deploy	Deploy API revision	2026-03-01T15:06:12.3757941Z       "maxInactiveRevisions": 100,
+deploy	Deploy API revision	2026-03-01T15:06:12.3758308Z       "registries": [
+deploy	Deploy API revision	2026-03-01T15:06:12.3758581Z         {
+deploy	Deploy API revision	2026-03-01T15:06:12.3758842Z           "identity": "system",
+deploy	Deploy API revision	2026-03-01T15:06:12.3759675Z           "passwordSecretRef": "",
+deploy	Deploy API revision	2026-03-01T15:06:12.3760098Z           "server": "expcopilotmasacr.azurecr.io",
+deploy	Deploy API revision	2026-03-01T15:06:12.3760517Z           "username": ""
+deploy	Deploy API revision	2026-03-01T15:06:12.3760803Z         }
+deploy	Deploy API revision	2026-03-01T15:06:12.3761042Z       ],
+deploy	Deploy API revision	2026-03-01T15:06:12.3761293Z       "runtime": null,
+deploy	Deploy API revision	2026-03-01T15:06:12.3787350Z       "secrets": null,
+deploy	Deploy API revision	2026-03-01T15:06:12.3787734Z       "service": null
+deploy	Deploy API revision	2026-03-01T15:06:12.3788789Z     },
+deploy	Deploy API revision	2026-03-01T15:06:12.3789431Z     "customDomainVerificationId": "CED40BCF2DC1BE5FF6914BD76F319D2D2E3CC8F3D231B848E3D9EDA63DCF1C21",
+deploy	Deploy API revision	2026-03-01T15:06:12.3790196Z     "delegatedIdentities": [],
+deploy	Deploy API revision	2026-03-01T15:06:12.3791378Z     "environmentId": "/subscriptions/***/resourceGroups/exp-copilot-mas-rg/providers/Microsoft.App/managedEnvironments/exp-copilot-mas-aca",
+deploy	Deploy API revision	2026-03-01T15:06:12.3793268Z     "eventStreamEndpoint": "https://swedencentral.azurecontainerapps.dev/subscriptions/***/resourceGroups/exp-copilot-mas-rg/containerApps/exp-copilot-mas-api/eventstream",
+deploy	Deploy API revision	2026-03-01T15:06:12.3794592Z     "latestReadyRevisionName": "exp-copilot-mas-api--fa8ce9a4",
+deploy	Deploy API revision	2026-03-01T15:06:12.3795544Z     "latestRevisionFqdn": "exp-copilot-mas-api--93b7b606.bravebay-c746dcd5.swedencentral.azurecontainerapps.io",
+deploy	Deploy API revision	2026-03-01T15:06:12.3796650Z     "latestRevisionName": "exp-copilot-mas-api--93b7b606",
+deploy	Deploy API revision	2026-03-01T15:06:12.3797952Z     "managedEnvironmentId": "/subscriptions/***/resourceGroups/exp-copilot-mas-rg/providers/Microsoft.App/managedEnvironments/exp-copilot-mas-aca",
+deploy	Deploy API revision	2026-03-01T15:06:12.3798963Z     "outboundIpAddresses": [
+deploy	Deploy API revision	2026-03-01T15:06:12.3799299Z       "20.240.28.167",
+deploy	Deploy API revision	2026-03-01T15:06:12.3799595Z       "20.240.28.184",
+deploy	Deploy API revision	2026-03-01T15:06:12.3799882Z       "20.240.28.187",
+deploy	Deploy API revision	2026-03-01T15:06:12.3800157Z       "20.240.29.51",
+deploy	Deploy API revision	2026-03-01T15:06:12.3800440Z       "74.241.193.90",
+deploy	Deploy API revision	2026-03-01T15:06:12.3800738Z       "74.241.192.157",
+deploy	Deploy API revision	2026-03-01T15:06:12.3801031Z       "74.241.192.45",
+deploy	Deploy API revision	2026-03-01T15:06:12.3801322Z       "74.241.193.154",
+deploy	Deploy API revision	2026-03-01T15:06:12.3801614Z       "74.241.192.111",
+deploy	Deploy API revision	2026-03-01T15:06:12.3801903Z       "74.241.193.34",
+deploy	Deploy API revision	2026-03-01T15:06:12.3802187Z       "9.223.20.105",
+deploy	Deploy API revision	2026-03-01T15:06:12.3802470Z       "135.116.6.186",
+deploy	Deploy API revision	2026-03-01T15:06:12.3802751Z       "9.223.21.30",
+deploy	Deploy API revision	2026-03-01T15:06:12.3803027Z       "9.223.218.210",
+deploy	Deploy API revision	2026-03-01T15:06:12.3803307Z       "135.116.14.134",
+deploy	Deploy API revision	2026-03-01T15:06:12.3803631Z       "9.223.143.243",
+deploy	Deploy API revision	2026-03-01T15:06:12.3803941Z       "9.223.9.149",
+deploy	Deploy API revision	2026-03-01T15:06:12.3804213Z       "74.241.137.85",
+deploy	Deploy API revision	2026-03-01T15:06:12.3804546Z       "74.241.139.161",
+deploy	Deploy API revision	2026-03-01T15:06:12.3804834Z       "74.241.138.64",
+deploy	Deploy API revision	2026-03-01T15:06:12.3805115Z       "74.241.136.237",
+deploy	Deploy API revision	2026-03-01T15:06:12.3805400Z       "9.223.21.119",
+deploy	Deploy API revision	2026-03-01T15:06:12.3805683Z       "9.223.10.153",
+deploy	Deploy API revision	2026-03-01T15:06:12.3805970Z       "9.223.225.145",
+deploy	Deploy API revision	2026-03-01T15:06:12.3806408Z       "9.223.220.233",
+deploy	Deploy API revision	2026-03-01T15:06:12.3806695Z       "74.241.136.44",
+deploy	Deploy API revision	2026-03-01T15:06:12.3806997Z       "9.223.87.134",
+deploy	Deploy API revision	2026-03-01T15:06:12.3807275Z       "74.241.139.29",
+deploy	Deploy API revision	2026-03-01T15:06:12.3807574Z       "9.223.20.250",
+deploy	Deploy API revision	2026-03-01T15:06:12.3807853Z       "9.223.20.145",
+deploy	Deploy API revision	2026-03-01T15:06:12.3808132Z       "20.240.38.142",
+deploy	Deploy API revision	2026-03-01T15:06:12.3808420Z       "20.240.38.235",
+deploy	Deploy API revision	2026-03-01T15:06:12.3808707Z       "20.240.37.255",
+deploy	Deploy API revision	2026-03-01T15:06:12.3808992Z       "20.240.37.231",
+deploy	Deploy API revision	2026-03-01T15:06:12.3809274Z       "74.241.204.139",
+deploy	Deploy API revision	2026-03-01T15:06:12.3809569Z       "74.241.204.246",
+deploy	Deploy API revision	2026-03-01T15:06:12.3809850Z       "74.241.202.17",
+deploy	Deploy API revision	2026-03-01T15:06:12.3810133Z       "74.241.200.59",
+deploy	Deploy API revision	2026-03-01T15:06:12.3810429Z       "74.241.205.78",
+deploy	Deploy API revision	2026-03-01T15:06:12.3810715Z       "74.241.203.192",
+deploy	Deploy API revision	2026-03-01T15:06:12.3811016Z       "9.223.237.26",
+deploy	Deploy API revision	2026-03-01T15:06:12.3811299Z       "9.223.246.165",
+deploy	Deploy API revision	2026-03-01T15:06:12.3811588Z       "74.241.209.91",
+deploy	Deploy API revision	2026-03-01T15:06:12.3811878Z       "74.241.211.241",
+deploy	Deploy API revision	2026-03-01T15:06:12.3812173Z       "9.223.245.238",
+deploy	Deploy API revision	2026-03-01T15:06:12.3812467Z       "135.116.14.86",
+deploy	Deploy API revision	2026-03-01T15:06:12.3812750Z       "9.223.173.128",
+deploy	Deploy API revision	2026-03-01T15:06:12.3813035Z       "9.223.237.22",
+deploy	Deploy API revision	2026-03-01T15:06:12.3813580Z       "4.225.86.27",
+deploy	Deploy API revision	2026-03-01T15:06:12.3814040Z       "9.223.75.69",
+deploy	Deploy API revision	2026-03-01T15:06:12.3814323Z       "9.223.245.208",
+deploy	Deploy API revision	2026-03-01T15:06:12.3814601Z       "9.223.237.31",
+deploy	Deploy API revision	2026-03-01T15:06:12.3814872Z       "9.223.45.114",
+deploy	Deploy API revision	2026-03-01T15:06:12.3815151Z       "9.223.24.231",
+deploy	Deploy API revision	2026-03-01T15:06:12.3815429Z       "74.241.210.170",
+deploy	Deploy API revision	2026-03-01T15:06:12.3815713Z       "9.223.246.185",
+deploy	Deploy API revision	2026-03-01T15:06:12.3815995Z       "9.223.16.144",
+deploy	Deploy API revision	2026-03-01T15:06:12.3817503Z       "135.116.37.178",
+deploy	Deploy API revision	2026-03-01T15:06:12.3817813Z       "9.223.247.36",
+deploy	Deploy API revision	2026-03-01T15:06:12.3818103Z       "9.223.18.163",
+deploy	Deploy API revision	2026-03-01T15:06:12.3818381Z       "9.223.206.52"
+deploy	Deploy API revision	2026-03-01T15:06:12.3818664Z     ],
+deploy	Deploy API revision	2026-03-01T15:06:12.3818952Z     "provisioningState": "Succeeded",
+deploy	Deploy API revision	2026-03-01T15:06:12.3819346Z     "runningStatus": "Running",
+deploy	Deploy API revision	2026-03-01T15:06:12.3819686Z     "template": {
+deploy	Deploy API revision	2026-03-01T15:06:12.3819972Z       "containers": [
+deploy	Deploy API revision	2026-03-01T15:06:12.3820266Z         {
+deploy	Deploy API revision	2026-03-01T15:06:12.3820523Z           "env": [
+deploy	Deploy API revision	2026-03-01T15:06:12.3820810Z             {
+deploy	Deploy API revision	2026-03-01T15:06:12.3821097Z               "name": "RUN_KEY"
+deploy	Deploy API revision	2026-03-01T15:06:12.3821421Z             }
+deploy	Deploy API revision	2026-03-01T15:06:12.3821686Z           ],
+deploy	Deploy API revision	2026-03-01T15:06:12.3822209Z           "image": "expcopilotmasacr.azurecr.io/research-setup-api:gpt-5.3-codex-k3-tier0",
+deploy	Deploy API revision	2026-03-01T15:06:12.3822972Z           "name": "exp-copilot-mas-api",
+deploy	Deploy API revision	2026-03-01T15:06:12.3823384Z           "resources": {
+deploy	Deploy API revision	2026-03-01T15:06:12.3823704Z             "cpu": 0.5,
+deploy	Deploy API revision	2026-03-01T15:06:12.3824053Z             "ephemeralStorage": "2Gi",
+deploy	Deploy API revision	2026-03-01T15:06:12.3824430Z             "memory": "1Gi"
+deploy	Deploy API revision	2026-03-01T15:06:12.3824747Z           }
+deploy	Deploy API revision	2026-03-01T15:06:12.3824995Z         }
+deploy	Deploy API revision	2026-03-01T15:06:12.3825249Z       ],
+deploy	Deploy API revision	2026-03-01T15:06:12.3825526Z       "initContainers": null,
+deploy	Deploy API revision	2026-03-01T15:06:12.3825880Z       "revisionSuffix": "93b7b606",
+deploy	Deploy API revision	2026-03-01T15:06:12.3826393Z       "scale": {
+deploy	Deploy API revision	2026-03-01T15:06:12.3826695Z         "cooldownPeriod": 300,
+deploy	Deploy API revision	2026-03-01T15:06:12.3827045Z         "maxReplicas": 1,
+deploy	Deploy API revision	2026-03-01T15:06:12.3827377Z         "minReplicas": 0,
+deploy	Deploy API revision	2026-03-01T15:06:12.3827705Z         "pollingInterval": 30,
+deploy	Deploy API revision	2026-03-01T15:06:12.3828068Z         "rules": null
+deploy	Deploy API revision	2026-03-01T15:06:12.3828357Z       },
+deploy	Deploy API revision	2026-03-01T15:06:12.3828628Z       "serviceBinds": null,
+deploy	Deploy API revision	2026-03-01T15:06:12.3828999Z       "terminationGracePeriodSeconds": null,
+deploy	Deploy API revision	2026-03-01T15:06:12.3829403Z       "volumes": null
+deploy	Deploy API revision	2026-03-01T15:06:12.3829690Z     },
+deploy	Deploy API revision	2026-03-01T15:06:12.3829971Z     "workloadProfileName": "Consumption"
+deploy	Deploy API revision	2026-03-01T15:06:12.3830341Z   },
+deploy	Deploy API revision	2026-03-01T15:06:12.3830628Z   "resourceGroup": "exp-copilot-mas-rg",
+deploy	Deploy API revision	2026-03-01T15:06:12.3831013Z   "systemData": {
+deploy	Deploy API revision	2026-03-01T15:06:12.3831323Z     "createdAt": "2026-03-01T12:00:44.8912198",
+deploy	Deploy API revision	2026-03-01T15:06:12.3831748Z     "createdBy": "mikko.m.kallio@gmail.com",
+deploy	Deploy API revision	2026-03-01T15:06:12.3832145Z     "createdByType": "User",
+deploy	Deploy API revision	2026-03-01T15:06:12.3832533Z     "lastModifiedAt": "2026-03-01T15:05:57.7056919",
+deploy	Deploy API revision	2026-03-01T15:06:12.3833073Z     "lastModifiedBy": "***",
+deploy	Deploy API revision	2026-03-01T15:06:12.3833434Z     "lastModifiedByType": "Application"
+deploy	Deploy API revision	2026-03-01T15:06:12.3833813Z   },
+deploy	Deploy API revision	2026-03-01T15:06:12.3834156Z   "type": "Microsoft.App/containerApps"
+deploy	Deploy API revision	2026-03-01T15:06:12.3834524Z }
+deploy	Deploy API revision	2026-03-01T15:06:12.4367521Z [K
+deploy	Resolve API revision URL	﻿2026-03-01T15:06:12.4394308Z ##[group]Run API_FQDN=$(az containerapp revision list \
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4394764Z [36;1mAPI_FQDN=$(az containerapp revision list \[0m
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4395082Z [36;1m  --name $AZ_API_APP \[0m
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4395342Z [36;1m  --resource-group $AZ_RG \[0m
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4395771Z [36;1m  --query "[?properties.template.revisionSuffix=='93b7b606'].properties.fqdn" \[0m
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4396468Z [36;1m  -o tsv)[0m
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4396743Z [36;1mecho "api_fqdn=$API_FQDN" >> "$GITHUB_OUTPUT"[0m
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4444486Z shell: /usr/bin/bash -e {0}
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4444738Z env:
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4444915Z   EXP_PREFIX: exp
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4445132Z   GH_ORG_OR_USER: mikkokallio
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4445390Z   REPO_NAME: research-setup
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4445772Z   AZ_SUBSCRIPTION_ID: ***
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4446437Z   AZ_LOCATION: swedencentral
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4446694Z   AZ_RG: exp-copilot-mas-rg
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4446930Z   AZ_ACR: expcopilotmasacr
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4447199Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4447447Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4447703Z   AZ_API_APP: exp-copilot-mas-api
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4447950Z   RUN_SCOPE: shared
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4448149Z   RETENTION_DAYS: 30
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4448355Z   MODEL: gpt-5.3-codex
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4448553Z   CONDITION: k3
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4448740Z   TIER: tier0
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4448954Z   TIER_SPEC_FILE: specs/tiers/tier0_proposed.md
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4449394Z   API_IMAGE: expcopilotmasacr.azurecr.io/research-setup-api:gpt-5.3-codex-k3-tier0
+deploy	Resolve API revision URL	2026-03-01T15:06:12.4449802Z ##[endgroup]
+deploy	Build and push web	﻿2026-03-01T15:06:13.5885738Z ##[group]Run WEB_IMAGE="$AZ_ACR.azurecr.io/research-setup-web:gpt-5.3-codex-k3-tier0"
+deploy	Build and push web	2026-03-01T15:06:13.5886985Z [36;1mWEB_IMAGE="$AZ_ACR.azurecr.io/research-setup-web:gpt-5.3-codex-k3-tier0"[0m
+deploy	Build and push web	2026-03-01T15:06:13.5887694Z [36;1mdocker build \[0m
+deploy	Build and push web	2026-03-01T15:06:13.5888188Z [36;1m  --build-arg VITE_RUN_KEY=gpt-5.3-codex-k3-tier0 \[0m
+deploy	Build and push web	2026-03-01T15:06:13.5888780Z [36;1m  --build-arg VITE_MODEL=${MODEL} \[0m
+deploy	Build and push web	2026-03-01T15:06:13.5889353Z [36;1m  --build-arg VITE_CONDITION=${CONDITION} \[0m
+deploy	Build and push web	2026-03-01T15:06:13.5889926Z [36;1m  --build-arg VITE_TIER=${TIER} \[0m
+deploy	Build and push web	2026-03-01T15:06:13.5890486Z [36;1m  --build-arg VITE_API_URL=https:// \[0m
+deploy	Build and push web	2026-03-01T15:06:13.5891008Z [36;1m  -t "$WEB_IMAGE" apps/web[0m
+deploy	Build and push web	2026-03-01T15:06:13.5891462Z [36;1mdocker push "$WEB_IMAGE"[0m
+deploy	Build and push web	2026-03-01T15:06:13.5891979Z [36;1mecho "WEB_IMAGE=$WEB_IMAGE" >> "$GITHUB_ENV"[0m
+deploy	Build and push web	2026-03-01T15:06:13.5957153Z shell: /usr/bin/bash -e {0}
+deploy	Build and push web	2026-03-01T15:06:13.5957580Z env:
+deploy	Build and push web	2026-03-01T15:06:13.5957891Z   EXP_PREFIX: exp
+deploy	Build and push web	2026-03-01T15:06:13.5958307Z   GH_ORG_OR_USER: mikkokallio
+deploy	Build and push web	2026-03-01T15:06:13.5958749Z   REPO_NAME: research-setup
+deploy	Build and push web	2026-03-01T15:06:13.5959357Z   AZ_SUBSCRIPTION_ID: ***
+deploy	Build and push web	2026-03-01T15:06:13.5959793Z   AZ_LOCATION: swedencentral
+deploy	Build and push web	2026-03-01T15:06:13.5960225Z   AZ_RG: exp-copilot-mas-rg
+deploy	Build and push web	2026-03-01T15:06:13.5960645Z   AZ_ACR: expcopilotmasacr
+deploy	Build and push web	2026-03-01T15:06:13.5961077Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy	Build and push web	2026-03-01T15:06:13.5961516Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy	Build and push web	2026-03-01T15:06:13.5961984Z   AZ_API_APP: exp-copilot-mas-api
+deploy	Build and push web	2026-03-01T15:06:13.5962437Z   RUN_SCOPE: shared
+deploy	Build and push web	2026-03-01T15:06:13.5962792Z   RETENTION_DAYS: 30
+deploy	Build and push web	2026-03-01T15:06:13.5963149Z   MODEL: gpt-5.3-codex
+deploy	Build and push web	2026-03-01T15:06:13.5963505Z   CONDITION: k3
+deploy	Build and push web	2026-03-01T15:06:13.5963827Z   TIER: tier0
+deploy	Build and push web	2026-03-01T15:06:13.5964222Z   TIER_SPEC_FILE: specs/tiers/tier0_proposed.md
+deploy	Build and push web	2026-03-01T15:06:13.5964987Z   API_IMAGE: expcopilotmasacr.azurecr.io/research-setup-api:gpt-5.3-codex-k3-tier0
+deploy	Build and push web	2026-03-01T15:06:13.5965703Z ##[endgroup]
+deploy	Build and push web	2026-03-01T15:06:13.9458772Z #0 building with "default" instance using docker driver
+deploy	Build and push web	2026-03-01T15:06:13.9459357Z 
+deploy	Build and push web	2026-03-01T15:06:13.9459561Z #1 [internal] load build definition from Dockerfile
+deploy	Build and push web	2026-03-01T15:06:13.9460043Z #1 transferring dockerfile: 430B done
+deploy	Build and push web	2026-03-01T15:06:13.9460400Z #1 DONE 0.0s
+deploy	Build and push web	2026-03-01T15:06:13.9460550Z 
+deploy	Build and push web	2026-03-01T15:06:13.9460757Z #2 [auth] library/node:pull token for registry-1.docker.io
+deploy	Build and push web	2026-03-01T15:06:13.9461186Z #2 DONE 0.0s
+deploy	Build and push web	2026-03-01T15:06:13.9461330Z 
+deploy	Build and push web	2026-03-01T15:06:13.9461563Z #3 [internal] load metadata for docker.io/library/node:22-alpine
+deploy	Build and push web	2026-03-01T15:06:14.2421540Z #3 DONE 0.5s
+deploy	Build and push web	2026-03-01T15:06:14.3585369Z 
+deploy	Build and push web	2026-03-01T15:06:14.3586747Z #4 [internal] load .dockerignore
+deploy	Build and push web	2026-03-01T15:06:14.3587610Z #4 transferring context: 2B done
+deploy	Build and push web	2026-03-01T15:06:14.3588050Z #4 DONE 0.0s
+deploy	Build and push web	2026-03-01T15:06:14.3588240Z 
+deploy	Build and push web	2026-03-01T15:06:14.3588409Z #5 [internal] load build context
+deploy	Build and push web	2026-03-01T15:06:14.3588673Z #5 transferring context: 3.51kB done
+deploy	Build and push web	2026-03-01T15:06:14.3589105Z #5 DONE 0.0s
+deploy	Build and push web	2026-03-01T15:06:14.3589228Z 
+deploy	Build and push web	2026-03-01T15:06:14.3589626Z #6 [1/6] FROM docker.io/library/node:22-alpine@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34
+deploy	Build and push web	2026-03-01T15:06:14.3590709Z #6 resolve docker.io/library/node:22-alpine@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34 done
+deploy	Build and push web	2026-03-01T15:06:14.3592185Z #6 extracting sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153
+deploy	Build and push web	2026-03-01T15:06:14.3593096Z #6 sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34 6.41kB / 6.41kB done
+deploy	Build and push web	2026-03-01T15:06:14.3594073Z #6 sha256:48f53c3f0105ccddcc5e4f520347398dfc0ba9b3008fbfd98a2add27e5797957 1.72kB / 1.72kB done
+deploy	Build and push web	2026-03-01T15:06:14.3595143Z #6 sha256:463254b4a8121318a9f8861a08bdde48fcfd528848534e7ba742b3ce5146fd17 6.52kB / 6.52kB done
+deploy	Build and push web	2026-03-01T15:06:14.3596072Z #6 sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 3.86MB / 3.86MB 0.1s done
+deploy	Build and push web	2026-03-01T15:06:14.3597190Z #6 sha256:8d513d1f314d3646adaf156be912f8de408c740e43d90cad5ce06b9de27e7bdf 0B / 51.60MB 0.1s
+deploy	Build and push web	2026-03-01T15:06:14.3598475Z #6 sha256:2b752f7c71fd1a08980fdf09b7379d8304c8ef2569526934a2089ed26d771778 1.26MB / 1.26MB 0.1s
+deploy	Build and push web	2026-03-01T15:06:14.3599335Z #6 sha256:fc1c5222d85fe45cd255019912158424888b168c8413fb42c8e166c37f1833eb 0B / 447B 0.1s
+deploy	Build and push web	2026-03-01T15:06:14.5582636Z #6 extracting sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 0.1s done
+deploy	Build and push web	2026-03-01T15:06:14.5583867Z #6 sha256:8d513d1f314d3646adaf156be912f8de408c740e43d90cad5ce06b9de27e7bdf 40.89MB / 51.60MB 0.3s
+deploy	Build and push web	2026-03-01T15:06:14.5584580Z #6 sha256:2b752f7c71fd1a08980fdf09b7379d8304c8ef2569526934a2089ed26d771778 1.26MB / 1.26MB 0.1s done
+deploy	Build and push web	2026-03-01T15:06:14.5585279Z #6 sha256:fc1c5222d85fe45cd255019912158424888b168c8413fb42c8e166c37f1833eb 447B / 447B 0.1s done
+deploy	Build and push web	2026-03-01T15:06:14.6721570Z #6 sha256:8d513d1f314d3646adaf156be912f8de408c740e43d90cad5ce06b9de27e7bdf 51.60MB / 51.60MB 0.4s done
+deploy	Build and push web	2026-03-01T15:06:14.6723459Z #6 extracting sha256:8d513d1f314d3646adaf156be912f8de408c740e43d90cad5ce06b9de27e7bdf
+deploy	Build and push web	2026-03-01T15:06:15.9963767Z #6 extracting sha256:8d513d1f314d3646adaf156be912f8de408c740e43d90cad5ce06b9de27e7bdf 1.3s done
+deploy	Build and push web	2026-03-01T15:06:16.2287677Z #6 extracting sha256:2b752f7c71fd1a08980fdf09b7379d8304c8ef2569526934a2089ed26d771778
+deploy	Build and push web	2026-03-01T15:06:16.4599499Z #6 extracting sha256:2b752f7c71fd1a08980fdf09b7379d8304c8ef2569526934a2089ed26d771778 0.0s done
+deploy	Build and push web	2026-03-01T15:06:16.4600864Z #6 extracting sha256:fc1c5222d85fe45cd255019912158424888b168c8413fb42c8e166c37f1833eb done
+deploy	Build and push web	2026-03-01T15:06:16.4601849Z #6 DONE 2.0s
+deploy	Build and push web	2026-03-01T15:06:16.4602112Z 
+deploy	Build and push web	2026-03-01T15:06:16.4602370Z #7 [2/6] WORKDIR /app
+deploy	Build and push web	2026-03-01T15:06:16.4602753Z #7 DONE 0.0s
+deploy	Build and push web	2026-03-01T15:06:16.4602969Z 
+deploy	Build and push web	2026-03-01T15:06:16.4603234Z #8 [3/6] COPY package.json package-lock.json* ./
+deploy	Build and push web	2026-03-01T15:06:16.4603729Z #8 DONE 0.0s
+deploy	Build and push web	2026-03-01T15:06:16.4603919Z 
+deploy	Build and push web	2026-03-01T15:06:16.4604056Z #9 [4/6] RUN npm install
+deploy	Build and push web	2026-03-01T15:06:22.7922126Z #9 6.482 
+deploy	Build and push web	2026-03-01T15:06:22.7922990Z #9 6.482 added 62 packages, and audited 63 packages in 6s
+deploy	Build and push web	2026-03-01T15:06:22.7923855Z #9 6.483 
+deploy	Build and push web	2026-03-01T15:06:22.7924238Z #9 6.483 7 packages are looking for funding
+deploy	Build and push web	2026-03-01T15:06:22.7925009Z #9 6.483   run `npm fund` for details
+deploy	Build and push web	2026-03-01T15:06:23.0313646Z #9 6.490 
+deploy	Build and push web	2026-03-01T15:06:23.0314177Z #9 6.490 2 moderate severity vulnerabilities
+deploy	Build and push web	2026-03-01T15:06:23.0314681Z #9 6.490 
+deploy	Build and push web	2026-03-01T15:06:23.0315104Z #9 6.490 To address all issues (including breaking changes), run:
+deploy	Build and push web	2026-03-01T15:06:23.0315479Z #9 6.490   npm audit fix --force
+deploy	Build and push web	2026-03-01T15:06:23.0315898Z #9 6.490 
+deploy	Build and push web	2026-03-01T15:06:23.0316102Z #9 6.490 Run `npm audit` for details.
+deploy	Build and push web	2026-03-01T15:06:23.0316580Z #9 6.491 npm notice
+deploy	Build and push web	2026-03-01T15:06:23.0316887Z #9 6.491 npm notice New major version of npm available! 10.9.4 -> 11.11.0
+deploy	Build and push web	2026-03-01T15:06:23.0317378Z #9 6.491 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.11.0
+deploy	Build and push web	2026-03-01T15:06:23.0317835Z #9 6.491 npm notice To update run: npm install -g npm@11.11.0
+deploy	Build and push web	2026-03-01T15:06:23.0318150Z #9 6.491 npm notice
+deploy	Build and push web	2026-03-01T15:06:23.0318340Z #9 DONE 6.6s
+deploy	Build and push web	2026-03-01T15:06:23.0318480Z 
+deploy	Build and push web	2026-03-01T15:06:23.0318560Z #10 [5/6] COPY . .
+deploy	Build and push web	2026-03-01T15:06:23.0614262Z #10 DONE 0.2s
+deploy	Build and push web	2026-03-01T15:06:23.2130462Z 
+deploy	Build and push web	2026-03-01T15:06:23.2131026Z #11 [6/6] RUN npm run build
+deploy	Build and push web	2026-03-01T15:06:23.3271534Z #11 0.265 
+deploy	Build and push web	2026-03-01T15:06:23.3272028Z #11 0.265 > exp-web@0.1.0 build
+deploy	Build and push web	2026-03-01T15:06:23.3272485Z #11 0.265 > vite build
+deploy	Build and push web	2026-03-01T15:06:23.3272896Z #11 0.265 
+deploy	Build and push web	2026-03-01T15:06:23.5672747Z #11 0.505 vite v5.4.21 building for production...
+deploy	Build and push web	2026-03-01T15:06:23.7722219Z #11 0.559 transforming...
+deploy	Build and push web	2026-03-01T15:06:24.4910446Z #11 1.428 ✓ 31 modules transformed.
+deploy	Build and push web	2026-03-01T15:06:24.5963147Z #11 1.528 rendering chunks...
+deploy	Build and push web	2026-03-01T15:06:24.5963971Z #11 1.534 computing gzip size...
+deploy	Build and push web	2026-03-01T15:06:24.8006356Z #11 1.541 dist/index.html                   0.40 kB │ gzip:  0.27 kB
+deploy	Build and push web	2026-03-01T15:06:24.8007698Z #11 1.541 dist/assets/index-xpDTYXnP.css    0.44 kB │ gzip:  0.30 kB
+deploy	Build and push web	2026-03-01T15:06:24.8008831Z #11 1.542 dist/assets/index-JmKDlYyX.js   143.57 kB │ gzip: 46.08 kB
+deploy	Build and push web	2026-03-01T15:06:24.8010250Z #11 1.542 ✓ built in 1.01s
+deploy	Build and push web	2026-03-01T15:06:24.8010614Z #11 DONE 1.6s
+deploy	Build and push web	2026-03-01T15:06:24.8010804Z 
+deploy	Build and push web	2026-03-01T15:06:24.8010938Z #12 exporting to image
+deploy	Build and push web	2026-03-01T15:06:24.8011308Z #12 exporting layers
+deploy	Build and push web	2026-03-01T15:06:25.7751875Z #12 exporting layers 1.1s done
+deploy	Build and push web	2026-03-01T15:06:25.7954824Z #12 writing image sha256:ffb4548cce58071747eec8e97619275e7b0dc3f389a4b444f7aeeb65c0a2e53d done
+deploy	Build and push web	2026-03-01T15:06:25.7955998Z #12 naming to expcopilotmasacr.azurecr.io/research-setup-web:gpt-5.3-codex-k3-tier0 done
+deploy	Build and push web	2026-03-01T15:06:25.7956882Z #12 DONE 1.1s
+deploy	Build and push web	2026-03-01T15:06:25.7959274Z 
+deploy	Build and push web	2026-03-01T15:06:25.7959840Z  [33m2 warnings found (use docker --debug to expand):
+deploy	Build and push web	2026-03-01T15:06:25.7960960Z [0m - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "VITE_RUN_KEY") (line 10)
+deploy	Build and push web	2026-03-01T15:06:25.7962238Z  - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ENV "VITE_RUN_KEY") (line 15)
+deploy	Build and push web	2026-03-01T15:06:25.8204996Z The push refers to repository [expcopilotmasacr.azurecr.io/research-setup-web]
+deploy	Build and push web	2026-03-01T15:06:26.1727722Z 6047534d16df: Preparing
+deploy	Build and push web	2026-03-01T15:06:26.1729474Z b31e91c81188: Preparing
+deploy	Build and push web	2026-03-01T15:06:26.1729924Z 21b60331e9a3: Preparing
+deploy	Build and push web	2026-03-01T15:06:26.1730436Z 12185c4245c3: Preparing
+deploy	Build and push web	2026-03-01T15:06:26.1735993Z 916618673c25: Preparing
+deploy	Build and push web	2026-03-01T15:06:26.1736629Z d2f2025518d6: Preparing
+deploy	Build and push web	2026-03-01T15:06:26.1736982Z 02289bdc8da6: Preparing
+deploy	Build and push web	2026-03-01T15:06:26.1737351Z 73f69c6599be: Preparing
+deploy	Build and push web	2026-03-01T15:06:26.1737692Z 989e799e6349: Preparing
+deploy	Build and push web	2026-03-01T15:06:26.1738032Z d2f2025518d6: Waiting
+deploy	Build and push web	2026-03-01T15:06:26.1738362Z 02289bdc8da6: Waiting
+deploy	Build and push web	2026-03-01T15:06:26.1738672Z 989e799e6349: Waiting
+deploy	Build and push web	2026-03-01T15:06:28.1515770Z 916618673c25: Pushed
+deploy	Build and push web	2026-03-01T15:06:28.1740047Z 12185c4245c3: Pushed
+deploy	Build and push web	2026-03-01T15:06:28.2248115Z b31e91c81188: Pushed
+deploy	Build and push web	2026-03-01T15:06:28.3838461Z 6047534d16df: Pushed
+deploy	Build and push web	2026-03-01T15:06:28.5838047Z 02289bdc8da6: Layer already exists
+deploy	Build and push web	2026-03-01T15:06:28.5884852Z d2f2025518d6: Layer already exists
+deploy	Build and push web	2026-03-01T15:06:28.6101713Z 73f69c6599be: Layer already exists
+deploy	Build and push web	2026-03-01T15:06:28.7820064Z 989e799e6349: Layer already exists
+deploy	Build and push web	2026-03-01T15:06:32.0218426Z 21b60331e9a3: Pushed
+deploy	Build and push web	2026-03-01T15:06:34.9332445Z gpt-5.3-codex-k3-tier0: digest: sha256:cdaeae75fa84d90d09f243f8b7df6ea320d1b4e735cb0ac0e9c47e21784cfa4b size: 2200
+deploy	Deploy web revision	﻿2026-03-01T15:06:34.9391470Z ##[group]Run az containerapp update \
+deploy	Deploy web revision	2026-03-01T15:06:34.9391797Z [36;1maz containerapp update \[0m
+deploy	Deploy web revision	2026-03-01T15:06:34.9392058Z [36;1m  --name $AZ_WEB_APP \[0m
+deploy	Deploy web revision	2026-03-01T15:06:34.9392315Z [36;1m  --resource-group $AZ_RG \[0m
+deploy	Deploy web revision	2026-03-01T15:06:34.9392574Z [36;1m  --image "$WEB_IMAGE" \[0m
+deploy	Deploy web revision	2026-03-01T15:06:34.9392835Z [36;1m  --revision-suffix 93b7b606[0m
+deploy	Deploy web revision	2026-03-01T15:06:34.9441470Z shell: /usr/bin/bash -e {0}
+deploy	Deploy web revision	2026-03-01T15:06:34.9441719Z env:
+deploy	Deploy web revision	2026-03-01T15:06:34.9441901Z   EXP_PREFIX: exp
+deploy	Deploy web revision	2026-03-01T15:06:34.9442113Z   GH_ORG_OR_USER: mikkokallio
+deploy	Deploy web revision	2026-03-01T15:06:34.9442361Z   REPO_NAME: research-setup
+deploy	Deploy web revision	2026-03-01T15:06:34.9442735Z   AZ_SUBSCRIPTION_ID: ***
+deploy	Deploy web revision	2026-03-01T15:06:34.9442980Z   AZ_LOCATION: swedencentral
+deploy	Deploy web revision	2026-03-01T15:06:34.9443220Z   AZ_RG: exp-copilot-mas-rg
+deploy	Deploy web revision	2026-03-01T15:06:34.9443459Z   AZ_ACR: expcopilotmasacr
+deploy	Deploy web revision	2026-03-01T15:06:34.9443692Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy	Deploy web revision	2026-03-01T15:06:34.9444137Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy	Deploy web revision	2026-03-01T15:06:34.9444428Z   AZ_API_APP: exp-copilot-mas-api
+deploy	Deploy web revision	2026-03-01T15:06:34.9444716Z   RUN_SCOPE: shared
+deploy	Deploy web revision	2026-03-01T15:06:34.9444915Z   RETENTION_DAYS: 30
+deploy	Deploy web revision	2026-03-01T15:06:34.9445126Z   MODEL: gpt-5.3-codex
+deploy	Deploy web revision	2026-03-01T15:06:34.9445329Z   CONDITION: k3
+deploy	Deploy web revision	2026-03-01T15:06:34.9445506Z   TIER: tier0
+deploy	Deploy web revision	2026-03-01T15:06:34.9445719Z   TIER_SPEC_FILE: specs/tiers/tier0_proposed.md
+deploy	Deploy web revision	2026-03-01T15:06:34.9446300Z   API_IMAGE: expcopilotmasacr.azurecr.io/research-setup-api:gpt-5.3-codex-k3-tier0
+deploy	Deploy web revision	2026-03-01T15:06:34.9446864Z   WEB_IMAGE: expcopilotmasacr.azurecr.io/research-setup-web:gpt-5.3-codex-k3-tier0
+deploy	Deploy web revision	2026-03-01T15:06:34.9447257Z ##[endgroup]
+deploy	Deploy web revision	2026-03-01T15:06:37.5918620Z 
+deploy	Deploy web revision	2026-03-01T15:06:40.2762409Z / Running ..
+deploy	Deploy web revision	2026-03-01T15:06:42.9357014Z | Running ..
+deploy	Deploy web revision	2026-03-01T15:06:43.8933457Z \ Running ..ERROR: Failed to provision revision for container app 'exp-copilot-mas-web'. Error details: The following field(s) are either invalid or missing. Field 'template.containers.exp-copilot-mas-web.image' is invalid with details: 'Invalid value: "expcopilotmasacr.azurecr.io/research-setup-web:gpt-5.3-codex-k3-tier0": unable to pull image using Managed identity system for registry expcopilotmasacr.azurecr.io';..
+deploy	Deploy web revision	2026-03-01T15:06:43.9880941Z ##[error]Process completed with exit code 1.
+deploy	Post Azure login	﻿2026-03-01T15:06:43.9978081Z Post job cleanup.
+deploy	Post Azure login	2026-03-01T15:06:44.0387741Z Clearing azure cli accounts from the local cache.
+deploy	Post Azure login	2026-03-01T15:06:44.0403470Z [command]/usr/bin/az account clear
+deploy	Post Run actions/checkout@v4	﻿2026-03-01T15:06:44.5805277Z Post job cleanup.
+deploy	Post Run actions/checkout@v4	2026-03-01T15:06:44.6764728Z [command]/usr/bin/git version
+deploy	Post Run actions/checkout@v4	2026-03-01T15:06:44.6801205Z git version 2.53.0
+deploy	Post Run actions/checkout@v4	2026-03-01T15:06:44.6844084Z Temporarily overriding HOME='/home/runner/work/_temp/90ecc36f-c94f-401b-bef3-0374256be403' before making global git config changes
+deploy	Post Run actions/checkout@v4	2026-03-01T15:06:44.6845484Z Adding repository directory to the temporary git global config as a safe directory
+deploy	Post Run actions/checkout@v4	2026-03-01T15:06:44.6850844Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/research-setup/research-setup
+deploy	Post Run actions/checkout@v4	2026-03-01T15:06:44.6895815Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy	Post Run actions/checkout@v4	2026-03-01T15:06:44.6929161Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy	Post Run actions/checkout@v4	2026-03-01T15:06:44.7178948Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy	Post Run actions/checkout@v4	2026-03-01T15:06:44.7203745Z http.https://github.com/.extraheader
+deploy	Post Run actions/checkout@v4	2026-03-01T15:06:44.7216903Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+deploy	Post Run actions/checkout@v4	2026-03-01T15:06:44.7249369Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy	Post Run actions/checkout@v4	2026-03-01T15:06:44.7484116Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy	Post Run actions/checkout@v4	2026-03-01T15:06:44.7516401Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy	Complete job	﻿2026-03-01T15:06:44.7871782Z Cleaning up orphan processes

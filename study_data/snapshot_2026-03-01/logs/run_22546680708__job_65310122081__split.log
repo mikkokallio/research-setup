@@ -1,0 +1,318 @@
+split	Set up job	﻿2026-03-01T15:39:44.1862824Z Current runner version: '2.331.0'
+split	Set up job	2026-03-01T15:39:44.1915199Z ##[group]Runner Image Provisioner
+split	Set up job	2026-03-01T15:39:44.1916630Z Hosted Compute Agent
+split	Set up job	2026-03-01T15:39:44.1917191Z Version: 20260213.493
+split	Set up job	2026-03-01T15:39:44.1917868Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+split	Set up job	2026-03-01T15:39:44.1918665Z Build Date: 2026-02-13T00:28:41Z
+split	Set up job	2026-03-01T15:39:44.1919289Z Worker ID: {e42bc36a-490c-426c-8b3d-358a988da6ec}
+split	Set up job	2026-03-01T15:39:44.1919951Z Azure Region: northcentralus
+split	Set up job	2026-03-01T15:39:44.1921095Z ##[endgroup]
+split	Set up job	2026-03-01T15:39:44.1922553Z ##[group]Operating System
+split	Set up job	2026-03-01T15:39:44.1923189Z Ubuntu
+split	Set up job	2026-03-01T15:39:44.1923735Z 24.04.3
+split	Set up job	2026-03-01T15:39:44.1924304Z LTS
+split	Set up job	2026-03-01T15:39:44.1924771Z ##[endgroup]
+split	Set up job	2026-03-01T15:39:44.1925418Z ##[group]Runner Image
+split	Set up job	2026-03-01T15:39:44.1926347Z Image: ubuntu-24.04
+split	Set up job	2026-03-01T15:39:44.1926900Z Version: 20260224.36.1
+split	Set up job	2026-03-01T15:39:44.1928077Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260224.36/images/ubuntu/Ubuntu2404-Readme.md
+split	Set up job	2026-03-01T15:39:44.1929707Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260224.36
+split	Set up job	2026-03-01T15:39:44.1930745Z ##[endgroup]
+split	Set up job	2026-03-01T15:39:44.1931764Z ##[group]GITHUB_TOKEN Permissions
+split	Set up job	2026-03-01T15:39:44.1934324Z Contents: read
+split	Set up job	2026-03-01T15:39:44.1935121Z Metadata: read
+split	Set up job	2026-03-01T15:39:44.1936123Z ##[endgroup]
+split	Set up job	2026-03-01T15:39:44.1939343Z Secret source: Actions
+split	Set up job	2026-03-01T15:39:44.1940636Z Prepare workflow directory
+split	Set up job	2026-03-01T15:39:44.2689268Z Prepare all required actions
+split	Set up job	2026-03-01T15:39:44.2744037Z Getting action download info
+split	Set up job	2026-03-01T15:39:44.5946791Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+split	Set up job	2026-03-01T15:39:44.7177141Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+split	Set up job	2026-03-01T15:39:44.8003150Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+split	Set up job	2026-03-01T15:39:44.8953360Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+split	Set up job	2026-03-01T15:39:45.1099695Z Complete job name: split
+split	Run actions/checkout@v4	﻿2026-03-01T15:39:45.1825099Z ##[group]Run actions/checkout@v4
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1826317Z with:
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1826869Z   repository: mikkokallio/research-setup
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1827658Z   token: ***
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1828081Z   ssh-strict: true
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1828502Z   ssh-user: git
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1828949Z   persist-credentials: true
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1829451Z   clean: true
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1829884Z   sparse-checkout-cone-mode: true
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1830418Z   fetch-depth: 1
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1830851Z   fetch-tags: false
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1831292Z   show-progress: true
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1831735Z   lfs: false
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1832136Z   submodules: false
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1832578Z   set-safe-directory: true
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1833291Z env:
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1833713Z   EXP_PREFIX: exp
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1834160Z   GH_ORG_OR_USER: mikkokallio
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1834684Z   REPO_NAME: research-setup
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1835284Z   AZ_SUBSCRIPTION_ID: 1c0e26b6-0fcb-4b6d-911c-2a0836275ea4
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1836218Z   AZ_LOCATION: swedencentral
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1836729Z   AZ_RG: exp-copilot-mas-rg
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1837221Z   AZ_ACR: expcopilotmasacr
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1837723Z   AZ_ACA_ENV: exp-copilot-mas-aca
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1838268Z   AZ_WEB_APP: exp-copilot-mas-web
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1838812Z   AZ_API_APP: exp-copilot-mas-api
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1839329Z   RUN_SCOPE: shared
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1839757Z   RETENTION_DAYS: 30
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1840192Z   MODEL: gpt-5.3-codex
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1840630Z   CONDITION: k3
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1841027Z   TIER: tier0
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1841501Z   TIER_SPEC_FILE: specs/tiers/tier0_proposed.md
+split	Run actions/checkout@v4	2026-03-01T15:39:45.1842083Z ##[endgroup]
+split	Run actions/checkout@v4	2026-03-01T15:39:45.2935970Z Syncing repository: mikkokallio/research-setup
+split	Run actions/checkout@v4	2026-03-01T15:39:45.2938055Z ##[group]Getting Git version info
+split	Run actions/checkout@v4	2026-03-01T15:39:45.2939250Z Working directory is '/home/runner/work/research-setup/research-setup'
+split	Run actions/checkout@v4	2026-03-01T15:39:45.2940448Z [command]/usr/bin/git version
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3029976Z git version 2.53.0
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3056925Z ##[endgroup]
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3079711Z Temporarily overriding HOME='/home/runner/work/_temp/d4ac1bf1-6399-4e95-9b7a-f4b06dfa0eaf' before making global git config changes
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3082525Z Adding repository directory to the temporary git global config as a safe directory
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3086625Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/research-setup/research-setup
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3129317Z Deleting the contents of '/home/runner/work/research-setup/research-setup'
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3132915Z ##[group]Initializing the repository
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3138701Z [command]/usr/bin/git init /home/runner/work/research-setup/research-setup
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3275221Z hint: Using 'master' as the name for the initial branch. This default branch name
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3277090Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3278125Z hint: to use in all of your new repositories, which will suppress this warning,
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3279496Z hint: call:
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3280081Z hint:
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3280612Z hint: 	git config --global init.defaultBranch <name>
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3281837Z hint:
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3283006Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3284914Z hint: 'development'. The just-created branch can be renamed via this command:
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3286709Z hint:
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3287535Z hint: 	git branch -m <name>
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3288384Z hint:
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3289535Z hint: Disable this message with "git config set advice.defaultBranchName false"
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3291703Z Initialized empty Git repository in /home/runner/work/research-setup/research-setup/.git/
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3295140Z [command]/usr/bin/git remote add origin https://github.com/mikkokallio/research-setup
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3332123Z ##[endgroup]
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3333484Z ##[group]Disabling automatic garbage collection
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3337622Z [command]/usr/bin/git config --local gc.auto 0
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3368154Z ##[endgroup]
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3369663Z ##[group]Setting up auth
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3376423Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3409632Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3778860Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+split	Run actions/checkout@v4	2026-03-01T15:39:45.3811610Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+split	Run actions/checkout@v4	2026-03-01T15:39:45.4047301Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+split	Run actions/checkout@v4	2026-03-01T15:39:45.4084015Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+split	Run actions/checkout@v4	2026-03-01T15:39:45.4322859Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+split	Run actions/checkout@v4	2026-03-01T15:39:45.4359247Z ##[endgroup]
+split	Run actions/checkout@v4	2026-03-01T15:39:45.4360715Z ##[group]Fetching the repository
+split	Run actions/checkout@v4	2026-03-01T15:39:45.4369511Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +55d282f2ff422b053843ef568d4b154e7b3527ca:refs/remotes/origin/main
+split	Run actions/checkout@v4	2026-03-01T15:39:45.6407724Z From https://github.com/mikkokallio/research-setup
+split	Run actions/checkout@v4	2026-03-01T15:39:45.6409938Z  * [new ref]         55d282f2ff422b053843ef568d4b154e7b3527ca -> origin/main
+split	Run actions/checkout@v4	2026-03-01T15:39:45.6443117Z ##[endgroup]
+split	Run actions/checkout@v4	2026-03-01T15:39:45.6444588Z ##[group]Determining the checkout info
+split	Run actions/checkout@v4	2026-03-01T15:39:45.6446719Z ##[endgroup]
+split	Run actions/checkout@v4	2026-03-01T15:39:45.6450457Z [command]/usr/bin/git sparse-checkout disable
+split	Run actions/checkout@v4	2026-03-01T15:39:45.6495446Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+split	Run actions/checkout@v4	2026-03-01T15:39:45.6523204Z ##[group]Checking out the ref
+split	Run actions/checkout@v4	2026-03-01T15:39:45.6527096Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+split	Run actions/checkout@v4	2026-03-01T15:39:45.6588907Z Switched to a new branch 'main'
+split	Run actions/checkout@v4	2026-03-01T15:39:45.6592391Z branch 'main' set up to track 'origin/main'.
+split	Run actions/checkout@v4	2026-03-01T15:39:45.6600555Z ##[endgroup]
+split	Run actions/checkout@v4	2026-03-01T15:39:45.6634612Z [command]/usr/bin/git log -1 --format=%H
+split	Run actions/checkout@v4	2026-03-01T15:39:45.6664336Z 55d282f2ff422b053843ef568d4b154e7b3527ca
+split	Run actions/setup-python@v5	﻿2026-03-01T15:39:45.7064803Z ##[group]Run actions/setup-python@v5
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7066229Z with:
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7067057Z   python-version: 3.11
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7068021Z   check-latest: false
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7069248Z   token: ***
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7070123Z   update-environment: true
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7071204Z   allow-prereleases: false
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7072225Z   freethreaded: false
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7073132Z env:
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7073919Z   EXP_PREFIX: exp
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7074819Z   GH_ORG_OR_USER: mikkokallio
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7076008Z   REPO_NAME: research-setup
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7077267Z   AZ_SUBSCRIPTION_ID: 1c0e26b6-0fcb-4b6d-911c-2a0836275ea4
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7078691Z   AZ_LOCATION: swedencentral
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7079755Z   AZ_RG: exp-copilot-mas-rg
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7080799Z   AZ_ACR: expcopilotmasacr
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7081862Z   AZ_ACA_ENV: exp-copilot-mas-aca
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7083009Z   AZ_WEB_APP: exp-copilot-mas-web
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7084172Z   AZ_API_APP: exp-copilot-mas-api
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7085290Z   RUN_SCOPE: shared
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7086254Z   RETENTION_DAYS: 30
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7087115Z   MODEL: gpt-5.3-codex
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7087984Z   CONDITION: k3
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7088776Z   TIER: tier0
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7089687Z   TIER_SPEC_FILE: specs/tiers/tier0_proposed.md
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.7090902Z ##[endgroup]
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.8859804Z ##[group]Installed versions
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.8962941Z Successfully set up CPython (3.11.14)
+split	Run actions/setup-python@v5	2026-03-01T15:39:45.8964966Z ##[endgroup]
+split	Run actions/setup-node@v4	﻿2026-03-01T15:39:45.9181439Z ##[group]Run actions/setup-node@v4
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9182485Z with:
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9183186Z   node-version: 22
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9183976Z   always-auth: false
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9184796Z   check-latest: false
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9186011Z   token: ***
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9186724Z env:
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9187405Z   EXP_PREFIX: exp
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9188198Z   GH_ORG_OR_USER: mikkokallio
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9189137Z   REPO_NAME: research-setup
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9190262Z   AZ_SUBSCRIPTION_ID: 1c0e26b6-0fcb-4b6d-911c-2a0836275ea4
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9191528Z   AZ_LOCATION: swedencentral
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9192477Z   AZ_RG: exp-copilot-mas-rg
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9193402Z   AZ_ACR: expcopilotmasacr
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9194330Z   AZ_ACA_ENV: exp-copilot-mas-aca
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9195362Z   AZ_WEB_APP: exp-copilot-mas-web
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9196516Z   AZ_API_APP: exp-copilot-mas-api
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9197483Z   RUN_SCOPE: shared
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9198269Z   RETENTION_DAYS: 30
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9199108Z   MODEL: gpt-5.3-codex
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9199917Z   CONDITION: k3
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9200662Z   TIER: tier0
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9201518Z   TIER_SPEC_FILE: specs/tiers/tier0_proposed.md
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9202903Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9204578Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9206416Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9207906Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9209438Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9210972Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+split	Run actions/setup-node@v4	2026-03-01T15:39:45.9212425Z ##[endgroup]
+split	Run actions/setup-node@v4	2026-03-01T15:39:46.1017396Z Found in cache @ /opt/hostedtoolcache/node/22.22.0/x64
+split	Run actions/setup-node@v4	2026-03-01T15:39:46.1020887Z ##[group]Environment details
+split	Run actions/setup-node@v4	2026-03-01T15:39:46.4785468Z node: v22.22.0
+split	Run actions/setup-node@v4	2026-03-01T15:39:46.4787083Z npm: 10.9.4
+split	Run actions/setup-node@v4	2026-03-01T15:39:46.4788375Z yarn: 1.22.22
+split	Run actions/setup-node@v4	2026-03-01T15:39:46.4790594Z ##[endgroup]
+split	Install Copilot CLI	﻿2026-03-01T15:39:46.4931786Z ##[group]Run npm install -g @github/copilot
+split	Install Copilot CLI	2026-03-01T15:39:46.4933010Z [36;1mnpm install -g @github/copilot[0m
+split	Install Copilot CLI	2026-03-01T15:39:46.4994435Z shell: /usr/bin/bash -e {0}
+split	Install Copilot CLI	2026-03-01T15:39:46.4995352Z env:
+split	Install Copilot CLI	2026-03-01T15:39:46.4996229Z   EXP_PREFIX: exp
+split	Install Copilot CLI	2026-03-01T15:39:46.4997015Z   GH_ORG_OR_USER: mikkokallio
+split	Install Copilot CLI	2026-03-01T15:39:46.4997948Z   REPO_NAME: research-setup
+split	Install Copilot CLI	2026-03-01T15:39:46.4999041Z   AZ_SUBSCRIPTION_ID: 1c0e26b6-0fcb-4b6d-911c-2a0836275ea4
+split	Install Copilot CLI	2026-03-01T15:39:46.5000269Z   AZ_LOCATION: swedencentral
+split	Install Copilot CLI	2026-03-01T15:39:46.5001163Z   AZ_RG: exp-copilot-mas-rg
+split	Install Copilot CLI	2026-03-01T15:39:46.5002042Z   AZ_ACR: expcopilotmasacr
+split	Install Copilot CLI	2026-03-01T15:39:46.5002957Z   AZ_ACA_ENV: exp-copilot-mas-aca
+split	Install Copilot CLI	2026-03-01T15:39:46.5003923Z   AZ_WEB_APP: exp-copilot-mas-web
+split	Install Copilot CLI	2026-03-01T15:39:46.5004933Z   AZ_API_APP: exp-copilot-mas-api
+split	Install Copilot CLI	2026-03-01T15:39:46.5006213Z   RUN_SCOPE: shared
+split	Install Copilot CLI	2026-03-01T15:39:46.5006969Z   RETENTION_DAYS: 30
+split	Install Copilot CLI	2026-03-01T15:39:46.5007735Z   MODEL: gpt-5.3-codex
+split	Install Copilot CLI	2026-03-01T15:39:46.5008505Z   CONDITION: k3
+split	Install Copilot CLI	2026-03-01T15:39:46.5009244Z   TIER: tier0
+split	Install Copilot CLI	2026-03-01T15:39:46.5010058Z   TIER_SPEC_FILE: specs/tiers/tier0_proposed.md
+split	Install Copilot CLI	2026-03-01T15:39:46.5011375Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+split	Install Copilot CLI	2026-03-01T15:39:46.5012951Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+split	Install Copilot CLI	2026-03-01T15:39:46.5014552Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+split	Install Copilot CLI	2026-03-01T15:39:46.5016470Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+split	Install Copilot CLI	2026-03-01T15:39:46.5017988Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+split	Install Copilot CLI	2026-03-01T15:39:46.5019439Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+split	Install Copilot CLI	2026-03-01T15:39:46.5020667Z ##[endgroup]
+split	Install Copilot CLI	2026-03-01T15:39:49.8930712Z 
+split	Install Copilot CLI	2026-03-01T15:39:49.8938069Z added 2 packages in 3s
+split	Check Copilot auth token	﻿2026-03-01T15:39:49.9503593Z ##[group]Run if [ -z "$COPILOT_GITHUB_TOKEN" ]; then
+split	Check Copilot auth token	2026-03-01T15:39:49.9504069Z [36;1mif [ -z "$COPILOT_GITHUB_TOKEN" ]; then[0m
+split	Check Copilot auth token	2026-03-01T15:39:49.9504584Z [36;1m  echo "::error::Missing required secret COPILOT_GITHUB_TOKEN (or fallback COPILOT_PAT)."[0m
+split	Check Copilot auth token	2026-03-01T15:39:49.9505067Z [36;1m  exit 1[0m
+split	Check Copilot auth token	2026-03-01T15:39:49.9505288Z [36;1mfi[0m
+split	Check Copilot auth token	2026-03-01T15:39:49.9559616Z shell: /usr/bin/bash -e {0}
+split	Check Copilot auth token	2026-03-01T15:39:49.9559902Z env:
+split	Check Copilot auth token	2026-03-01T15:39:49.9560118Z   EXP_PREFIX: exp
+split	Check Copilot auth token	2026-03-01T15:39:49.9560403Z   GH_ORG_OR_USER: mikkokallio
+split	Check Copilot auth token	2026-03-01T15:39:49.9560693Z   REPO_NAME: research-setup
+split	Check Copilot auth token	2026-03-01T15:39:49.9561021Z   AZ_SUBSCRIPTION_ID: 1c0e26b6-0fcb-4b6d-911c-2a0836275ea4
+split	Check Copilot auth token	2026-03-01T15:39:49.9561371Z   AZ_LOCATION: swedencentral
+split	Check Copilot auth token	2026-03-01T15:39:49.9561637Z   AZ_RG: exp-copilot-mas-rg
+split	Check Copilot auth token	2026-03-01T15:39:49.9561937Z   AZ_ACR: expcopilotmasacr
+split	Check Copilot auth token	2026-03-01T15:39:49.9562209Z   AZ_ACA_ENV: exp-copilot-mas-aca
+split	Check Copilot auth token	2026-03-01T15:39:49.9562484Z   AZ_WEB_APP: exp-copilot-mas-web
+split	Check Copilot auth token	2026-03-01T15:39:49.9562762Z   AZ_API_APP: exp-copilot-mas-api
+split	Check Copilot auth token	2026-03-01T15:39:49.9563048Z   RUN_SCOPE: shared
+split	Check Copilot auth token	2026-03-01T15:39:49.9563271Z   RETENTION_DAYS: 30
+split	Check Copilot auth token	2026-03-01T15:39:49.9563510Z   MODEL: gpt-5.3-codex
+split	Check Copilot auth token	2026-03-01T15:39:49.9563732Z   CONDITION: k3
+split	Check Copilot auth token	2026-03-01T15:39:49.9563943Z   TIER: tier0
+split	Check Copilot auth token	2026-03-01T15:39:49.9564183Z   TIER_SPEC_FILE: specs/tiers/tier0_proposed.md
+split	Check Copilot auth token	2026-03-01T15:39:49.9564574Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+split	Check Copilot auth token	2026-03-01T15:39:49.9565031Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+split	Check Copilot auth token	2026-03-01T15:39:49.9565483Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+split	Check Copilot auth token	2026-03-01T15:39:49.9566056Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+split	Check Copilot auth token	2026-03-01T15:39:49.9566488Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+split	Check Copilot auth token	2026-03-01T15:39:49.9566904Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+split	Check Copilot auth token	2026-03-01T15:39:49.9567971Z   COPILOT_GITHUB_TOKEN: ***
+split	Check Copilot auth token	2026-03-01T15:39:49.9568350Z   GH_TOKEN: ***
+split	Check Copilot auth token	2026-03-01T15:39:49.9568687Z   GITHUB_TOKEN: ***
+split	Check Copilot auth token	2026-03-01T15:39:49.9568914Z ##[endgroup]
+split	Validate Copilot request permission	﻿2026-03-01T15:39:49.9680784Z ##[group]Run mkdir -p work
+split	Validate Copilot request permission	2026-03-01T15:39:49.9681133Z [36;1mmkdir -p work[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9681377Z [36;1mset +e[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9681776Z [36;1mcopilot --model "$MODEL" -p "Reply with OK only." > work/copilot_auth_check.txt 2>&1[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9682237Z [36;1mCODE=$?[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9682678Z [36;1mif [ $CODE -ne 0 ] && grep -qi "interactive mode to enable this model" work/copilot_auth_check.txt; then[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9683328Z [36;1m  copilot -p "Reply with OK only." > work/copilot_auth_check_default_model.txt 2>&1[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9683762Z [36;1m  CODE=$?[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9683994Z [36;1m  if [ $CODE -eq 0 ]; then[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9684536Z [36;1m    echo "Model '$MODEL' is gated for this token in non-interactive mode; continuing with default model selection."[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9685094Z [36;1m  fi[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9685301Z [36;1mfi[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9685511Z [36;1mset -e[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9685970Z [36;1mif [ $CODE -ne 0 ]; then[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9686665Z [36;1m  echo "::error::Copilot CLI request failed. Ensure COPILOT_GITHUB_TOKEN is from an account with Copilot access and has Copilot Requests permission."[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9687355Z [36;1m  cat work/copilot_auth_check.txt[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9687736Z [36;1m  if [ -f work/copilot_auth_check_default_model.txt ]; then[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9688147Z [36;1m    cat work/copilot_auth_check_default_model.txt[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9688471Z [36;1m  fi[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9688685Z [36;1m  exit 1[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9688893Z [36;1mfi[0m
+split	Validate Copilot request permission	2026-03-01T15:39:49.9738967Z shell: /usr/bin/bash -e {0}
+split	Validate Copilot request permission	2026-03-01T15:39:49.9739247Z env:
+split	Validate Copilot request permission	2026-03-01T15:39:49.9739462Z   EXP_PREFIX: exp
+split	Validate Copilot request permission	2026-03-01T15:39:49.9739721Z   GH_ORG_OR_USER: mikkokallio
+split	Validate Copilot request permission	2026-03-01T15:39:49.9739998Z   REPO_NAME: research-setup
+split	Validate Copilot request permission	2026-03-01T15:39:49.9740324Z   AZ_SUBSCRIPTION_ID: 1c0e26b6-0fcb-4b6d-911c-2a0836275ea4
+split	Validate Copilot request permission	2026-03-01T15:39:49.9740668Z   AZ_LOCATION: swedencentral
+split	Validate Copilot request permission	2026-03-01T15:39:49.9740947Z   AZ_RG: exp-copilot-mas-rg
+split	Validate Copilot request permission	2026-03-01T15:39:49.9741202Z   AZ_ACR: expcopilotmasacr
+split	Validate Copilot request permission	2026-03-01T15:39:49.9741469Z   AZ_ACA_ENV: exp-copilot-mas-aca
+split	Validate Copilot request permission	2026-03-01T15:39:49.9741748Z   AZ_WEB_APP: exp-copilot-mas-web
+split	Validate Copilot request permission	2026-03-01T15:39:49.9742093Z   AZ_API_APP: exp-copilot-mas-api
+split	Validate Copilot request permission	2026-03-01T15:39:49.9742367Z   RUN_SCOPE: shared
+split	Validate Copilot request permission	2026-03-01T15:39:49.9742598Z   RETENTION_DAYS: 30
+split	Validate Copilot request permission	2026-03-01T15:39:49.9742828Z   MODEL: gpt-5.3-codex
+split	Validate Copilot request permission	2026-03-01T15:39:49.9743058Z   CONDITION: k3
+split	Validate Copilot request permission	2026-03-01T15:39:49.9743269Z   TIER: tier0
+split	Validate Copilot request permission	2026-03-01T15:39:49.9743513Z   TIER_SPEC_FILE: specs/tiers/tier0_proposed.md
+split	Validate Copilot request permission	2026-03-01T15:39:49.9743900Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+split	Validate Copilot request permission	2026-03-01T15:39:49.9744394Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+split	Validate Copilot request permission	2026-03-01T15:39:49.9744862Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+split	Validate Copilot request permission	2026-03-01T15:39:49.9745274Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+split	Validate Copilot request permission	2026-03-01T15:39:49.9745917Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+split	Validate Copilot request permission	2026-03-01T15:39:49.9746394Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+split	Validate Copilot request permission	2026-03-01T15:39:49.9746945Z   COPILOT_GITHUB_TOKEN: ***
+split	Validate Copilot request permission	2026-03-01T15:39:49.9747288Z   GH_TOKEN: ***
+split	Validate Copilot request permission	2026-03-01T15:39:49.9747617Z   GITHUB_TOKEN: ***
+split	Validate Copilot request permission	2026-03-01T15:39:49.9747839Z ##[endgroup]
+split	Validate Copilot request permission	2026-03-01T15:39:54.1030892Z ##[error]Copilot CLI request failed. Ensure COPILOT_GITHUB_TOKEN is from an account with Copilot access and has Copilot Requests permission.
+split	Validate Copilot request permission	2026-03-01T15:39:54.1039935Z Error: Run `copilot --model claude-sonnet-4.6` in interactive mode to enable this model
+split	Validate Copilot request permission	2026-03-01T15:39:54.1041242Z Error: Run `copilot --model claude-sonnet-4.6` in interactive mode to enable this model
+split	Validate Copilot request permission	2026-03-01T15:39:54.1044979Z ##[error]Process completed with exit code 1.
+split	Post Run actions/checkout@v4	﻿2026-03-01T15:39:54.1201830Z Post job cleanup.
+split	Post Run actions/checkout@v4	2026-03-01T15:39:54.2155784Z [command]/usr/bin/git version
+split	Post Run actions/checkout@v4	2026-03-01T15:39:54.2193381Z git version 2.53.0
+split	Post Run actions/checkout@v4	2026-03-01T15:39:54.2237364Z Temporarily overriding HOME='/home/runner/work/_temp/4b0bc62f-aa5f-44c1-87c2-1500116174b0' before making global git config changes
+split	Post Run actions/checkout@v4	2026-03-01T15:39:54.2238786Z Adding repository directory to the temporary git global config as a safe directory
+split	Post Run actions/checkout@v4	2026-03-01T15:39:54.2243853Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/research-setup/research-setup
+split	Post Run actions/checkout@v4	2026-03-01T15:39:54.2281737Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+split	Post Run actions/checkout@v4	2026-03-01T15:39:54.2316381Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+split	Post Run actions/checkout@v4	2026-03-01T15:39:54.2563582Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+split	Post Run actions/checkout@v4	2026-03-01T15:39:54.2584718Z http.https://github.com/.extraheader
+split	Post Run actions/checkout@v4	2026-03-01T15:39:54.2599046Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+split	Post Run actions/checkout@v4	2026-03-01T15:39:54.2632726Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+split	Post Run actions/checkout@v4	2026-03-01T15:39:54.2869743Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+split	Post Run actions/checkout@v4	2026-03-01T15:39:54.2902775Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+split	Complete job	﻿2026-03-01T15:39:54.3248599Z Evaluate and set job outputs
+split	Complete job	2026-03-01T15:39:54.3254549Z Cleaning up orphan processes

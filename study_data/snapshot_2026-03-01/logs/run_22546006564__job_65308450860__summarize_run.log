@@ -1,0 +1,61 @@
+summarize_run	Set up job	﻿2026-03-01T15:03:06.1464032Z Current runner version: '2.331.0'
+summarize_run	Set up job	2026-03-01T15:03:06.1498818Z ##[group]Runner Image Provisioner
+summarize_run	Set up job	2026-03-01T15:03:06.1500037Z Hosted Compute Agent
+summarize_run	Set up job	2026-03-01T15:03:06.1501038Z Version: 20260213.493
+summarize_run	Set up job	2026-03-01T15:03:06.1501935Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+summarize_run	Set up job	2026-03-01T15:03:06.1503046Z Build Date: 2026-02-13T00:28:41Z
+summarize_run	Set up job	2026-03-01T15:03:06.1504167Z Worker ID: {ef133f69-0f6c-4cab-bb5a-ec4ed31dc08e}
+summarize_run	Set up job	2026-03-01T15:03:06.1505317Z Azure Region: eastus2
+summarize_run	Set up job	2026-03-01T15:03:06.1506100Z ##[endgroup]
+summarize_run	Set up job	2026-03-01T15:03:06.1509119Z ##[group]Operating System
+summarize_run	Set up job	2026-03-01T15:03:06.1510060Z Ubuntu
+summarize_run	Set up job	2026-03-01T15:03:06.1510688Z 24.04.3
+summarize_run	Set up job	2026-03-01T15:03:06.1511631Z LTS
+summarize_run	Set up job	2026-03-01T15:03:06.1512284Z ##[endgroup]
+summarize_run	Set up job	2026-03-01T15:03:06.1513015Z ##[group]Runner Image
+summarize_run	Set up job	2026-03-01T15:03:06.1513869Z Image: ubuntu-24.04
+summarize_run	Set up job	2026-03-01T15:03:06.1514657Z Version: 20260224.36.1
+summarize_run	Set up job	2026-03-01T15:03:06.1516319Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260224.36/images/ubuntu/Ubuntu2404-Readme.md
+summarize_run	Set up job	2026-03-01T15:03:06.1519291Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260224.36
+summarize_run	Set up job	2026-03-01T15:03:06.1520980Z ##[endgroup]
+summarize_run	Set up job	2026-03-01T15:03:06.1522484Z ##[group]GITHUB_TOKEN Permissions
+summarize_run	Set up job	2026-03-01T15:03:06.1525471Z Contents: read
+summarize_run	Set up job	2026-03-01T15:03:06.1526363Z Metadata: read
+summarize_run	Set up job	2026-03-01T15:03:06.1527311Z ##[endgroup]
+summarize_run	Set up job	2026-03-01T15:03:06.1530230Z Secret source: Actions
+summarize_run	Set up job	2026-03-01T15:03:06.1531826Z Prepare workflow directory
+summarize_run	Set up job	2026-03-01T15:03:06.2287884Z Prepare all required actions
+summarize_run	Set up job	2026-03-01T15:03:06.2343485Z Getting action download info
+summarize_run	Set up job	2026-03-01T15:03:06.4489665Z Download action repository 'actions/download-artifact@v4' (SHA:d3f86a106a0bac45b974a628896c90dbdf5c8093)
+summarize_run	Set up job	2026-03-01T15:03:06.8242025Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+summarize_run	Set up job	2026-03-01T15:03:07.0427391Z Complete job name: summarize_run
+summarize_run	Download split artifact	﻿2026-03-01T15:03:07.1048881Z ##[group]Run actions/download-artifact@v4
+summarize_run	Download split artifact	2026-03-01T15:03:07.1050365Z with:
+summarize_run	Download split artifact	2026-03-01T15:03:07.1051035Z   name: split-gpt-5.3-codex-k3-tier0
+summarize_run	Download split artifact	2026-03-01T15:03:07.1051828Z   path: aggregate/split
+summarize_run	Download split artifact	2026-03-01T15:03:07.1052491Z   merge-multiple: false
+summarize_run	Download split artifact	2026-03-01T15:03:07.1053169Z   repository: mikkokallio/research-setup
+summarize_run	Download split artifact	2026-03-01T15:03:07.1053972Z   run-id: 22546006564
+summarize_run	Download split artifact	2026-03-01T15:03:07.1055230Z env:
+summarize_run	Download split artifact	2026-03-01T15:03:07.1055816Z   EXP_PREFIX: exp
+summarize_run	Download split artifact	2026-03-01T15:03:07.1056436Z   GH_ORG_OR_USER: mikkokallio
+summarize_run	Download split artifact	2026-03-01T15:03:07.1057377Z   REPO_NAME: research-setup
+summarize_run	Download split artifact	2026-03-01T15:03:07.1058186Z   AZ_SUBSCRIPTION_ID: 1c0e26b6-0fcb-4b6d-911c-2a0836275ea4
+summarize_run	Download split artifact	2026-03-01T15:03:07.1059148Z   AZ_LOCATION: swedencentral
+summarize_run	Download split artifact	2026-03-01T15:03:07.1059878Z   AZ_RG: exp-copilot-mas-rg
+summarize_run	Download split artifact	2026-03-01T15:03:07.1060562Z   AZ_ACR: expcopilotmasacr
+summarize_run	Download split artifact	2026-03-01T15:03:07.1061240Z   AZ_ACA_ENV: exp-copilot-mas-aca
+summarize_run	Download split artifact	2026-03-01T15:03:07.1062002Z   AZ_WEB_APP: exp-copilot-mas-web
+summarize_run	Download split artifact	2026-03-01T15:03:07.1062757Z   AZ_API_APP: exp-copilot-mas-api
+summarize_run	Download split artifact	2026-03-01T15:03:07.1063536Z   RUN_SCOPE: shared
+summarize_run	Download split artifact	2026-03-01T15:03:07.1064127Z   RETENTION_DAYS: 30
+summarize_run	Download split artifact	2026-03-01T15:03:07.1064739Z   MODEL: gpt-5.3-codex
+summarize_run	Download split artifact	2026-03-01T15:03:07.1065356Z   CONDITION: k3
+summarize_run	Download split artifact	2026-03-01T15:03:07.1065902Z   TIER: tier0
+summarize_run	Download split artifact	2026-03-01T15:03:07.1066557Z   TIER_SPEC_FILE: specs/tiers/tier0_proposed.md
+summarize_run	Download split artifact	2026-03-01T15:03:07.1067640Z ##[endgroup]
+summarize_run	Download split artifact	2026-03-01T15:03:07.3165972Z Downloading single artifact
+summarize_run	Download split artifact	2026-03-01T15:03:07.4146367Z ##[error]Unable to download artifact(s): Artifact not found for name: split-gpt-5.3-codex-k3-tier0
+summarize_run	Download split artifact	        Please ensure that your artifact is not expired and the artifact was uploaded using a compatible version of toolkit/upload-artifact.
+summarize_run	Download split artifact	        For more information, visit the GitHub Artifacts FAQ: https://github.com/actions/toolkit/blob/main/packages/artifact/docs/faq.md
+summarize_run	Complete job	﻿2026-03-01T15:03:07.4334041Z Cleaning up orphan processes

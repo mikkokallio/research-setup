@@ -1,0 +1,12 @@
+{
+  "run_key": "gpt-5.3-codex-k3-tier0",
+  "model": "gpt-5.3-codex",
+  "condition": "k3",
+  "tier": "tier0",
+  "timestamp": "2026-03-01T19:12:43.040470+00:00",
+  "run_scope": "shared",
+  "apps": {
+    "web": "exp-copilot-mas-web",
+    "api": "exp-copilot-mas-api"
+  }
+}

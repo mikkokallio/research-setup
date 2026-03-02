@@ -1,0 +1,393 @@
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	﻿2026-03-01T14:12:30.7513459Z Current runner version: '2.331.0'
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7538728Z ##[group]Runner Image Provisioner
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7539694Z Hosted Compute Agent
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7540698Z Version: 20260213.493
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7541423Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7542142Z Build Date: 2026-02-13T00:28:41Z
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7542821Z Worker ID: {47eae158-5d19-4d45-9481-c003a8ed2898}
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7543555Z Azure Region: westus3
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7544134Z ##[endgroup]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7545576Z ##[group]Operating System
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7546279Z Ubuntu
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7546818Z 24.04.3
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7547312Z LTS
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7547800Z ##[endgroup]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7548348Z ##[group]Runner Image
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7548976Z Image: ubuntu-24.04
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7549581Z Version: 20260224.36.1
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7550930Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260224.36/images/ubuntu/Ubuntu2404-Readme.md
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7552519Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260224.36
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7553470Z ##[endgroup]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7554599Z ##[group]GITHUB_TOKEN Permissions
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7556679Z Contents: read
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7557251Z Metadata: read
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7557888Z ##[endgroup]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7560111Z Secret source: Actions
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.7561052Z Prepare workflow directory
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.8123055Z Prepare all required actions
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:30.8161230Z Getting action download info
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:31.2322407Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:31.3701121Z Download action repository 'azure/login@v2' (SHA:a457da9ea143d694b1b9c7c869ebb04ebe844ef5)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.0864529Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.2976013Z Complete job name: deploy (gpt-5.3-codex, k7, tier0)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3702781Z ##[group]Run actions/checkout@v4
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3703778Z with:
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3704261Z   repository: mikkokallio/research-setup
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3705084Z   token: ***
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3705515Z   ssh-strict: true
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3705952Z   ssh-user: git
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3706392Z   persist-credentials: true
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3706882Z   clean: true
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3707328Z   sparse-checkout-cone-mode: true
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3707870Z   fetch-depth: 1
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3708310Z   fetch-tags: false
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3708769Z   show-progress: true
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3709246Z   lfs: false
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3709679Z   submodules: false
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3710138Z   set-safe-directory: true
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3711402Z env:
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3711857Z   EXP_PREFIX: exp
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3712318Z   GH_ORG_OR_USER: mikkokallio
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3712851Z   REPO_NAME: research-setup
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3713518Z   AZ_SUBSCRIPTION_ID: ***
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3714092Z   AZ_LOCATION: swedencentral
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3714602Z   AZ_RG: exp-copilot-mas-rg
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3715110Z   AZ_ACR: expcopilotmasacr
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3715614Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3716163Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3716696Z   AZ_API_APP: exp-copilot-mas-api
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3717218Z   RUN_SCOPE: shared
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3717678Z   RETENTION_DAYS: 30
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.3718162Z ##[endgroup]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.4824561Z Syncing repository: mikkokallio/research-setup
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.4826398Z ##[group]Getting Git version info
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.4827234Z Working directory is '/home/runner/work/research-setup/research-setup'
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.4828323Z [command]/usr/bin/git version
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.4901184Z git version 2.53.0
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.4927615Z ##[endgroup]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.4942321Z Temporarily overriding HOME='/home/runner/work/_temp/007d9a50-acf2-4fe7-96f9-a098890f57a9' before making global git config changes
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.4945165Z Adding repository directory to the temporary git global config as a safe directory
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.4955060Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/research-setup/research-setup
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.4995258Z Deleting the contents of '/home/runner/work/research-setup/research-setup'
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.4998746Z ##[group]Initializing the repository
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5003404Z [command]/usr/bin/git init /home/runner/work/research-setup/research-setup
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5098082Z hint: Using 'master' as the name for the initial branch. This default branch name
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5099961Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5101929Z hint: to use in all of your new repositories, which will suppress this warning,
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5103428Z hint: call:
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5104134Z hint:
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5105055Z hint: 	git config --global init.defaultBranch <name>
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5106191Z hint:
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5106867Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5108395Z hint: 'development'. The just-created branch can be renamed via this command:
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5109353Z hint:
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5109818Z hint: 	git branch -m <name>
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5110891Z hint:
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5112098Z hint: Disable this message with "git config set advice.defaultBranchName false"
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5113734Z Initialized empty Git repository in /home/runner/work/research-setup/research-setup/.git/
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5118316Z [command]/usr/bin/git remote add origin https://github.com/mikkokallio/research-setup
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5156345Z ##[endgroup]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5161912Z ##[group]Disabling automatic garbage collection
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5163232Z [command]/usr/bin/git config --local gc.auto 0
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5197558Z ##[endgroup]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5199099Z ##[group]Setting up auth
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5207236Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5247565Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5604220Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5637402Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5893955Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.5931659Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.6169076Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.6204574Z ##[endgroup]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.6206057Z ##[group]Fetching the repository
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.6214889Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +4d22dd1105fdb6cfda4d1d4af0a78e8a023ec11c:refs/remotes/origin/main
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.9561209Z From https://github.com/mikkokallio/research-setup
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.9562300Z  * [new ref]         4d22dd1105fdb6cfda4d1d4af0a78e8a023ec11c -> origin/main
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.9594939Z ##[endgroup]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.9595732Z ##[group]Determining the checkout info
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.9597328Z ##[endgroup]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.9602501Z [command]/usr/bin/git sparse-checkout disable
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.9645865Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.9672351Z ##[group]Checking out the ref
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.9675748Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.9739710Z Switched to a new branch 'main'
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.9742532Z branch 'main' set up to track 'origin/main'.
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.9750545Z ##[endgroup]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.9791072Z [command]/usr/bin/git log -1 --format=%H
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:32.9817852Z 4d22dd1105fdb6cfda4d1d4af0a78e8a023ec11c
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0040571Z ##[group]Run azure/login@v2
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0041155Z with:
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0041740Z   client-id: ***
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0042257Z   tenant-id: ***
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0042795Z   subscription-id: ***
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0043273Z   enable-AzPSSession: false
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0043762Z   environment: azurecloud
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0044246Z   allow-no-subscriptions: false
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0044784Z   audience: api://AzureADTokenExchange
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0045349Z   auth-type: SERVICE_PRINCIPAL
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0045828Z env:
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0046209Z   EXP_PREFIX: exp
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0046650Z   GH_ORG_OR_USER: mikkokallio
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0047166Z   REPO_NAME: research-setup
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0047760Z   AZ_SUBSCRIPTION_ID: ***
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0048237Z   AZ_LOCATION: swedencentral
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0048742Z   AZ_RG: exp-copilot-mas-rg
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0049246Z   AZ_ACR: expcopilotmasacr
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0049743Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0050462Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0051026Z   AZ_API_APP: exp-copilot-mas-api
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0051529Z   RUN_SCOPE: shared
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0051962Z   RETENTION_DAYS: 30
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0052400Z ##[endgroup]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:33.0456270Z Running Azure CLI Login.
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:48.0655532Z [command]/usr/bin/az cloud set -n azurecloud
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:48.3056795Z Done setting cloud: "azurecloud"
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:48.5857850Z Federated token details:
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:48.5858982Z  issuer - https://token.actions.githubusercontent.com
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:48.5860077Z  subject claim - repo:mikkokallio/research-setup:ref:refs/heads/main
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:48.5861231Z  audience - api://AzureADTokenExchange
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:48.5932556Z  job_workflow_ref - mikkokallio/research-setup/.github/workflows/experiment.yml@refs/heads/main
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:48.5933809Z Attempting Azure CLI login by using OIDC...
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3102119Z Subscription is set successfully.
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3103905Z Azure CLI login succeeds by using OIDC.
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3244126Z ##[group]Run RUN_KEY="gpt-5.3-codex-k7-tier0"
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3244549Z [36;1mRUN_KEY="gpt-5.3-codex-k7-tier0"[0m
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3244947Z [36;1mREV_SUFFIX=$(echo -n "$RUN_KEY" | sha256sum | cut -c1-8)[0m
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3245352Z [36;1mecho "run_key=$RUN_KEY" >> "$GITHUB_OUTPUT"[0m
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3245900Z [36;1mecho "rev_suffix=$REV_SUFFIX" >> "$GITHUB_OUTPUT"[0m
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3302848Z shell: /usr/bin/bash -e {0}
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3303114Z env:
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3303299Z   EXP_PREFIX: exp
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3303510Z   GH_ORG_OR_USER: mikkokallio
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3303777Z   REPO_NAME: research-setup
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3304311Z   AZ_SUBSCRIPTION_ID: ***
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3304549Z   AZ_LOCATION: swedencentral
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3304786Z   AZ_RG: exp-copilot-mas-rg
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3305025Z   AZ_ACR: expcopilotmasacr
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3305259Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3305639Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3306024Z   AZ_API_APP: exp-copilot-mas-api
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3306266Z   RUN_SCOPE: shared
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3306466Z   RETENTION_DAYS: 30
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3306688Z ##[endgroup]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3511133Z ##[group]Run az acr login --name $AZ_ACR
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3511591Z [36;1maz acr login --name $AZ_ACR[0m
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3564636Z shell: /usr/bin/bash -e {0}
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3564930Z env:
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3565134Z   EXP_PREFIX: exp
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3565359Z   GH_ORG_OR_USER: mikkokallio
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3565619Z   REPO_NAME: research-setup
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3566468Z   AZ_SUBSCRIPTION_ID: ***
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3566709Z   AZ_LOCATION: swedencentral
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3566962Z   AZ_RG: exp-copilot-mas-rg
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3567208Z   AZ_ACR: expcopilotmasacr
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3567448Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3567716Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3567972Z   AZ_API_APP: exp-copilot-mas-api
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3568252Z   RUN_SCOPE: shared
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3568482Z   RETENTION_DAYS: 30
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:50.3568708Z ##[endgroup]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.2587049Z Login Succeeded
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4073232Z ##[group]Run API_IMAGE="$AZ_ACR.azurecr.io/research-setup-api:gpt-5.3-codex-k7-tier0"
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4073863Z [36;1mAPI_IMAGE="$AZ_ACR.azurecr.io/research-setup-api:gpt-5.3-codex-k7-tier0"[0m
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4074295Z [36;1mdocker build -t "$API_IMAGE" apps/api[0m
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4074588Z [36;1mdocker push "$API_IMAGE"[0m
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4074877Z [36;1mecho "API_IMAGE=$API_IMAGE" >> "$GITHUB_ENV"[0m
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4124160Z shell: /usr/bin/bash -e {0}
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4124414Z env:
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4124586Z   EXP_PREFIX: exp
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4124797Z   GH_ORG_OR_USER: mikkokallio
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4125041Z   REPO_NAME: research-setup
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4125464Z   AZ_SUBSCRIPTION_ID: ***
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4125695Z   AZ_LOCATION: swedencentral
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4125925Z   AZ_RG: exp-copilot-mas-rg
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4126156Z   AZ_ACR: expcopilotmasacr
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4126385Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4126672Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4126914Z   AZ_API_APP: exp-copilot-mas-api
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4127148Z   RUN_SCOPE: shared
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4127337Z   RETENTION_DAYS: 30
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:56.4127532Z ##[endgroup]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.0024446Z #0 building with "default" instance using docker driver
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.0025002Z 
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.0025258Z #1 [internal] load build definition from Dockerfile
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.0025776Z #1 transferring dockerfile: 242B done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.0026098Z #1 DONE 0.0s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.0026233Z 
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.0026467Z #2 [internal] load metadata for docker.io/library/python:3.11-slim
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.1755455Z #2 ...
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.1755693Z 
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.1756035Z #3 [auth] library/python:pull token for registry-1.docker.io
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.1756620Z #3 DONE 0.0s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.3258216Z 
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.3258841Z #2 [internal] load metadata for docker.io/library/python:3.11-slim
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.6399046Z #2 DONE 0.8s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.7567844Z 
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.7568482Z #4 [internal] load .dockerignore
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.7569029Z #4 transferring context: 2B done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.7569433Z #4 DONE 0.0s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.7569624Z 
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.7569767Z #5 [internal] load build context
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.7570207Z #5 transferring context: 825B done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.7570847Z #5 DONE 0.0s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.7571091Z 
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.7571829Z #6 [1/5] FROM docker.io/library/python:3.11-slim@sha256:c8271b1f627d0068857dce5b53e14a9558603b527e46f1f901722f935b786a39
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.7573538Z #6 resolve docker.io/library/python:3.11-slim@sha256:c8271b1f627d0068857dce5b53e14a9558603b527e46f1f901722f935b786a39 done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.7575171Z #6 sha256:fa7a862d74b4decf68fb7d3a85147efc14dbcd3779c0abd56c071d27a1ffee04 1.75kB / 1.75kB done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.7576490Z #6 sha256:992921a8b23a7d2fd769908f7646e7cccd583fea96486a99ace92c7399768847 5.48kB / 5.48kB done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.7577467Z #6 sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419 0B / 29.78MB 0.1s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.7578308Z #6 sha256:13159fd0b0512a3ecefe5d5e51affb0ef7eb36b371459c75e34f5c090a0870f4 0B / 1.29MB 0.1s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.7578983Z #6 sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f 0B / 14.36MB 0.1s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.7579610Z #6 sha256:c8271b1f627d0068857dce5b53e14a9558603b527e46f1f901722f935b786a39 10.37kB / 10.37kB done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:57.8570764Z #6 sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419 23.07MB / 29.78MB 0.2s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:58.0338593Z #6 sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419 29.78MB / 29.78MB 0.2s done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:58.0340069Z #6 sha256:13159fd0b0512a3ecefe5d5e51affb0ef7eb36b371459c75e34f5c090a0870f4 1.29MB / 1.29MB 0.2s done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:58.0341509Z #6 sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f 3.15MB / 14.36MB 0.3s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:58.0343055Z #6 extracting sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419 0.1s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:58.0344260Z #6 sha256:28c7e2bc4784ae35d32ed16d30b72e35df3c3f6a0214492f5be2b11e4b5ae2b0 0B / 250B 0.3s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:58.1412964Z #6 sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f 14.36MB / 14.36MB 0.3s done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:58.1414255Z #6 sha256:28c7e2bc4784ae35d32ed16d30b72e35df3c3f6a0214492f5be2b11e4b5ae2b0 250B / 250B 0.3s done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:58.9791335Z #6 extracting sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419 0.9s done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:58.9792545Z #6 extracting sha256:13159fd0b0512a3ecefe5d5e51affb0ef7eb36b371459c75e34f5c090a0870f4 0.1s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:59.0828257Z #6 extracting sha256:13159fd0b0512a3ecefe5d5e51affb0ef7eb36b371459c75e34f5c090a0870f4 0.1s done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:59.0834646Z #6 extracting sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:59.8707642Z #6 extracting sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f 0.7s done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:12:59.8708816Z #6 extracting sha256:28c7e2bc4784ae35d32ed16d30b72e35df3c3f6a0214492f5be2b11e4b5ae2b0
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:00.0707556Z #6 extracting sha256:28c7e2bc4784ae35d32ed16d30b72e35df3c3f6a0214492f5be2b11e4b5ae2b0 done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:00.0708457Z #6 DONE 2.2s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:00.0708708Z 
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:00.0708815Z #7 [2/5] WORKDIR /app
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:00.0709099Z #7 DONE 0.0s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:00.0709275Z 
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:00.0709401Z #8 [3/5] COPY requirements.txt ./
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:00.0709738Z #8 DONE 0.0s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:00.0709876Z 
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:00.0710107Z #9 [4/5] RUN pip install --no-cache-dir -r requirements.txt
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:01.5931180Z #9 1.673 Collecting fastapi==0.115.2 (from -r requirements.txt (line 1))
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:01.7554825Z #9 1.714   Downloading fastapi-0.115.2-py3-none-any.whl.metadata (27 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:01.7555762Z #9 1.759 Collecting uvicorn==0.30.6 (from -r requirements.txt (line 2))
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:01.7556646Z #9 1.769   Downloading uvicorn-0.30.6-py3-none-any.whl.metadata (6.6 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:01.7557777Z #9 1.836 Collecting starlette<0.41.0,>=0.37.2 (from fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:01.9167075Z #9 1.847   Downloading starlette-0.40.0-py3-none-any.whl.metadata (6.0 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:01.9581434Z #9 2.038 Collecting pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4 (from fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:02.0598976Z #9 2.049   Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:02.0600020Z #9 2.060      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 9.6 MB/s eta 0:00:00
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:02.0601177Z #9 2.092 Collecting typing-extensions>=4.8.0 (from fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:02.0602052Z #9 2.102   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:02.0602847Z #9 2.140 Collecting click>=7.0 (from uvicorn==0.30.6->-r requirements.txt (line 2))
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:02.2862678Z #9 2.150   Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:02.2863633Z #9 2.170 Collecting h11>=0.8 (from uvicorn==0.30.6->-r requirements.txt (line 2))
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:02.2864493Z #9 2.179   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:02.2865728Z #9 2.206 Collecting annotated-types>=0.6.0 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:02.2867607Z #9 2.216   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:02.8767952Z #9 2.957 Collecting pydantic-core==2.41.5 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.0053918Z #9 2.967   Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.0056007Z #9 2.990 Collecting typing-inspection>=0.4.2 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.0057375Z #9 3.000   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.0058474Z #9 3.042 Collecting anyio<5,>=3.4.0 (from starlette<0.41.0,>=0.37.2->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.0059478Z #9 3.052   Downloading anyio-4.12.1-py3-none-any.whl.metadata (4.3 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.0060746Z #9 3.086 Collecting idna>=2.8 (from anyio<5,>=3.4.0->starlette<0.41.0,>=0.37.2->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.1122404Z #9 3.096   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.1123241Z #9 3.124 Downloading fastapi-0.115.2-py3-none-any.whl (94 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.1124274Z #9 3.126    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 94.7/94.7 kB 136.1 MB/s eta 0:00:00
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.1124996Z #9 3.136 Downloading uvicorn-0.30.6-py3-none-any.whl (62 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.1125821Z #9 3.138    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.8/62.8 kB 221.1 MB/s eta 0:00:00
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.1126547Z #9 3.148 Downloading click-8.3.1-py3-none-any.whl (108 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.1127543Z #9 3.150    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 108.3/108.3 kB 301.5 MB/s eta 0:00:00
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.1128148Z #9 3.160 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.1128655Z #9 3.171 Downloading pydantic-2.12.5-py3-none-any.whl (463 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.1129303Z #9 3.182    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 463.6/463.6 kB 46.2 MB/s eta 0:00:00
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.1129962Z #9 3.193 Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.3375456Z #9 3.212    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 121.6 MB/s eta 0:00:00
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.3376270Z #9 3.224 Downloading starlette-0.40.0-py3-none-any.whl (73 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.3377035Z #9 3.226    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.3/73.3 kB 268.1 MB/s eta 0:00:00
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.3377676Z #9 3.236 Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.3378415Z #9 3.238    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.6/44.6 kB 259.3 MB/s eta 0:00:00
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.3379027Z #9 3.248 Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.3379617Z #9 3.258 Downloading anyio-4.12.1-py3-none-any.whl (113 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.3380556Z #9 3.260    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 113.6/113.6 kB 308.9 MB/s eta 0:00:00
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.3381240Z #9 3.270 Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.3381821Z #9 3.280 Downloading idna-3.11-py3-none-any.whl (71 kB)
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.3382470Z #9 3.282    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 71.0/71.0 kB 243.3 MB/s eta 0:00:00
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:03.3383668Z #9 3.418 Installing collected packages: typing-extensions, idna, h11, click, annotated-types, uvicorn, typing-inspection, pydantic-core, anyio, starlette, pydantic, fastapi
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:04.1156627Z #9 4.196 Successfully installed annotated-types-0.7.0 anyio-4.12.1 click-8.3.1 fastapi-0.115.2 h11-0.16.0 idna-3.11 pydantic-2.12.5 pydantic-core-2.41.5 starlette-0.40.0 typing-extensions-4.15.0 typing-inspection-0.4.2 uvicorn-0.30.6
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:04.3593976Z #9 4.196 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:04.3596308Z #9 4.289 
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:04.3596721Z #9 4.289 [notice] A new release of pip is available: 24.0 -> 26.0.1
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:04.3597319Z #9 4.289 [notice] To update, run: pip install --upgrade pip
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:04.6287023Z #9 DONE 4.7s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:04.7989501Z 
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:04.7990021Z #10 [5/5] COPY . .
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:04.7990799Z #10 DONE 0.0s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:04.7991033Z 
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:04.7992010Z #11 exporting to image
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:04.7992423Z #11 exporting layers
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:05.1992226Z #11 exporting layers 0.6s done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:05.2177107Z #11 writing image sha256:0ed3a47f6c5536e218e144da7969fb9c9322e4e4e5ab9444cc98d6e1409b1b3d done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:05.2178403Z #11 naming to expcopilotmasacr.azurecr.io/research-setup-api:gpt-5.3-codex-k7-tier0 done
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:05.2179511Z #11 DONE 0.6s
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:05.2541721Z The push refers to repository [expcopilotmasacr.azurecr.io/research-setup-api]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:05.6869063Z 03314ba6bfdb: Preparing
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:05.6869549Z ad2e3ce35bfa: Preparing
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:05.6869850Z 596a3d1b0df9: Preparing
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:05.6870152Z a88be6ca378e: Preparing
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:05.6870563Z 3780204f6b74: Preparing
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:05.6870765Z 11eedb262098: Preparing
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:05.6870961Z 6400845f12ab: Preparing
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:05.6871147Z a257f20c716c: Preparing
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:05.6871349Z 11eedb262098: Waiting
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:05.6871577Z 6400845f12ab: Waiting
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:05.6871770Z a257f20c716c: Waiting
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:06.5875319Z 3780204f6b74: Layer already exists
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:07.0380227Z 11eedb262098: Layer already exists
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:07.4881203Z 6400845f12ab: Layer already exists
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:08.0127645Z 596a3d1b0df9: Pushed
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:08.0490636Z a88be6ca378e: Pushed
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:08.0866579Z 03314ba6bfdb: Pushed
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:09.8852751Z ad2e3ce35bfa: Pushed
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:13.5086752Z a257f20c716c: Pushed
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9752684Z gpt-5.3-codex-k7-tier0: digest: sha256:7f0eff10a936ae76fbcd98719128659c56ba1cc41e2c3279bbaa990891338988 size: 1990
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9815183Z ##[group]Run az containerapp update \
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9815499Z [36;1maz containerapp update \[0m
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9815750Z [36;1m  --name $AZ_API_APP \[0m
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9815996Z [36;1m  --resource-group $AZ_RG \[0m
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9816255Z [36;1m  --image "$API_IMAGE" \[0m
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9816511Z [36;1m  --revision-suffix 4a4c3460 \[0m
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9816827Z [36;1m  --set-env-vars RUN_KEY=gpt-5.3-codex-k7-tier0[0m
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9865377Z shell: /usr/bin/bash -e {0}
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9865627Z env:
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9865803Z   EXP_PREFIX: exp
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9866005Z   GH_ORG_OR_USER: mikkokallio
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9866248Z   REPO_NAME: research-setup
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9866831Z   AZ_SUBSCRIPTION_ID: ***
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9867095Z   AZ_LOCATION: swedencentral
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9867343Z   AZ_RG: exp-copilot-mas-rg
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9867567Z   AZ_ACR: expcopilotmasacr
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9867833Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9868079Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9868318Z   AZ_API_APP: exp-copilot-mas-api
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9868545Z   RUN_SCOPE: shared
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9868734Z   RETENTION_DAYS: 30
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9869096Z   API_IMAGE: expcopilotmasacr.azurecr.io/research-setup-api:gpt-5.3-codex-k7-tier0
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:16.9869515Z ##[endgroup]
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:20.0569699Z ERROR: (ContainerAppOperationInProgress) Cannot modify a container app 'exp-copilot-mas-api' because there is an active provisioning operation in progress. OperationId: 'd74810ef-03ea-4645-ba29-8913e667c98f'.
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:20.1767066Z ##[error]Process completed with exit code 1.
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:20.1916410Z Post job cleanup.
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:20.2347522Z Clearing azure cli accounts from the local cache.
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:20.2357515Z [command]/usr/bin/az account clear
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:21.0401959Z Post job cleanup.
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:21.1406449Z [command]/usr/bin/git version
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:21.1451029Z git version 2.53.0
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:21.1498392Z Temporarily overriding HOME='/home/runner/work/_temp/d407d4c4-fa19-43df-8a5c-1c3c7be0bb5f' before making global git config changes
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:21.1499766Z Adding repository directory to the temporary git global config as a safe directory
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:21.1506530Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/research-setup/research-setup
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:21.1553566Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:21.1591187Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:21.1846550Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:21.1871362Z http.https://github.com/.extraheader
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:21.1884158Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:21.1917927Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:21.2169304Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:21.2208528Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:21.2607723Z Cleaning up orphan processes
+deploy (gpt-5.3-codex, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:21.3257664Z Terminate orphan process: pid (2788) (python3)

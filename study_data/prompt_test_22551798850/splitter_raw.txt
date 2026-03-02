@@ -1,0 +1,145 @@
+{
+  "shared_context": {
+    "critical_contracts": [
+      "All backend endpoints must return deterministic, fixed outputs for a given run key.",
+      "Frontend and backend communicate via RESTful JSON over HTTP.",
+      "The /data endpoint returns an array of items, each with id (integer), label (string), and status (string).",
+      "CORS must be configured to allow frontend-backend communication."
+    ],
+    "cross_slice_assumptions": [
+      "Frontend and backend are developed in separate directories/projects.",
+      "API endpoint URLs and response shapes are agreed upon and stable.",
+      "Frontend can be developed and tested using mock data before backend is available.",
+      "Backend endpoints are accessible at a known base URL during integration."
+    ]
+  },
+  "slices": [
+    {
+      "id": "slice_1",
+      "title": "Backend API Implementation (FastAPI)",
+      "goal": "Implement the FastAPI backend with all required endpoints and deterministic responses.",
+      "instructions": "Create a FastAPI app with endpoints /healthz, /info, /metrics, and /data, each returning the specified deterministic JSON. Ensure all endpoints are documented in /docs and CORS is enabled for frontend access.",
+      "dependencies": [],
+      "implementation_dependencies": [],
+      "validation_dependencies": [],
+      "source_requirements": [
+        "The backend must implement four specific endpoints. All responses must be deterministic.",
+        "GET /healthz returns 200 OK with JSON {\"status\": \"ok\"}.",
+        "GET /metrics returns 200 OK with JSON containing integer fields `uptime` and `requests_total`.",
+        "GET /info returns 200 OK with JSON containing string fields `version` and `environment`.",
+        "GET /data returns 200 OK with JSON object key `items` as an array; each item includes `id` (integer), `label` (string), and `status` (string).",
+        "FastAPI docs (/docs) are accessible and reflect all four endpoints.",
+        "No external data sources.",
+        "Fixed outputs for a given run key.",
+        "CORS must be configured to allow frontend-backend communication."
+      ],
+      "critical_contracts_needed": [
+        "All backend endpoints must return deterministic, fixed outputs for a given run key.",
+        "The /data endpoint returns an array of items, each with id (integer), label (string), and status (string).",
+        "CORS must be configured to allow frontend-backend communication."
+      ],
+      "tests_to_author_now": [
+        "Test GET /healthz returns 200 and {\"status\": \"ok\"}.",
+        "Test GET /metrics returns 200 and integer fields `uptime` and `requests_total`.",
+        "Test GET /info returns 200 and string fields `version` and `environment`.",
+        "Test GET /data returns 200 and array of items with correct fields.",
+        "Test /docs is accessible and documents all endpoints."
+      ],
+      "tests_to_run_now": [
+        "Test GET /healthz returns 200 and {\"status\": \"ok\"}.",
+        "Test GET /metrics returns 200 and integer fields `uptime` and `requests_total`.",
+        "Test GET /info returns 200 and string fields `version` and `environment`.",
+        "Test GET /data returns 200 and array of items with correct fields.",
+        "Test /docs is accessible and documents all endpoints."
+      ],
+      "tests_deferred_until_dependencies": [],
+      "effort_points": 3
+    },
+    {
+      "id": "slice_2",
+      "title": "Frontend UI and State Management (React + Vite)",
+      "goal": "Develop the React + Vite frontend dashboard with all required UI states and data contracts.",
+      "instructions": "Build a single-page React app with a header (app name and system version), status bar (healthz), and main content (data grid/list). Implement explicit UI states: Loading, Empty, Error (with Retry), and Success. Use mock API responses matching the backend contract for initial development.",
+      "dependencies": [],
+      "implementation_dependencies": [],
+      "validation_dependencies": ["slice_1"],
+      "source_requirements": [
+        "Frontend: React + Vite (TypeScript preferred).",
+        "The UI consists of a single Dashboard view that aggregates data from the backend.",
+        "Header: Displays the App Name and the current system version (from /info).",
+        "Status Bar: A visual indicator of the /healthz status (Green for \"ok\", Red for errors).",
+        "Main Content: A grid or list displaying the items from /data.",
+        "The frontend must explicitly handle and visually distinguish between these four states: Loading, Empty, Error, Success.",
+        "Initial Load: The app shows a \"Loading\" state immediately upon mount.",
+        "Data Rendering: Items from the /data endpoint are visible in the UI.",
+        "Resilience: Manually stopping the backend and clicking \"Retry\" triggers the \"Error\" state.",
+        "The UI updates the \"System Version\" dynamically based on the /info response.",
+        "No external data sources.",
+        "Fixed outputs for a given run key."
+      ],
+      "critical_contracts_needed": [
+        "Frontend and backend communicate via RESTful JSON over HTTP.",
+        "The /data endpoint returns an array of items, each with id (integer), label (string), and status (string)."
+      ],
+      "tests_to_author_now": [
+        "Test that Loading state is shown on initial mount.",
+        "Test that Success state renders items from /data.",
+        "Test that Empty state is shown when /data returns an empty list.",
+        "Test that Error state is shown and Retry works when API is unreachable.",
+        "Test that system version in header updates based on /info."
+      ],
+      "tests_to_run_now": [
+        "Test that Loading state is shown on initial mount.",
+        "Test that Success state renders items from /data (using mock data).",
+        "Test that Empty state is shown when /data returns an empty list (using mock data).",
+        "Test that Error state is shown and Retry works when API is unreachable (using mock/fake error).",
+        "Test that system version in header updates based on /info (using mock data)."
+      ],
+      "tests_deferred_until_dependencies": [
+        "Test that frontend displays real backend data and handles real backend errors (after slice_1 is available)."
+      ],
+      "effort_points": 3
+    },
+    {
+      "id": "slice_3",
+      "title": "Integration and End-to-End Validation",
+      "goal": "Integrate frontend and backend, configure CORS, and validate full-stack operation.",
+      "instructions": "Connect the frontend to the running FastAPI backend, ensure CORS is correctly configured, and verify all UI states and data flows work with real API responses. Run end-to-end tests covering the acceptance checklist.",
+      "dependencies": ["slice_1", "slice_2"],
+      "implementation_dependencies": ["slice_1", "slice_2"],
+      "validation_dependencies": [],
+      "source_requirements": [
+        "Frontend successfully communicates with the FastAPI backend using configured CORS settings.",
+        "The project runs via npm run dev (Vite) and uvicorn (FastAPI).",
+        "The UI updates the \"System Version\" dynamically based on the /info response.",
+        "Resilience: Manually stopping the backend and clicking \"Retry\" triggers the \"Error\" state.",
+        "Acceptance Checklist (Strictly Testable): Backend Validation, Frontend Validation, Integration."
+      ],
+      "critical_contracts_needed": [
+        "CORS must be configured to allow frontend-backend communication.",
+        "Frontend and backend communicate via RESTful JSON over HTTP."
+      ],
+      "tests_to_author_now": [
+        "End-to-end test: Frontend loads and displays data from backend.",
+        "End-to-end test: UI shows Error state and Retry works when backend is stopped.",
+        "End-to-end test: System version updates dynamically from /info.",
+        "End-to-end test: All UI states (Loading, Empty, Error, Success) are reachable with real backend."
+      ],
+      "tests_to_run_now": [],
+      "tests_deferred_until_dependencies": [
+        "All end-to-end tests (after both slices are implemented and integrated)."
+      ],
+      "effort_points": 3
+    }
+  ],
+  "integration_notes": "After slices 1 and 2 are complete, update frontend API URLs to point to the running FastAPI backend and verify CORS is enabled. Run all end-to-end tests to confirm the frontend and backend interoperate as specified, including dynamic version updates and error handling. Ensure that all UI states are reachable using real backend responses and that the acceptance checklist is fully validated."
+}
+
+
+
+Total usage est:        1 Premium request
+API time spent:         18s
+Total session time:     20s
+Total code changes:     +0 -0
+Breakdown by AI model:
+ gpt-4.1                 14.6k in, 1.9k out, 3.8k cached (Est. 1 Premium request)

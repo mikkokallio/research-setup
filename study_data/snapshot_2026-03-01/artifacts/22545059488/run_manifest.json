@@ -1,0 +1,12 @@
+{
+  "run_key": "gpt-5.3-codex-single_plan-tier1",
+  "model": "gpt-5.3-codex",
+  "condition": "single_plan",
+  "tier": "tier1",
+  "timestamp": "2026-03-01T14:07:57.397996+00:00",
+  "run_scope": "shared",
+  "apps": {
+    "web": "exp-copilot-mas-web",
+    "api": "exp-copilot-mas-api"
+  }
+}

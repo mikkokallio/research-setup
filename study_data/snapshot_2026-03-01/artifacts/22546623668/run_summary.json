@@ -1,0 +1,10 @@
+{
+  "run_key": "",
+  "model": "gpt-5.3-codex",
+  "condition": "k3",
+  "tier": "tier0",
+  "timings": [],
+  "total_wall_clock_seconds": null,
+  "usage": [],
+  "deploy": null
+}

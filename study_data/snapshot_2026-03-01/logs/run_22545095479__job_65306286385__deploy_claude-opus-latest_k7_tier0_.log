@@ -1,0 +1,389 @@
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	﻿2026-03-01T14:13:29.6708120Z Current runner version: '2.331.0'
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6741918Z ##[group]Runner Image Provisioner
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6743279Z Hosted Compute Agent
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6744230Z Version: 20260213.493
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6744894Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6745647Z Build Date: 2026-02-13T00:28:41Z
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6746765Z Worker ID: {5d2b103a-eade-46cc-bd65-f67598e2bb26}
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6748039Z Azure Region: centralus
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6749791Z ##[endgroup]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6752336Z ##[group]Operating System
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6753275Z Ubuntu
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6754151Z 24.04.3
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6754909Z LTS
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6755591Z ##[endgroup]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6756417Z ##[group]Runner Image
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6757239Z Image: ubuntu-24.04
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6758280Z Version: 20260224.36.1
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6760409Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260224.36/images/ubuntu/Ubuntu2404-Readme.md
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6763382Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260224.36
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6765210Z ##[endgroup]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6766888Z ##[group]GITHUB_TOKEN Permissions
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6769786Z Contents: read
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6770606Z Metadata: read
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6771409Z ##[endgroup]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6774123Z Secret source: Actions
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.6775586Z Prepare workflow directory
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.7332577Z Prepare all required actions
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:29.7370468Z Getting action download info
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:30.0154151Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.1914279Z Download action repository 'azure/login@v2' (SHA:a457da9ea143d694b1b9c7c869ebb04ebe844ef5)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.6064059Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8131396Z Complete job name: deploy (claude-opus-latest, k7, tier0)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8779164Z ##[group]Run actions/checkout@v4
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8779988Z with:
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8780273Z   repository: mikkokallio/research-setup
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8780777Z   token: ***
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8781061Z   ssh-strict: true
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8781305Z   ssh-user: git
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8781555Z   persist-credentials: true
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8781828Z   clean: true
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8782088Z   sparse-checkout-cone-mode: true
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8782386Z   fetch-depth: 1
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8782625Z   fetch-tags: false
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8782878Z   show-progress: true
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8783119Z   lfs: false
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8783337Z   submodules: false
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8783583Z   set-safe-directory: true
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8784075Z env:
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8784307Z   EXP_PREFIX: exp
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8784563Z   GH_ORG_OR_USER: mikkokallio
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8784855Z   REPO_NAME: research-setup
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8785232Z   AZ_SUBSCRIPTION_ID: ***
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8785562Z   AZ_LOCATION: swedencentral
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8785843Z   AZ_RG: exp-copilot-mas-rg
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8786109Z   AZ_ACR: expcopilotmasacr
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8786387Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8786686Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8786997Z   AZ_API_APP: exp-copilot-mas-api
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8787288Z   RUN_SCOPE: shared
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8787532Z   RETENTION_DAYS: 30
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.8787777Z ##[endgroup]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.9868560Z Syncing repository: mikkokallio/research-setup
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.9870326Z ##[group]Getting Git version info
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.9870870Z Working directory is '/home/runner/work/research-setup/research-setup'
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.9871578Z [command]/usr/bin/git version
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.9959984Z git version 2.53.0
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:31.9985906Z ##[endgroup]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0000753Z Temporarily overriding HOME='/home/runner/work/_temp/670e7e16-6463-4fed-8978-5d14ce1de4f1' before making global git config changes
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0002176Z Adding repository directory to the temporary git global config as a safe directory
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0014253Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/research-setup/research-setup
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0055068Z Deleting the contents of '/home/runner/work/research-setup/research-setup'
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0058560Z ##[group]Initializing the repository
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0063099Z [command]/usr/bin/git init /home/runner/work/research-setup/research-setup
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0188051Z hint: Using 'master' as the name for the initial branch. This default branch name
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0189235Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0190102Z hint: to use in all of your new repositories, which will suppress this warning,
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0190585Z hint: call:
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0190819Z hint:
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0191339Z hint: 	git config --global init.defaultBranch <name>
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0192134Z hint:
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0192698Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0193460Z hint: 'development'. The just-created branch can be renamed via this command:
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0194353Z hint:
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0194841Z hint: 	git branch -m <name>
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0195400Z hint:
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0196139Z hint: Disable this message with "git config set advice.defaultBranchName false"
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0197534Z Initialized empty Git repository in /home/runner/work/research-setup/research-setup/.git/
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0205693Z [command]/usr/bin/git remote add origin https://github.com/mikkokallio/research-setup
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0241715Z ##[endgroup]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0242503Z ##[group]Disabling automatic garbage collection
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0247246Z [command]/usr/bin/git config --local gc.auto 0
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0276677Z ##[endgroup]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0277479Z ##[group]Setting up auth
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0285164Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0317103Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0687949Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0718285Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0950658Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.0993006Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.1226049Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.1261855Z ##[endgroup]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.1262593Z ##[group]Fetching the repository
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.1270761Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +4d22dd1105fdb6cfda4d1d4af0a78e8a023ec11c:refs/remotes/origin/main
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4018087Z From https://github.com/mikkokallio/research-setup
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4019105Z  * [new ref]         4d22dd1105fdb6cfda4d1d4af0a78e8a023ec11c -> origin/main
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4053207Z ##[endgroup]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4054006Z ##[group]Determining the checkout info
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4056836Z ##[endgroup]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4063009Z [command]/usr/bin/git sparse-checkout disable
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4106655Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4134018Z ##[group]Checking out the ref
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4138996Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4198207Z Switched to a new branch 'main'
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4201714Z branch 'main' set up to track 'origin/main'.
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4207873Z ##[endgroup]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4244229Z [command]/usr/bin/git log -1 --format=%H
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4267805Z 4d22dd1105fdb6cfda4d1d4af0a78e8a023ec11c
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4467476Z ##[group]Run azure/login@v2
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4467801Z with:
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4468190Z   client-id: ***
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4468484Z   tenant-id: ***
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4468794Z   subscription-id: ***
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4469058Z   enable-AzPSSession: false
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4469346Z   environment: azurecloud
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4469819Z   allow-no-subscriptions: false
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4470136Z   audience: api://AzureADTokenExchange
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4470471Z   auth-type: SERVICE_PRINCIPAL
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4470737Z env:
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4470950Z   EXP_PREFIX: exp
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4471235Z   GH_ORG_OR_USER: mikkokallio
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4471537Z   REPO_NAME: research-setup
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4471895Z   AZ_SUBSCRIPTION_ID: ***
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4472163Z   AZ_LOCATION: swedencentral
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4472431Z   AZ_RG: exp-copilot-mas-rg
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4472703Z   AZ_ACR: expcopilotmasacr
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4472979Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4473303Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4473597Z   AZ_API_APP: exp-copilot-mas-api
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4473871Z   RUN_SCOPE: shared
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4474109Z   RETENTION_DAYS: 30
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4474347Z ##[endgroup]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:32.4849860Z Running Azure CLI Login.
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:37.1343998Z [command]/usr/bin/az cloud set -n azurecloud
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:37.3617206Z Done setting cloud: "azurecloud"
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:37.5153726Z Federated token details:
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:37.5154370Z  issuer - https://token.actions.githubusercontent.com
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:37.5155207Z  subject claim - repo:mikkokallio/research-setup:ref:refs/heads/main
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:37.5156038Z  audience - api://AzureADTokenExchange
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:37.5156918Z  job_workflow_ref - mikkokallio/research-setup/.github/workflows/experiment.yml@refs/heads/main
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:37.5158168Z Attempting Azure CLI login by using OIDC...
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7537141Z Subscription is set successfully.
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7652443Z Azure CLI login succeeds by using OIDC.
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7725239Z ##[group]Run RUN_KEY="claude-opus-latest-k7-tier0"
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7725713Z [36;1mRUN_KEY="claude-opus-latest-k7-tier0"[0m
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7726144Z [36;1mREV_SUFFIX=$(echo -n "$RUN_KEY" | sha256sum | cut -c1-8)[0m
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7726567Z [36;1mecho "run_key=$RUN_KEY" >> "$GITHUB_OUTPUT"[0m
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7726941Z [36;1mecho "rev_suffix=$REV_SUFFIX" >> "$GITHUB_OUTPUT"[0m
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7779960Z shell: /usr/bin/bash -e {0}
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7780251Z env:
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7780433Z   EXP_PREFIX: exp
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7780653Z   GH_ORG_OR_USER: mikkokallio
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7780929Z   REPO_NAME: research-setup
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7781459Z   AZ_SUBSCRIPTION_ID: ***
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7781708Z   AZ_LOCATION: swedencentral
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7781947Z   AZ_RG: exp-copilot-mas-rg
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7782191Z   AZ_ACR: expcopilotmasacr
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7782460Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7782748Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7783007Z   AZ_API_APP: exp-copilot-mas-api
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7783234Z   RUN_SCOPE: shared
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7783433Z   RETENTION_DAYS: 30
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7783651Z ##[endgroup]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7962696Z ##[group]Run az acr login --name $AZ_ACR
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.7963058Z [36;1maz acr login --name $AZ_ACR[0m
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.8009157Z shell: /usr/bin/bash -e {0}
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.8009408Z env:
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.8009848Z   EXP_PREFIX: exp
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.8010065Z   GH_ORG_OR_USER: mikkokallio
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.8010308Z   REPO_NAME: research-setup
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.8010838Z   AZ_SUBSCRIPTION_ID: ***
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.8011073Z   AZ_LOCATION: swedencentral
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.8011315Z   AZ_RG: exp-copilot-mas-rg
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.8011545Z   AZ_ACR: expcopilotmasacr
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.8011771Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.8012021Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.8012258Z   AZ_API_APP: exp-copilot-mas-api
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.8012492Z   RUN_SCOPE: shared
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.8012717Z   RETENTION_DAYS: 30
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:38.8012924Z ##[endgroup]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.7229774Z Login Succeeded
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8248745Z ##[group]Run API_IMAGE="$AZ_ACR.azurecr.io/research-setup-api:claude-opus-latest-k7-tier0"
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8250140Z [36;1mAPI_IMAGE="$AZ_ACR.azurecr.io/research-setup-api:claude-opus-latest-k7-tier0"[0m
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8250956Z [36;1mdocker build -t "$API_IMAGE" apps/api[0m
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8251466Z [36;1mdocker push "$API_IMAGE"[0m
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8251988Z [36;1mecho "API_IMAGE=$API_IMAGE" >> "$GITHUB_ENV"[0m
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8320534Z shell: /usr/bin/bash -e {0}
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8320957Z env:
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8321261Z   EXP_PREFIX: exp
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8321630Z   GH_ORG_OR_USER: mikkokallio
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8322058Z   REPO_NAME: research-setup
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8322692Z   AZ_SUBSCRIPTION_ID: ***
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8323123Z   AZ_LOCATION: swedencentral
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8323549Z   AZ_RG: exp-copilot-mas-rg
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8323972Z   AZ_ACR: expcopilotmasacr
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8324399Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8324936Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8325400Z   AZ_API_APP: exp-copilot-mas-api
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8325844Z   RUN_SCOPE: shared
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8326187Z   RETENTION_DAYS: 30
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:42.8326545Z ##[endgroup]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.3271067Z #0 building with "default" instance using docker driver
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.3271538Z 
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.3271764Z #1 [internal] load build definition from Dockerfile
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.3272377Z #1 transferring dockerfile: 242B done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.3272837Z #1 DONE 0.0s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.3273034Z 
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.3273313Z #2 [auth] library/python:pull token for registry-1.docker.io
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.4773595Z #2 DONE 0.0s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.4773860Z 
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.4774222Z #3 [internal] load metadata for docker.io/library/python:3.11-slim
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.8471713Z #3 DONE 0.6s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.9696370Z 
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.9697136Z #4 [internal] load .dockerignore
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.9697850Z #4 transferring context: 2B done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.9698323Z #4 DONE 0.0s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.9698555Z 
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.9698715Z #5 [internal] load build context
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.9699172Z #5 transferring context: 825B done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.9699811Z #5 DONE 0.0s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.9700004Z 
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.9700730Z #6 [1/5] FROM docker.io/library/python:3.11-slim@sha256:c8271b1f627d0068857dce5b53e14a9558603b527e46f1f901722f935b786a39
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.9701971Z #6 resolve docker.io/library/python:3.11-slim@sha256:c8271b1f627d0068857dce5b53e14a9558603b527e46f1f901722f935b786a39 done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.9703009Z #6 sha256:992921a8b23a7d2fd769908f7646e7cccd583fea96486a99ace92c7399768847 5.48kB / 5.48kB done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.9703918Z #6 sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419 0B / 29.78MB 0.1s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.9704667Z #6 sha256:13159fd0b0512a3ecefe5d5e51affb0ef7eb36b371459c75e34f5c090a0870f4 0B / 1.29MB 0.1s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.9705401Z #6 sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f 0B / 14.36MB 0.1s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.9706160Z #6 sha256:c8271b1f627d0068857dce5b53e14a9558603b527e46f1f901722f935b786a39 10.37kB / 10.37kB done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:45.9707064Z #6 sha256:fa7a862d74b4decf68fb7d3a85147efc14dbcd3779c0abd56c071d27a1ffee04 1.75kB / 1.75kB done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:46.0699240Z #6 sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419 14.70MB / 29.78MB 0.2s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:46.2679773Z #6 sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419 29.78MB / 29.78MB 0.3s done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:46.2681340Z #6 sha256:13159fd0b0512a3ecefe5d5e51affb0ef7eb36b371459c75e34f5c090a0870f4 1.29MB / 1.29MB 0.2s done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:46.2682926Z #6 sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f 4.19MB / 14.36MB 0.3s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:46.2684061Z #6 extracting sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419 0.1s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:46.2685564Z #6 sha256:28c7e2bc4784ae35d32ed16d30b72e35df3c3f6a0214492f5be2b11e4b5ae2b0 0B / 250B 0.3s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:46.3792882Z #6 sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f 14.36MB / 14.36MB 0.3s done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:46.3794168Z #6 sha256:28c7e2bc4784ae35d32ed16d30b72e35df3c3f6a0214492f5be2b11e4b5ae2b0 250B / 250B 0.3s done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:47.1345289Z #6 extracting sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419 0.9s done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:47.1346501Z #6 extracting sha256:13159fd0b0512a3ecefe5d5e51affb0ef7eb36b371459c75e34f5c090a0870f4
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:47.3944234Z #6 extracting sha256:13159fd0b0512a3ecefe5d5e51affb0ef7eb36b371459c75e34f5c090a0870f4 0.1s done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:48.0729725Z #6 extracting sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:48.8682885Z #6 extracting sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f 0.7s done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:48.8684253Z #6 extracting sha256:28c7e2bc4784ae35d32ed16d30b72e35df3c3f6a0214492f5be2b11e4b5ae2b0
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:49.0641932Z #6 extracting sha256:28c7e2bc4784ae35d32ed16d30b72e35df3c3f6a0214492f5be2b11e4b5ae2b0 done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:49.0642739Z #6 DONE 3.0s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:49.0642858Z 
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:49.0642942Z #7 [2/5] WORKDIR /app
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:49.0643142Z #7 DONE 0.0s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:49.0643242Z 
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:49.0643334Z #8 [3/5] COPY requirements.txt ./
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:49.0643575Z #8 DONE 0.0s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:49.0643694Z 
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:49.0643864Z #9 [4/5] RUN pip install --no-cache-dir -r requirements.txt
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:50.5585513Z #9 1.645 Collecting fastapi==0.115.2 (from -r requirements.txt (line 1))
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:50.6701881Z #9 1.704   Downloading fastapi-0.115.2-py3-none-any.whl.metadata (27 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:50.6702802Z #9 1.757 Collecting uvicorn==0.30.6 (from -r requirements.txt (line 2))
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:50.9146548Z #9 1.770   Downloading uvicorn-0.30.6-py3-none-any.whl.metadata (6.6 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:50.9147634Z #9 1.838 Collecting starlette<0.41.0,>=0.37.2 (from fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:50.9148665Z #9 1.851   Downloading starlette-0.40.0-py3-none-any.whl.metadata (6.0 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:50.9648551Z #9 2.051 Collecting pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4 (from fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:51.0836067Z #9 2.065   Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:51.0837385Z #9 2.079      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 7.1 MB/s eta 0:00:00
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:51.0838414Z #9 2.115 Collecting typing-extensions>=4.8.0 (from fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:51.0839639Z #9 2.128   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:51.0840433Z #9 2.170 Collecting click>=7.0 (from uvicorn==0.30.6->-r requirements.txt (line 2))
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:51.3307747Z #9 2.184   Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:51.3308725Z #9 2.209 Collecting h11>=0.8 (from uvicorn==0.30.6->-r requirements.txt (line 2))
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:51.3309817Z #9 2.222   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:51.3311073Z #9 2.254 Collecting annotated-types>=0.6.0 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:51.3312058Z #9 2.267   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:51.9319786Z #9 3.019 Collecting pydantic-core==2.41.5 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.0322726Z #9 3.032   Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.0324652Z #9 3.060 Collecting typing-inspection>=0.4.2 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.0325922Z #9 3.073   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.0326674Z #9 3.119 Collecting anyio<5,>=3.4.0 (from starlette<0.41.0,>=0.37.2->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.1421443Z #9 3.132   Downloading anyio-4.12.1-py3-none-any.whl.metadata (4.3 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.1422867Z #9 3.169 Collecting idna>=2.8 (from anyio<5,>=3.4.0->starlette<0.41.0,>=0.37.2->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.1424488Z #9 3.182   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.1425205Z #9 3.212 Downloading fastapi-0.115.2-py3-none-any.whl (94 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.1425992Z #9 3.216    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 94.7/94.7 kB 40.3 MB/s eta 0:00:00
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.1426489Z #9 3.229 Downloading uvicorn-0.30.6-py3-none-any.whl (62 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.2534088Z #9 3.231    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.8/62.8 kB 263.7 MB/s eta 0:00:00
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.2534795Z #9 3.244 Downloading click-8.3.1-py3-none-any.whl (108 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.2535568Z #9 3.247    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 108.3/108.3 kB 71.5 MB/s eta 0:00:00
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.2536200Z #9 3.261 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.2536829Z #9 3.274 Downloading pydantic-2.12.5-py3-none-any.whl (463 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.2537451Z #9 3.290    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 463.6/463.6 kB 31.2 MB/s eta 0:00:00
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.2538166Z #9 3.304 Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.2538943Z #9 3.327    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 95.6 MB/s eta 0:00:00
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.2539437Z #9 3.340 Downloading starlette-0.40.0-py3-none-any.whl (73 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.4503628Z #9 3.342    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.3/73.3 kB 271.5 MB/s eta 0:00:00
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.4504589Z #9 3.355 Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.4505643Z #9 3.357    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.6/44.6 kB 268.4 MB/s eta 0:00:00
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.4506433Z #9 3.370 Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.4507198Z #9 3.383 Downloading anyio-4.12.1-py3-none-any.whl (113 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.4508143Z #9 3.385    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 113.6/113.6 kB 281.2 MB/s eta 0:00:00
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.4508996Z #9 3.398 Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.4509952Z #9 3.411 Downloading idna-3.11-py3-none-any.whl (71 kB)
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.4510798Z #9 3.413    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 71.0/71.0 kB 246.3 MB/s eta 0:00:00
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:52.4512280Z #9 3.537 Installing collected packages: typing-extensions, idna, h11, click, annotated-types, uvicorn, typing-inspection, pydantic-core, anyio, starlette, pydantic, fastapi
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:53.1613667Z #9 4.248 Successfully installed annotated-types-0.7.0 anyio-4.12.1 click-8.3.1 fastapi-0.115.2 h11-0.16.0 idna-3.11 pydantic-2.12.5 pydantic-core-2.41.5 starlette-0.40.0 typing-extensions-4.15.0 typing-inspection-0.4.2 uvicorn-0.30.6
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:53.4044389Z #9 4.248 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:53.4045972Z #9 4.340 
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:53.4046320Z #9 4.340 [notice] A new release of pip is available: 24.0 -> 26.0.1
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:53.4046812Z #9 4.340 [notice] To update, run: pip install --upgrade pip
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:53.4696176Z #9 DONE 4.6s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:53.6314076Z 
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:53.6314484Z #10 [5/5] COPY . .
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:53.6315105Z #10 DONE 0.0s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:53.6315327Z 
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:53.6330561Z #11 exporting to image
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:53.6331117Z #11 exporting layers
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:54.0430043Z #11 exporting layers 0.6s done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:54.0610271Z #11 writing image sha256:8febdacaa48ea35702fb74319a5ccf596367d34711dc40f12b35846892a5c338 done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:54.0611566Z #11 naming to expcopilotmasacr.azurecr.io/research-setup-api:claude-opus-latest-k7-tier0 done
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:54.0612444Z #11 DONE 0.6s
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:54.0920790Z The push refers to repository [expcopilotmasacr.azurecr.io/research-setup-api]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:54.4525038Z 55f07f4fd84a: Preparing
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:54.4525497Z 5c77cdc13080: Preparing
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:54.4525886Z a288c2dcd31a: Preparing
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:54.4526267Z 3744c134b55c: Preparing
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:54.4526630Z 3780204f6b74: Preparing
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:54.4526992Z 11eedb262098: Preparing
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:54.4527355Z 6400845f12ab: Preparing
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:54.4527714Z a257f20c716c: Preparing
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:54.4528080Z 11eedb262098: Waiting
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:54.4528597Z 6400845f12ab: Waiting
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:54.4528876Z a257f20c716c: Waiting
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:55.2328408Z 3780204f6b74: Layer already exists
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:55.6677524Z 11eedb262098: Layer already exists
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:56.0467591Z 6400845f12ab: Layer already exists
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:56.5948808Z 3744c134b55c: Pushed
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:56.6338148Z a288c2dcd31a: Pushed
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:56.6608672Z 55f07f4fd84a: Pushed
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:13:58.1801551Z 5c77cdc13080: Pushed
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:01.5979311Z a257f20c716c: Pushed
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4715428Z claude-opus-latest-k7-tier0: digest: sha256:5a85e5441a6c6a3e79c0a7085c64e62b85f05faf0ea77e09d7b4910deb5ab7d8 size: 1990
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4774503Z ##[group]Run az containerapp update \
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4774839Z [36;1maz containerapp update \[0m
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4775100Z [36;1m  --name $AZ_API_APP \[0m
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4775357Z [36;1m  --resource-group $AZ_RG \[0m
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4775630Z [36;1m  --image "$API_IMAGE" \[0m
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4775897Z [36;1m  --revision-suffix 59ca9518 \[0m
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4776250Z [36;1m  --set-env-vars RUN_KEY=claude-opus-latest-k7-tier0[0m
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4824403Z shell: /usr/bin/bash -e {0}
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4824655Z env:
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4824831Z   EXP_PREFIX: exp
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4825039Z   GH_ORG_OR_USER: mikkokallio
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4825284Z   REPO_NAME: research-setup
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4825642Z   AZ_SUBSCRIPTION_ID: ***
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4825884Z   AZ_LOCATION: swedencentral
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4826128Z   AZ_RG: exp-copilot-mas-rg
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4826364Z   AZ_ACR: expcopilotmasacr
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4826626Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4826885Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4827129Z   AZ_API_APP: exp-copilot-mas-api
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4827362Z   RUN_SCOPE: shared
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4827559Z   RETENTION_DAYS: 30
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4827943Z   API_IMAGE: expcopilotmasacr.azurecr.io/research-setup-api:claude-opus-latest-k7-tier0
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:04.4828379Z ##[endgroup]
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:06.5903466Z ERROR: (ContainerAppOperationInProgress) Cannot modify a container app 'exp-copilot-mas-api' because there is an active provisioning operation in progress. OperationId: 'cbc3c52b-ed82-4173-9664-19f268b4c021'.
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:06.6897442Z ##[error]Process completed with exit code 1.
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:06.6996044Z Post job cleanup.
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:06.7411048Z Clearing azure cli accounts from the local cache.
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:06.7420081Z [command]/usr/bin/az account clear
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:07.2385061Z Post job cleanup.
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:07.3369930Z [command]/usr/bin/git version
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:07.3408360Z git version 2.53.0
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:07.3452630Z Temporarily overriding HOME='/home/runner/work/_temp/3eb2e7a4-5e62-472a-aea0-87cfc3ff2605' before making global git config changes
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:07.3454227Z Adding repository directory to the temporary git global config as a safe directory
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:07.3458680Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/research-setup/research-setup
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:07.3496775Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:07.3530690Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:07.3774359Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:07.3795993Z http.https://github.com/.extraheader
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:07.3811989Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:07.3847020Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:07.4084175Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:07.4117428Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy (claude-opus-latest, k7, tier0)	UNKNOWN STEP	2026-03-01T14:14:07.4495285Z Cleaning up orphan processes

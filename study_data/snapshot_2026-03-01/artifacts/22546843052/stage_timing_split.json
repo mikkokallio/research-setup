@@ -1,0 +1,9 @@
+{
+  "stage": "split",
+  "start_epoch": 1772380132,
+  "end_epoch": 1772380144,
+  "start_iso": "2026-03-01T15:48:52Z",
+  "end_iso": "2026-03-01T15:49:04Z",
+  "duration_seconds": 12,
+  "run_key": "gpt-5.3-codex-k3-tier0"
+}

@@ -1,0 +1,761 @@
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	﻿2026-03-01T14:12:30.3418648Z Current runner version: '2.331.0'
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3453181Z ##[group]Runner Image Provisioner
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3454899Z Hosted Compute Agent
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3456011Z Version: 20260213.493
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3457003Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3458251Z Build Date: 2026-02-13T00:28:41Z
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3459628Z Worker ID: {bcf18e71-15b3-4102-8d12-2a5b5dd7c01c}
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3460909Z Azure Region: centralus
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3461747Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3463963Z ##[group]Operating System
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3465182Z Ubuntu
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3465906Z 24.04.3
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3466758Z LTS
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3467556Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3468360Z ##[group]Runner Image
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3469297Z Image: ubuntu-24.04
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3470202Z Version: 20260224.36.1
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3472200Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260224.36/images/ubuntu/Ubuntu2404-Readme.md
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3474898Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260224.36
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3476551Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3478323Z ##[group]GITHUB_TOKEN Permissions
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3481167Z Contents: read
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3482513Z Metadata: read
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3483548Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3486546Z Secret source: Actions
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.3488361Z Prepare workflow directory
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.4054394Z Prepare all required actions
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.4091847Z Getting action download info
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.7613862Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:30.8998992Z Download action repository 'azure/login@v2' (SHA:a457da9ea143d694b1b9c7c869ebb04ebe844ef5)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.3237661Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.5305795Z Complete job name: deploy (claude-opus-latest, single, tier3)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6001514Z ##[group]Run actions/checkout@v4
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6002417Z with:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6002890Z   repository: mikkokallio/research-setup
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6003650Z   token: ***
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6004064Z   ssh-strict: true
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6004925Z   ssh-user: git
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6005394Z   persist-credentials: true
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6005934Z   clean: true
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6006379Z   sparse-checkout-cone-mode: true
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6006897Z   fetch-depth: 1
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6007330Z   fetch-tags: false
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6007779Z   show-progress: true
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6008228Z   lfs: false
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6008631Z   submodules: false
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6009076Z   set-safe-directory: true
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6009868Z env:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6010270Z   EXP_PREFIX: exp
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6010719Z   GH_ORG_OR_USER: mikkokallio
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6011232Z   REPO_NAME: research-setup
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6011893Z   AZ_SUBSCRIPTION_ID: ***
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6012436Z   AZ_LOCATION: swedencentral
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6012937Z   AZ_RG: exp-copilot-mas-rg
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6013436Z   AZ_ACR: expcopilotmasacr
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6013936Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6014639Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6015184Z   AZ_API_APP: exp-copilot-mas-api
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6015711Z   RUN_SCOPE: shared
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6016147Z   RETENTION_DAYS: 30
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.6016582Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7138206Z Syncing repository: mikkokallio/research-setup
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7141312Z ##[group]Getting Git version info
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7142812Z Working directory is '/home/runner/work/research-setup/research-setup'
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7145303Z [command]/usr/bin/git version
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7250063Z git version 2.53.0
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7277407Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7293972Z Temporarily overriding HOME='/home/runner/work/_temp/8da8af52-7e0c-4f40-979c-535512a9901a' before making global git config changes
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7297282Z Adding repository directory to the temporary git global config as a safe directory
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7309230Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/research-setup/research-setup
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7352957Z Deleting the contents of '/home/runner/work/research-setup/research-setup'
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7356701Z ##[group]Initializing the repository
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7362289Z [command]/usr/bin/git init /home/runner/work/research-setup/research-setup
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7518708Z hint: Using 'master' as the name for the initial branch. This default branch name
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7520156Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7521189Z hint: to use in all of your new repositories, which will suppress this warning,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7522013Z hint: call:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7522412Z hint:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7522961Z hint: 	git config --global init.defaultBranch <name>
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7524085Z hint:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7525231Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7526866Z hint: 'development'. The just-created branch can be renamed via this command:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7528393Z hint:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7529243Z hint: 	git branch -m <name>
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7530172Z hint:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7531429Z hint: Disable this message with "git config set advice.defaultBranchName false"
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7533609Z Initialized empty Git repository in /home/runner/work/research-setup/research-setup/.git/
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7539869Z [command]/usr/bin/git remote add origin https://github.com/mikkokallio/research-setup
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7579836Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7581231Z ##[group]Disabling automatic garbage collection
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7585261Z [command]/usr/bin/git config --local gc.auto 0
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7616518Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7617969Z ##[group]Setting up auth
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7625078Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.7658268Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.8097676Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.8128513Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.8363015Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.8400098Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.8641173Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.8676746Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.8678231Z ##[group]Fetching the repository
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:31.8686698Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +4d22dd1105fdb6cfda4d1d4af0a78e8a023ec11c:refs/remotes/origin/main
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1251532Z From https://github.com/mikkokallio/research-setup
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1253218Z  * [new ref]         4d22dd1105fdb6cfda4d1d4af0a78e8a023ec11c -> origin/main
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1289463Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1291175Z ##[group]Determining the checkout info
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1293054Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1299375Z [command]/usr/bin/git sparse-checkout disable
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1349083Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1379896Z ##[group]Checking out the ref
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1384796Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1450384Z Switched to a new branch 'main'
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1451872Z branch 'main' set up to track 'origin/main'.
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1520577Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1522570Z [command]/usr/bin/git log -1 --format=%H
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1538405Z 4d22dd1105fdb6cfda4d1d4af0a78e8a023ec11c
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1764083Z ##[group]Run azure/login@v2
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1764874Z with:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1765401Z   client-id: ***
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1765862Z   tenant-id: ***
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1766365Z   subscription-id: ***
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1766792Z   enable-AzPSSession: false
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1767242Z   environment: azurecloud
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1767693Z   allow-no-subscriptions: false
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1768181Z   audience: api://AzureADTokenExchange
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1768700Z   auth-type: SERVICE_PRINCIPAL
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1769137Z env:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1769493Z   EXP_PREFIX: exp
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1769948Z   GH_ORG_OR_USER: mikkokallio
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1770432Z   REPO_NAME: research-setup
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1770985Z   AZ_SUBSCRIPTION_ID: ***
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1771430Z   AZ_LOCATION: swedencentral
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1771919Z   AZ_RG: exp-copilot-mas-rg
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1772362Z   AZ_ACR: expcopilotmasacr
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1772805Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1773332Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1773815Z   AZ_API_APP: exp-copilot-mas-api
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1774504Z   RUN_SCOPE: shared
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1774911Z   RETENTION_DAYS: 30
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.1775293Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:32.2164515Z Running Azure CLI Login.
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:45.8602741Z [command]/usr/bin/az cloud set -n azurecloud
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:46.1045686Z Done setting cloud: "azurecloud"
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:46.2490739Z Federated token details:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:46.2491687Z  issuer - https://token.actions.githubusercontent.com
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:46.2492616Z  subject claim - repo:mikkokallio/research-setup:ref:refs/heads/main
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:46.2493443Z  audience - api://AzureADTokenExchange
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:46.2494639Z  job_workflow_ref - mikkokallio/research-setup/.github/workflows/experiment.yml@refs/heads/main
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:46.2495682Z Attempting Azure CLI login by using OIDC...
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7077051Z Subscription is set successfully.
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7077829Z Azure CLI login succeeds by using OIDC.
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7214115Z ##[group]Run RUN_KEY="claude-opus-latest-single-tier3"
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7214864Z [36;1mRUN_KEY="claude-opus-latest-single-tier3"[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7215316Z [36;1mREV_SUFFIX=$(echo -n "$RUN_KEY" | sha256sum | cut -c1-8)[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7215729Z [36;1mecho "run_key=$RUN_KEY" >> "$GITHUB_OUTPUT"[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7216098Z [36;1mecho "rev_suffix=$REV_SUFFIX" >> "$GITHUB_OUTPUT"[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7271322Z shell: /usr/bin/bash -e {0}
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7271608Z env:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7271803Z   EXP_PREFIX: exp
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7272054Z   GH_ORG_OR_USER: mikkokallio
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7272313Z   REPO_NAME: research-setup
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7272903Z   AZ_SUBSCRIPTION_ID: ***
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7273163Z   AZ_LOCATION: swedencentral
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7273415Z   AZ_RG: exp-copilot-mas-rg
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7273683Z   AZ_ACR: expcopilotmasacr
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7273929Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7274498Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7274880Z   AZ_API_APP: exp-copilot-mas-api
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7275140Z   RUN_SCOPE: shared
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7275353Z   RETENTION_DAYS: 30
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7275584Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7458930Z ##[group]Run az acr login --name $AZ_ACR
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7459311Z [36;1maz acr login --name $AZ_ACR[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7510785Z shell: /usr/bin/bash -e {0}
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7511057Z env:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7511252Z   EXP_PREFIX: exp
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7511483Z   GH_ORG_OR_USER: mikkokallio
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7511746Z   REPO_NAME: research-setup
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7512363Z   AZ_SUBSCRIPTION_ID: ***
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7512618Z   AZ_LOCATION: swedencentral
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7512867Z   AZ_RG: exp-copilot-mas-rg
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7513109Z   AZ_ACR: expcopilotmasacr
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7513352Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7513613Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7513872Z   AZ_API_APP: exp-copilot-mas-api
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7514107Z   RUN_SCOPE: shared
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7514549Z   RETENTION_DAYS: 30
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:47.7514767Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.3655937Z Login Succeeded
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4789745Z ##[group]Run API_IMAGE="$AZ_ACR.azurecr.io/research-setup-api:claude-opus-latest-single-tier3"
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4790957Z [36;1mAPI_IMAGE="$AZ_ACR.azurecr.io/research-setup-api:claude-opus-latest-single-tier3"[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4791867Z [36;1mdocker build -t "$API_IMAGE" apps/api[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4792417Z [36;1mdocker push "$API_IMAGE"[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4792975Z [36;1mecho "API_IMAGE=$API_IMAGE" >> "$GITHUB_ENV"[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4863835Z shell: /usr/bin/bash -e {0}
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4864510Z env:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4864850Z   EXP_PREFIX: exp
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4865215Z   GH_ORG_OR_USER: mikkokallio
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4865661Z   REPO_NAME: research-setup
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4866323Z   AZ_SUBSCRIPTION_ID: ***
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4866779Z   AZ_LOCATION: swedencentral
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4867230Z   AZ_RG: exp-copilot-mas-rg
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4867677Z   AZ_ACR: expcopilotmasacr
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4868132Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4868656Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4869138Z   AZ_API_APP: exp-copilot-mas-api
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4869611Z   RUN_SCOPE: shared
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4869964Z   RETENTION_DAYS: 30
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:52.4870327Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.0802087Z #0 building with "default" instance using docker driver
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.0802595Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.0802765Z #1 [internal] load build definition from Dockerfile
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.0803331Z #1 transferring dockerfile: 242B done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.0803777Z #1 DONE 0.0s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.0803977Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.0804505Z #2 [auth] library/python:pull token for registry-1.docker.io
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.2313281Z #2 DONE 0.0s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.2313546Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.2313909Z #3 [internal] load metadata for docker.io/library/python:3.11-slim
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.6683541Z #3 DONE 0.7s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.7885839Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.7886579Z #4 [internal] load .dockerignore
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.7887110Z #4 transferring context: 2B done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.7887554Z #4 DONE 0.0s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.7887757Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.7887905Z #5 [internal] load build context
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.7888331Z #5 transferring context: 825B done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.7888740Z #5 DONE 0.0s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.7888917Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.7889541Z #6 [1/5] FROM docker.io/library/python:3.11-slim@sha256:c8271b1f627d0068857dce5b53e14a9558603b527e46f1f901722f935b786a39
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.7890984Z #6 resolve docker.io/library/python:3.11-slim@sha256:c8271b1f627d0068857dce5b53e14a9558603b527e46f1f901722f935b786a39 done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.7892023Z #6 sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f 0B / 14.36MB 0.1s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.7892633Z #6 sha256:c8271b1f627d0068857dce5b53e14a9558603b527e46f1f901722f935b786a39 10.37kB / 10.37kB done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.7894107Z #6 sha256:fa7a862d74b4decf68fb7d3a85147efc14dbcd3779c0abd56c071d27a1ffee04 1.75kB / 1.75kB done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.7895043Z #6 sha256:992921a8b23a7d2fd769908f7646e7cccd583fea96486a99ace92c7399768847 5.48kB / 5.48kB done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.7895667Z #6 sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419 0B / 29.78MB 0.1s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.7896274Z #6 sha256:13159fd0b0512a3ecefe5d5e51affb0ef7eb36b371459c75e34f5c090a0870f4 0B / 1.29MB 0.1s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:53.8893273Z #6 sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419 14.68MB / 29.78MB 0.2s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:54.0035871Z #6 sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f 10.90MB / 14.36MB 0.3s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:54.0036643Z #6 sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419 29.78MB / 29.78MB 0.3s done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:54.0037329Z #6 sha256:13159fd0b0512a3ecefe5d5e51affb0ef7eb36b371459c75e34f5c090a0870f4 1.29MB / 1.29MB 0.3s done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:54.0037971Z #6 sha256:28c7e2bc4784ae35d32ed16d30b72e35df3c3f6a0214492f5be2b11e4b5ae2b0 0B / 250B 0.3s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:54.0039087Z #6 extracting sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:54.1062243Z #6 sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f 14.36MB / 14.36MB 0.3s done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:54.1063429Z #6 sha256:28c7e2bc4784ae35d32ed16d30b72e35df3c3f6a0214492f5be2b11e4b5ae2b0 250B / 250B 0.3s done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:55.0371554Z #6 extracting sha256:206356c42440674ecbdf1070cf70ce8ef7885ac2e5c56f1ecf800b758f6b0419 0.9s done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:55.0372838Z #6 extracting sha256:13159fd0b0512a3ecefe5d5e51affb0ef7eb36b371459c75e34f5c090a0870f4 0.1s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:55.1941369Z #6 extracting sha256:13159fd0b0512a3ecefe5d5e51affb0ef7eb36b371459c75e34f5c090a0870f4 0.1s done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:55.6131325Z #6 extracting sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:56.3955724Z #6 extracting sha256:269d3f7471e27a9c2542916a49849e76630f22709b7e6063730b617d34d44d6f 0.7s done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:56.3956554Z #6 extracting sha256:28c7e2bc4784ae35d32ed16d30b72e35df3c3f6a0214492f5be2b11e4b5ae2b0
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:56.6176909Z #6 extracting sha256:28c7e2bc4784ae35d32ed16d30b72e35df3c3f6a0214492f5be2b11e4b5ae2b0 done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:56.6177587Z #6 DONE 2.8s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:56.6177712Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:56.6177795Z #7 [2/5] WORKDIR /app
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:56.6178015Z #7 DONE 0.0s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:56.6178130Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:56.6178227Z #8 [3/5] COPY requirements.txt ./
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:56.6178507Z #8 DONE 0.0s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:56.6178620Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:56.6178805Z #9 [4/5] RUN pip install --no-cache-dir -r requirements.txt
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:58.1394489Z #9 1.672 Collecting fastapi==0.115.2 (from -r requirements.txt (line 1))
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:58.2715512Z #9 1.750   Downloading fastapi-0.115.2-py3-none-any.whl.metadata (27 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:58.2716214Z #9 1.804 Collecting uvicorn==0.30.6 (from -r requirements.txt (line 2))
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:58.3886040Z #9 1.828   Downloading uvicorn-0.30.6-py3-none-any.whl.metadata (6.6 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:58.3887420Z #9 1.898 Collecting starlette<0.41.0,>=0.37.2 (from fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:58.3888441Z #9 1.921   Downloading starlette-0.40.0-py3-none-any.whl.metadata (6.0 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:58.5860266Z #9 2.119 Collecting pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4 (from fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:58.7020177Z #9 2.171   Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:58.7021501Z #9 2.196      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 3.6 MB/s eta 0:00:00
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:58.7022519Z #9 2.235 Collecting typing-extensions>=4.8.0 (from fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:58.8203972Z #9 2.259   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:58.8205127Z #9 2.303 Collecting click>=7.0 (from uvicorn==0.30.6->-r requirements.txt (line 2))
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:58.8205748Z #9 2.327   Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:58.8206357Z #9 2.353 Collecting h11>=0.8 (from uvicorn==0.30.6->-r requirements.txt (line 2))
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:59.0518887Z #9 2.376   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:59.0520252Z #9 2.410 Collecting annotated-types>=0.6.0 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:59.0521595Z #9 2.434   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:59.6492125Z #9 3.182 Collecting pydantic-core==2.41.5 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:59.7734458Z #9 3.206   Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:59.7735801Z #9 3.234 Collecting typing-inspection>=0.4.2 (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:59.7736984Z #9 3.258   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:59.7737654Z #9 3.306 Collecting anyio<5,>=3.4.0 (from starlette<0.41.0,>=0.37.2->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:59.8865618Z #9 3.357   Downloading anyio-4.12.1-py3-none-any.whl.metadata (4.3 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:59.8867260Z #9 3.396 Collecting idna>=2.8 (from anyio<5,>=3.4.0->starlette<0.41.0,>=0.37.2->fastapi==0.115.2->-r requirements.txt (line 1))
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:59.8868084Z #9 3.419   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:59.9879230Z #9 3.458 Downloading fastapi-0.115.2-py3-none-any.whl (94 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:59.9880488Z #9 3.466    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 94.7/94.7 kB 15.8 MB/s eta 0:00:00
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:59.9880992Z #9 3.489 Downloading uvicorn-0.30.6-py3-none-any.whl (62 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:59.9881702Z #9 3.492    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.8/62.8 kB 44.5 MB/s eta 0:00:00
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:12:59.9882174Z #9 3.515 Downloading click-8.3.1-py3-none-any.whl (108 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:00.0898086Z #9 3.521    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 108.3/108.3 kB 25.0 MB/s eta 0:00:00
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:00.0898905Z #9 3.545 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:00.0899613Z #9 3.569 Downloading pydantic-2.12.5-py3-none-any.whl (463 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:00.0900652Z #9 3.598    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 463.6/463.6 kB 17.0 MB/s eta 0:00:00
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:00.0901833Z #9 3.622 Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:00.2092499Z #9 3.666    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 49.5 MB/s eta 0:00:00
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:00.2093556Z #9 3.690 Downloading starlette-0.40.0-py3-none-any.whl (73 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:00.2094877Z #9 3.692    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.3/73.3 kB 272.5 MB/s eta 0:00:00
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:00.2095723Z #9 3.716 Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:00.2096563Z #9 3.718    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.6/44.6 kB 244.4 MB/s eta 0:00:00
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:00.2097031Z #9 3.742 Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:00.4095896Z #9 3.765 Downloading anyio-4.12.1-py3-none-any.whl (113 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:00.4096955Z #9 3.768    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 113.6/113.6 kB 315.8 MB/s eta 0:00:00
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:00.4097616Z #9 3.791 Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:00.4098175Z #9 3.814 Downloading idna-3.11-py3-none-any.whl (71 kB)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:00.4098667Z #9 3.816    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 71.0/71.0 kB 297.8 MB/s eta 0:00:00
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:00.4099530Z #9 3.942 Installing collected packages: typing-extensions, idna, h11, click, annotated-types, uvicorn, typing-inspection, pydantic-core, anyio, starlette, pydantic, fastapi
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:01.1398747Z #9 4.672 Successfully installed annotated-types-0.7.0 anyio-4.12.1 click-8.3.1 fastapi-0.115.2 h11-0.16.0 idna-3.11 pydantic-2.12.5 pydantic-core-2.41.5 starlette-0.40.0 typing-extensions-4.15.0 typing-inspection-0.4.2 uvicorn-0.30.6
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:01.2422086Z #9 4.673 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:01.2423901Z #9 4.775 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:01.2424485Z #9 4.775 [notice] A new release of pip is available: 24.0 -> 26.0.1
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:01.2425051Z #9 4.775 [notice] To update, run: pip install --upgrade pip
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:01.4951606Z #9 DONE 5.0s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:01.6614910Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:01.6615733Z #10 [5/5] COPY . .
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:01.6616119Z #10 DONE 0.0s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:01.6616316Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:01.6616460Z #11 exporting to image
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:01.6616837Z #11 exporting layers
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:02.0441644Z #11 exporting layers 0.5s done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:02.0678934Z #11 writing image sha256:70774638f163a69f11d806b1e19d18858781d36afbc7662e8b796ce469fbfbda done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:02.0680452Z #11 naming to expcopilotmasacr.azurecr.io/research-setup-api:claude-opus-latest-single-tier3 done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:02.0681531Z #11 DONE 0.5s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:02.1194462Z The push refers to repository [expcopilotmasacr.azurecr.io/research-setup-api]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:02.5262723Z ee471795273b: Preparing
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:02.5263231Z f17b7f5e35f1: Preparing
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:02.5263608Z c3cf73f0d645: Preparing
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:02.5263948Z a7db1862d0dd: Preparing
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:02.5264500Z 3780204f6b74: Preparing
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:02.5264892Z 11eedb262098: Preparing
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:02.5265277Z 6400845f12ab: Preparing
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:02.5265682Z a257f20c716c: Preparing
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:02.5266052Z 11eedb262098: Waiting
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:02.5266407Z 6400845f12ab: Waiting
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:02.5266731Z a257f20c716c: Waiting
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:03.3267420Z 3780204f6b74: Layer already exists
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:03.7269078Z 11eedb262098: Layer already exists
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:04.1241148Z 6400845f12ab: Layer already exists
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:04.6339721Z ee471795273b: Pushed
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:04.6668994Z a7db1862d0dd: Pushed
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:04.7359306Z c3cf73f0d645: Pushed
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:06.1721738Z f17b7f5e35f1: Pushed
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:09.7759580Z a257f20c716c: Pushed
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7255867Z claude-opus-latest-single-tier3: digest: sha256:ac6516991f2cc9339bbfe31d6bdb6be562f27f083eecb4a33a8ba3ed1079e235 size: 1990
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7316658Z ##[group]Run az containerapp update \
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7316993Z [36;1maz containerapp update \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7317259Z [36;1m  --name $AZ_API_APP \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7317516Z [36;1m  --resource-group $AZ_RG \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7317775Z [36;1m  --image "$API_IMAGE" \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7318042Z [36;1m  --revision-suffix 133f98cb \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7318396Z [36;1m  --set-env-vars RUN_KEY=claude-opus-latest-single-tier3[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7366525Z shell: /usr/bin/bash -e {0}
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7366816Z env:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7367000Z   EXP_PREFIX: exp
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7367204Z   GH_ORG_OR_USER: mikkokallio
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7367456Z   REPO_NAME: research-setup
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7367814Z   AZ_SUBSCRIPTION_ID: ***
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7368053Z   AZ_LOCATION: swedencentral
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7368311Z   AZ_RG: exp-copilot-mas-rg
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7368536Z   AZ_ACR: expcopilotmasacr
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7368798Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7369051Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7369291Z   AZ_API_APP: exp-copilot-mas-api
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7369525Z   RUN_SCOPE: shared
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7369722Z   RETENTION_DAYS: 30
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7370125Z   API_IMAGE: expcopilotmasacr.azurecr.io/research-setup-api:claude-opus-latest-single-tier3
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:12.7370574Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:15.3002664Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:17.9108360Z / Running ..
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:20.4856986Z | Running ..
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:23.1363739Z \ Running ..
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:25.8204992Z - Running ..
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.4704603Z / Running ..
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8236570Z {
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8238020Z   "id": "/subscriptions/***/resourceGroups/exp-copilot-mas-rg/providers/Microsoft.App/containerapps/exp-copilot-mas-api",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8239110Z   "identity": {
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8239903Z     "principalId": "935cc6c6-2df9-4a84-a01a-a5cfdfcf2037",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8240581Z     "tenantId": "***",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8240982Z     "type": "SystemAssigned"
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8241343Z   },
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8241640Z   "location": "Sweden Central",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8242073Z   "name": "exp-copilot-mas-api",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8242510Z   "properties": {
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8242853Z     "configuration": {
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8243277Z       "activeRevisionsMode": "Single",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8243723Z       "dapr": null,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8244085Z       "identitySettings": [],
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8244698Z       "ingress": {
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8245094Z         "additionalPortMappings": null,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8245577Z         "allowInsecure": false,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8246016Z         "clientCertificateMode": null,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8246465Z         "corsPolicy": null,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8246846Z         "customDomains": null,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8247244Z         "exposedPort": 0,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8247633Z         "external": true,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8248390Z         "fqdn": "exp-copilot-mas-api.bravebay-c746dcd5.swedencentral.azurecontainerapps.io",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8249258Z         "ipSecurityRestrictions": null,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8249723Z         "stickySessions": null,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8250141Z         "targetPort": 8000,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8250527Z         "traffic": [
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8250860Z           {
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8251190Z             "latestRevision": true,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8251615Z             "weight": 100
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8251982Z           }
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8252281Z         ],
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8252600Z         "transport": "Auto"
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8252978Z       },
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8253297Z       "maxInactiveRevisions": 100,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8253747Z       "registries": [
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8254091Z         {
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8254673Z           "identity": "system",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8255113Z           "passwordSecretRef": "",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8255635Z           "server": "expcopilotmasacr.azurecr.io",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8256438Z           "username": ""
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8256817Z         }
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8257110Z       ],
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8257404Z       "runtime": null,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8257768Z       "secrets": null,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8258128Z       "service": null
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8258472Z     },
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8259224Z     "customDomainVerificationId": "CED40BCF2DC1BE5FF6914BD76F319D2D2E3CC8F3D231B848E3D9EDA63DCF1C21",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8260155Z     "delegatedIdentities": [],
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8261563Z     "environmentId": "/subscriptions/***/resourceGroups/exp-copilot-mas-rg/providers/Microsoft.App/managedEnvironments/exp-copilot-mas-aca",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8263937Z     "eventStreamEndpoint": "https://swedencentral.azurecontainerapps.dev/subscriptions/***/resourceGroups/exp-copilot-mas-rg/containerApps/exp-copilot-mas-api/eventstream",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8265702Z     "latestReadyRevisionName": "exp-copilot-mas-api--nqy82kn",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8266894Z     "latestRevisionFqdn": "exp-copilot-mas-api--133f98cb.bravebay-c746dcd5.swedencentral.azurecontainerapps.io",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8268042Z     "latestRevisionName": "exp-copilot-mas-api--133f98cb",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8269628Z     "managedEnvironmentId": "/subscriptions/***/resourceGroups/exp-copilot-mas-rg/providers/Microsoft.App/managedEnvironments/exp-copilot-mas-aca",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8270852Z     "outboundIpAddresses": [
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8271255Z       "20.240.28.167",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8271596Z       "20.240.28.184",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8271927Z       "20.240.28.187",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8272265Z       "20.240.29.51",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8272602Z       "74.241.193.90",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8272941Z       "74.241.192.157",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8273286Z       "74.241.192.45",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8273613Z       "74.241.193.154",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8273969Z       "74.241.192.111",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8274602Z       "74.241.193.34",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8275253Z       "9.223.20.105",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8275611Z       "135.116.6.186",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8275975Z       "9.223.21.30",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8276304Z       "9.223.218.210",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8276642Z       "135.116.14.134",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8276986Z       "9.223.143.243",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8277322Z       "9.223.9.149",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8277646Z       "74.241.137.85",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8277974Z       "74.241.139.161",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8278314Z       "74.241.138.64",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8278647Z       "74.241.136.237",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8278989Z       "9.223.21.119",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8279322Z       "9.223.10.153",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8279662Z       "9.223.225.145",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8280160Z       "9.223.220.233",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8280522Z       "74.241.136.44",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8280867Z       "9.223.87.134",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8281193Z       "74.241.139.29",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8281524Z       "9.223.20.250",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8281872Z       "9.223.20.145",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8282200Z       "20.240.38.142",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8282528Z       "20.240.38.235",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8282859Z       "20.240.37.255",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8283191Z       "20.240.37.231",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8283524Z       "74.241.204.139",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8283868Z       "74.241.204.246",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8284204Z       "74.241.202.17",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8284722Z       "74.241.200.59",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8285049Z       "74.241.205.78",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8285383Z       "74.241.203.192",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8285742Z       "9.223.237.26",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8286077Z       "9.223.246.165",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8286410Z       "74.241.209.91",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8286755Z       "74.241.211.241",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8287103Z       "9.223.245.238",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8287445Z       "135.116.14.86",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8287774Z       "9.223.173.128",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8288118Z       "9.223.237.22",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8288474Z       "4.225.86.27",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8288837Z       "9.223.75.69",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8289165Z       "9.223.245.208",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8289486Z       "9.223.237.31",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8290082Z       "9.223.45.114",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8290435Z       "9.223.24.231",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8290768Z       "74.241.210.170",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8291103Z       "9.223.246.185",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8291435Z       "9.223.16.144",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8291765Z       "135.116.37.178",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8292099Z       "9.223.247.36",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8292425Z       "9.223.18.163",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8292765Z       "9.223.206.52"
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8293089Z     ],
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8293436Z     "provisioningState": "Succeeded",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8293923Z     "runningStatus": "Running",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8294536Z     "template": {
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8294895Z       "containers": [
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8295235Z         {
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8295539Z           "env": [
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8295852Z             {
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8296181Z               "name": "RUN_KEY"
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8296563Z             }
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8296850Z           ],
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8297600Z           "image": "expcopilotmasacr.azurecr.io/research-setup-api:claude-opus-latest-single-tier3",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8298495Z           "name": "exp-copilot-mas-api",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8298953Z           "resources": {
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8299323Z             "cpu": 0.5,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8299723Z             "ephemeralStorage": "2Gi",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8300189Z             "memory": "1Gi"
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8300578Z           }
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8300875Z         }
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8301161Z       ],
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8301488Z       "initContainers": null,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8301932Z       "revisionSuffix": "133f98cb",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8302377Z       "scale": {
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8302739Z         "cooldownPeriod": 300,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8303132Z         "maxReplicas": 1,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8303498Z         "minReplicas": 0,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8304106Z         "pollingInterval": 30,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8304723Z         "rules": null
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8305063Z       },
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8305378Z       "serviceBinds": null,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8305847Z       "terminationGracePeriodSeconds": null,
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8306353Z       "volumes": null
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8306713Z     },
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8307065Z     "workloadProfileName": "Consumption"
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8307523Z   },
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8307869Z   "resourceGroup": "exp-copilot-mas-rg",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8308362Z   "systemData": {
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8308741Z     "createdAt": "2026-03-01T12:00:44.8912198",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8309251Z     "createdBy": "mikko.m.kallio@gmail.com",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8309741Z     "createdByType": "User",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8310199Z     "lastModifiedAt": "2026-03-01T14:13:15.0930804",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8310889Z     "lastModifiedBy": "***",
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8311322Z     "lastModifiedByType": "Application"
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8311763Z   },
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8312102Z   "type": "Microsoft.App/containerApps"
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8312549Z }
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8921944Z [K
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8968486Z ##[group]Run API_FQDN=$(az containerapp revision list \
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8968915Z [36;1mAPI_FQDN=$(az containerapp revision list \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8969233Z [36;1m  --name $AZ_API_APP \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8969493Z [36;1m  --resource-group $AZ_RG \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8969918Z [36;1m  --query "[?properties.template.revisionSuffix=='133f98cb'].properties.fqdn" \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8970354Z [36;1m  -o tsv)[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.8970614Z [36;1mecho "api_fqdn=$API_FQDN" >> "$GITHUB_OUTPUT"[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.9018330Z shell: /usr/bin/bash -e {0}
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.9018581Z env:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.9018764Z   EXP_PREFIX: exp
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.9018983Z   GH_ORG_OR_USER: mikkokallio
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.9019227Z   REPO_NAME: research-setup
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.9019606Z   AZ_SUBSCRIPTION_ID: ***
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.9019860Z   AZ_LOCATION: swedencentral
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.9020109Z   AZ_RG: exp-copilot-mas-rg
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.9020377Z   AZ_ACR: expcopilotmasacr
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.9020610Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.9020862Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.9021114Z   AZ_API_APP: exp-copilot-mas-api
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.9021349Z   RUN_SCOPE: shared
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.9021550Z   RETENTION_DAYS: 30
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.9021953Z   API_IMAGE: expcopilotmasacr.azurecr.io/research-setup-api:claude-opus-latest-single-tier3
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:26.9022413Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8407415Z ##[group]Run WEB_IMAGE="$AZ_ACR.azurecr.io/research-setup-web:claude-opus-latest-single-tier3"
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8408677Z [36;1mWEB_IMAGE="$AZ_ACR.azurecr.io/research-setup-web:claude-opus-latest-single-tier3"[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8409517Z [36;1mdocker build \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8410125Z [36;1m  --build-arg VITE_RUN_KEY=claude-opus-latest-single-tier3 \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8410934Z [36;1m  --build-arg VITE_MODEL=claude-opus-latest \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8411540Z [36;1m  --build-arg VITE_CONDITION=single \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8412093Z [36;1m  --build-arg VITE_TIER=tier3 \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8412686Z [36;1m  --build-arg VITE_API_URL=https:// \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8413247Z [36;1m  -t "$WEB_IMAGE" apps/web[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8413728Z [36;1mdocker push "$WEB_IMAGE"[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8414484Z [36;1mecho "WEB_IMAGE=$WEB_IMAGE" >> "$GITHUB_ENV"[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8484043Z shell: /usr/bin/bash -e {0}
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8484700Z env:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8485088Z   EXP_PREFIX: exp
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8485486Z   GH_ORG_OR_USER: mikkokallio
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8485939Z   REPO_NAME: research-setup
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8486580Z   AZ_SUBSCRIPTION_ID: ***
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8487007Z   AZ_LOCATION: swedencentral
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8487458Z   AZ_RG: exp-copilot-mas-rg
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8487892Z   AZ_ACR: expcopilotmasacr
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8488317Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8489070Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8489535Z   AZ_API_APP: exp-copilot-mas-api
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8489987Z   RUN_SCOPE: shared
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8490355Z   RETENTION_DAYS: 30
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8491136Z   API_IMAGE: expcopilotmasacr.azurecr.io/research-setup-api:claude-opus-latest-single-tier3
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:27.8492011Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.1462517Z #0 building with "default" instance using docker driver
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.1462949Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.1463247Z #1 [internal] load build definition from Dockerfile
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.1463883Z #1 transferring dockerfile: 430B done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.1464695Z #1 DONE 0.0s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.1464956Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.1465325Z #2 [internal] load metadata for docker.io/library/node:22-alpine
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.3159535Z #2 ...
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.3159728Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.3159924Z #3 [auth] library/node:pull token for registry-1.docker.io
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.3160324Z #3 DONE 0.0s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.4663411Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.4664088Z #2 [internal] load metadata for docker.io/library/node:22-alpine
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.7083109Z #2 DONE 0.7s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.8278199Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.8279052Z #4 [internal] load .dockerignore
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.8279611Z #4 transferring context: 2B done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.8279903Z #4 DONE 0.0s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.8280024Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.8280128Z #5 [internal] load build context
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.8280426Z #5 transferring context: 3.51kB done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.8280695Z #5 DONE 0.0s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.8280847Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.8281438Z #6 [1/6] FROM docker.io/library/node:22-alpine@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.8282651Z #6 resolve docker.io/library/node:22-alpine@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34 done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.8283494Z #6 sha256:48f53c3f0105ccddcc5e4f520347398dfc0ba9b3008fbfd98a2add27e5797957 1.72kB / 1.72kB done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.8284189Z #6 sha256:463254b4a8121318a9f8861a08bdde48fcfd528848534e7ba742b3ce5146fd17 6.52kB / 6.52kB done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.8285058Z #6 sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 0B / 3.86MB 0.1s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.8285665Z #6 sha256:8d513d1f314d3646adaf156be912f8de408c740e43d90cad5ce06b9de27e7bdf 0B / 51.60MB 0.1s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.8286250Z #6 sha256:2b752f7c71fd1a08980fdf09b7379d8304c8ef2569526934a2089ed26d771778 0B / 1.26MB 0.1s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.8287202Z #6 sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34 6.41kB / 6.41kB done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.9953875Z #6 sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 3.86MB / 3.86MB 0.2s done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.9955317Z #6 extracting sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 0.1s done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:28.9956460Z #6 sha256:fc1c5222d85fe45cd255019912158424888b168c8413fb42c8e166c37f1833eb 0B / 447B 0.2s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:29.1276222Z #6 sha256:8d513d1f314d3646adaf156be912f8de408c740e43d90cad5ce06b9de27e7bdf 26.21MB / 51.60MB 0.4s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:29.1277151Z #6 sha256:2b752f7c71fd1a08980fdf09b7379d8304c8ef2569526934a2089ed26d771778 1.26MB / 1.26MB 0.3s done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:29.1277959Z #6 sha256:fc1c5222d85fe45cd255019912158424888b168c8413fb42c8e166c37f1833eb 447B / 447B 0.3s done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:29.2664933Z #6 sha256:8d513d1f314d3646adaf156be912f8de408c740e43d90cad5ce06b9de27e7bdf 48.23MB / 51.60MB 0.5s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:29.2666158Z #6 extracting sha256:8d513d1f314d3646adaf156be912f8de408c740e43d90cad5ce06b9de27e7bdf
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:29.3674780Z #6 sha256:8d513d1f314d3646adaf156be912f8de408c740e43d90cad5ce06b9de27e7bdf 51.60MB / 51.60MB 0.5s done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:30.5653033Z #6 extracting sha256:8d513d1f314d3646adaf156be912f8de408c740e43d90cad5ce06b9de27e7bdf 1.3s done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:30.7899761Z #6 extracting sha256:2b752f7c71fd1a08980fdf09b7379d8304c8ef2569526934a2089ed26d771778
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:30.8945872Z #6 extracting sha256:2b752f7c71fd1a08980fdf09b7379d8304c8ef2569526934a2089ed26d771778 0.0s done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:30.8947079Z #6 extracting sha256:fc1c5222d85fe45cd255019912158424888b168c8413fb42c8e166c37f1833eb done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:30.8947562Z #6 DONE 2.2s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:30.8947683Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:30.8947774Z #7 [2/6] WORKDIR /app
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:30.8947985Z #7 DONE 0.0s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:30.8948093Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:30.8948251Z #8 [3/6] COPY package.json package-lock.json* ./
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:30.8948565Z #8 DONE 0.0s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:31.0457449Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:31.0457969Z #9 [4/6] RUN npm install
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.2559413Z #9 6.360 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.2559940Z #9 6.360 added 62 packages, and audited 63 packages in 6s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.4150310Z #9 6.361 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.4150729Z #9 6.361 7 packages are looking for funding
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.4151275Z #9 6.361   run `npm fund` for details
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.4151599Z #9 6.368 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.4151821Z #9 6.368 2 moderate severity vulnerabilities
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.4152114Z #9 6.368 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.4152372Z #9 6.368 To address all issues (including breaking changes), run:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.4152792Z #9 6.368   npm audit fix --force
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.4153204Z #9 6.368 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.4153524Z #9 6.368 Run `npm audit` for details.
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.4153947Z #9 6.369 npm notice
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.4154618Z #9 6.369 npm notice New major version of npm available! 10.9.4 -> 11.11.0
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.4155405Z #9 6.369 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.11.0
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.4155885Z #9 6.369 npm notice To update run: npm install -g npm@11.11.0
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.4156204Z #9 6.369 npm notice
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.5110741Z #9 DONE 6.6s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.6801866Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.6802354Z #10 [5/6] COPY . .
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.6802832Z #10 DONE 0.0s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.6803043Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.6803193Z #11 [6/6] RUN npm run build
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.7913915Z #11 0.261 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.7916311Z #11 0.261 > exp-web@0.1.0 build
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.7916872Z #11 0.261 > vite build
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:37.7917278Z #11 0.261 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:38.0351644Z #11 0.505 vite v5.4.21 building for production...
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:38.2410630Z #11 0.561 transforming...
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:38.8703541Z #11 1.341 ✓ 31 modules transformed.
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:38.9768397Z #11 1.435 rendering chunks...
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:38.9770660Z #11 1.441 computing gzip size...
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:38.9771950Z #11 1.447 dist/index.html                   0.40 kB │ gzip:  0.27 kB
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:39.1664938Z #11 1.447 dist/assets/index-xpDTYXnP.css    0.44 kB │ gzip:  0.30 kB
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:39.1676838Z #11 1.448 dist/assets/index-csl9hdaW.js   143.59 kB │ gzip: 46.09 kB
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:39.1677738Z #11 1.448 ✓ built in 916ms
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:39.1678293Z #11 DONE 1.5s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:39.1678612Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:39.1679067Z #12 exporting to image
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:39.1679838Z #12 exporting layers
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.0793729Z #12 exporting layers 1.1s done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.1020086Z #12 writing image sha256:9f9fd0d44e4271d80f60a12d7a6009acc3b2ab8fd22dacb2808784ab5fd7a3ef done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.1021541Z #12 naming to expcopilotmasacr.azurecr.io/research-setup-web:claude-opus-latest-single-tier3 done
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.1022538Z #12 DONE 1.1s
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.1023520Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.1024412Z  [33m2 warnings found (use docker --debug to expand):
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.1026271Z [0m - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "VITE_RUN_KEY") (line 10)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.1027687Z  - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ENV "VITE_RUN_KEY") (line 15)
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.1280337Z The push refers to repository [expcopilotmasacr.azurecr.io/research-setup-web]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.5310784Z f2a4f442934e: Preparing
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.5311471Z ec05e90f3877: Preparing
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.5311742Z 2f8ebb6be381: Preparing
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.5311982Z ce2a5e8afb5c: Preparing
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.5313069Z 1acea2c127ab: Preparing
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.5313512Z d2f2025518d6: Preparing
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.5313880Z 02289bdc8da6: Preparing
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.5314430Z 73f69c6599be: Preparing
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.5314752Z 989e799e6349: Preparing
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.5314983Z d2f2025518d6: Waiting
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.5315205Z 02289bdc8da6: Waiting
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.5315536Z 73f69c6599be: Waiting
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:40.5315790Z 989e799e6349: Waiting
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:42.6302367Z ec05e90f3877: Pushed
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:42.6358219Z 1acea2c127ab: Pushed
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:42.7538171Z ce2a5e8afb5c: Pushed
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:42.9846576Z f2a4f442934e: Pushed
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:43.0041539Z d2f2025518d6: Layer already exists
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:43.0273147Z 02289bdc8da6: Layer already exists
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:43.1776218Z 73f69c6599be: Layer already exists
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:43.3749056Z 989e799e6349: Layer already exists
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:46.6254060Z 2f8ebb6be381: Pushed
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5243421Z claude-opus-latest-single-tier3: digest: sha256:d36831f53a95f55e2b92347bdaa7aedd2b3a65ff23a952f7ac22ee9720f815da size: 2200
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5297908Z ##[group]Run az containerapp update \
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5298262Z [36;1maz containerapp update \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5298530Z [36;1m  --name $AZ_WEB_APP \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5298793Z [36;1m  --resource-group $AZ_RG \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5299058Z [36;1m  --image "$WEB_IMAGE" \[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5299322Z [36;1m  --revision-suffix 133f98cb[0m
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5347630Z shell: /usr/bin/bash -e {0}
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5347869Z env:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5348049Z   EXP_PREFIX: exp
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5348257Z   GH_ORG_OR_USER: mikkokallio
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5348501Z   REPO_NAME: research-setup
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5348863Z   AZ_SUBSCRIPTION_ID: ***
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5349101Z   AZ_LOCATION: swedencentral
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5349339Z   AZ_RG: exp-copilot-mas-rg
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5349564Z   AZ_ACR: expcopilotmasacr
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5349796Z   AZ_ACA_ENV: exp-copilot-mas-aca
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5350060Z   AZ_WEB_APP: exp-copilot-mas-web
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5350327Z   AZ_API_APP: exp-copilot-mas-api
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5350553Z   RUN_SCOPE: shared
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5350750Z   RETENTION_DAYS: 30
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5351155Z   API_IMAGE: expcopilotmasacr.azurecr.io/research-setup-api:claude-opus-latest-single-tier3
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5351810Z   WEB_IMAGE: expcopilotmasacr.azurecr.io/research-setup-web:claude-opus-latest-single-tier3
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:49.5352256Z ##[endgroup]
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:51.6453526Z 
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:54.3185909Z / Running ..
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:57.0177991Z | Running ..
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:13:59.6148708Z \ Running ..
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:00.4664787Z - Running ..ERROR: Failed to provision revision for container app 'exp-copilot-mas-web'. Error details: The following field(s) are either invalid or missing. Field 'template.containers.exp-copilot-mas-web.image' is invalid with details: 'Invalid value: "expcopilotmasacr.azurecr.io/research-setup-web:claude-opus-latest-single-tier3": unable to pull image using Managed identity system for registry expcopilotmasacr.azurecr.io';..
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:00.5690553Z ##[error]Process completed with exit code 1.
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:00.5828845Z Post job cleanup.
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:00.6232979Z Clearing azure cli accounts from the local cache.
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:00.6249895Z [command]/usr/bin/az account clear
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:01.1652344Z Post job cleanup.
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:01.2635737Z [command]/usr/bin/git version
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:01.2676395Z git version 2.53.0
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:01.2720898Z Temporarily overriding HOME='/home/runner/work/_temp/dc52feb5-a468-4851-866e-2b1f54c2a537' before making global git config changes
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:01.2722063Z Adding repository directory to the temporary git global config as a safe directory
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:01.2727328Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/research-setup/research-setup
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:01.2765972Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:01.2801351Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:01.3058435Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:01.3087528Z http.https://github.com/.extraheader
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:01.3102137Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:01.3138077Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:01.3388720Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:01.3424779Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy (claude-opus-latest, single, tier3)	UNKNOWN STEP	2026-03-01T14:14:01.3794807Z Cleaning up orphan processes

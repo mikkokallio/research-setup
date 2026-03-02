@@ -1,0 +1,94 @@
+{
+  "slices": [
+    {
+      "id": "slice_1",
+      "title": "FastAPI Backend Endpoints",
+      "goal": "Implement a deterministic FastAPI backend with /healthz, /info, /metrics, and /data endpoints.",
+      "instructions": "Create a FastAPI app exposing the four required endpoints, each returning fixed, deterministic JSON responses as specified. Ensure CORS is enabled for local frontend development. Include OpenAPI docs at /docs reflecting all endpoints and their response schemas.",
+      "dependencies": [],
+      "implementation_dependencies": [],
+      "validation_dependencies": [],
+      "tests_to_author_now": [
+        "GET /healthz returns 200 OK with {\"status\": \"ok\"}",
+        "GET /metrics returns 200 OK with integer fields uptime and requests_total",
+        "GET /info returns 200 OK with string fields version and environment",
+        "GET /data returns 200 OK with items array, each item has id (int), label (str), status (str)",
+        "GET /docs is accessible and documents all endpoints"
+      ],
+      "tests_to_run_now": [
+        "GET /healthz returns 200 OK with {\"status\": \"ok\"}",
+        "GET /metrics returns 200 OK with integer fields uptime and requests_total",
+        "GET /info returns 200 OK with string fields version and environment",
+        "GET /data returns 200 OK with items array, each item has id (int), label (str), status (str)",
+        "GET /docs is accessible and documents all endpoints"
+      ],
+      "tests_deferred_until_dependencies": [],
+      "effort_points": 3
+    },
+    {
+      "id": "slice_2",
+      "title": "React Frontend UI and State Management",
+      "goal": "Build a Vite+React SPA dashboard that fetches and displays backend data, handling all UI states.",
+      "instructions": "Scaffold a Vite+React (TypeScript) app with a Dashboard view. Implement API calls to /healthz, /info, and /data (mocked if backend is unavailable). Render header (app name, system version), status bar (healthz), and main content (data items grid/list). Explicitly handle Loading, Empty, Error, and Success UI states, including a Retry button for errors.",
+      "dependencies": [],
+      "implementation_dependencies": [],
+      "validation_dependencies": ["slice_1"],
+      "tests_to_author_now": [
+        "App shows Loading state on mount",
+        "Displays header with app name and system version (from /info)",
+        "Status bar reflects /healthz (green for ok, red for error)",
+        "Main content renders items from /data",
+        "Shows 'No data available' if /data is empty",
+        "Shows Error state and Retry button if API is unreachable or 5xx"
+      ],
+      "tests_to_run_now": [
+        "App shows Loading state on mount",
+        "Displays header with app name and system version (mocked /info)",
+        "Status bar reflects /healthz (mocked)",
+        "Main content renders items from /data (mocked)",
+        "Shows 'No data available' if /data is empty (mocked)",
+        "Shows Error state and Retry button if API is unreachable (mocked)"
+      ],
+      "tests_deferred_until_dependencies": [
+        "Integration tests with live backend (slice_1)"
+      ],
+      "effort_points": 3
+    },
+    {
+      "id": "slice_3",
+      "title": "Integration and Environment Setup",
+      "goal": "Configure local development, CORS, and verify end-to-end frontend-backend communication.",
+      "instructions": "Set up npm scripts for Vite and uvicorn, ensure CORS is correctly configured in FastAPI, and document local run instructions. Validate that the frontend communicates with the backend, the UI updates dynamically from live API responses, and error/retry flows work when the backend is stopped. Ensure the project meets the acceptance checklist for integration.",
+      "dependencies": [],
+      "implementation_dependencies": [],
+      "validation_dependencies": ["slice_1", "slice_2"],
+      "tests_to_author_now": [
+        "Frontend fetches live /info and updates system version",
+        "Frontend fetches live /data and renders items",
+        "Frontend shows Error state and Retry button when backend is stopped",
+        "CORS allows frontend-backend communication",
+        "npm run dev (Vite) and uvicorn both start successfully"
+      ],
+      "tests_to_run_now": [
+        "npm run dev (Vite) and uvicorn both start successfully"
+      ],
+      "tests_deferred_until_dependencies": [
+        "Frontend fetches live /info and updates system version",
+        "Frontend fetches live /data and renders items",
+        "Frontend shows Error state and Retry button when backend is stopped",
+        "CORS allows frontend-backend communication"
+      ],
+      "effort_points": 3
+    }
+  ],
+  "integration_notes": "Slices 1 and 2 can be developed and tested independently using mocks. Slice 3 brings both together, focusing on environment setup, CORS, and live integration. All tests for individual slices should be authored early, with only live integration tests deferred until both backend and frontend are implemented."
+}
+
+
+
+Total usage est:        1 Premium request
+API time spent:         11s
+Total session time:     13s
+Total code changes:     +0 -0
+Breakdown by AI model:
+ gpt-4.1                 14.5k in, 1.1k out, 3.8k cached (Est. 1 Premium request)

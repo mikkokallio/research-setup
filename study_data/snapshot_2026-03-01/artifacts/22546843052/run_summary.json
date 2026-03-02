@@ -1,0 +1,38 @@
+{
+  "run_key": "gpt-5.3-codex-k3-tier0",
+  "model": "gpt-5.3-codex",
+  "condition": "k3",
+  "tier": "tier0",
+  "timings": [
+    {
+      "stage": "split",
+      "start_epoch": 1772380132,
+      "end_epoch": 1772380144,
+      "start_iso": "2026-03-01T15:48:52Z",
+      "end_iso": "2026-03-01T15:49:04Z",
+      "duration_seconds": 12,
+      "run_key": "gpt-5.3-codex-k3-tier0"
+    }
+  ],
+  "total_wall_clock_seconds": 12,
+  "usage": [
+    {
+      "stage": "split",
+      "run_key": "gpt-5.3-codex-k3-tier0",
+      "model": "gpt-5.3-codex",
+      "condition": "k3",
+      "tier": "tier0",
+      "token_usage": {
+        "prompt_tokens": null,
+        "completion_tokens": null,
+        "total_tokens": null
+      },
+      "cost": {
+        "currency": "USD",
+        "amount": null
+      },
+      "notes": "Best-effort telemetry. Raw Copilot output is saved for parsing."
+    }
+  ],
+  "deploy": null
+}

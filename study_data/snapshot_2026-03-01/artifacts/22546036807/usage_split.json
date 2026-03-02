@@ -1,0 +1,17 @@
+{
+  "stage": "split",
+  "run_key": "gpt-5.3-codex-k3-tier0",
+  "model": "gpt-5.3-codex",
+  "condition": "k3",
+  "tier": "tier0",
+  "token_usage": {
+    "prompt_tokens": null,
+    "completion_tokens": null,
+    "total_tokens": null
+  },
+  "cost": {
+    "currency": "USD",
+    "amount": null
+  },
+  "notes": "No model token/cost telemetry is wired in this stage yet."
+}

@@ -1,0 +1,2 @@
+Write a concise, implementation-agnostic Markdown product specification for a small but complete web application with an API, designed so multiple independent development approaches can be fairly compared, with clear constraints and a strictly testable acceptance checklist.
+Require at minimum: a dashboard-style web UI with loading/error/empty states, a backend exposing GET /healthz, GET /info, and GET /metrics, deterministic sample data and basic validation, and an opinionated stack of React + Vite for frontend and Python FastAPI for backend.
