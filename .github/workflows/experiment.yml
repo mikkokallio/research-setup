@@ -74,13 +74,16 @@ jobs:
           python-version: "3.11"
 
       - uses: actions/setup-node@v4
+        if: ${{ env.CONDITION == 'k3' }}
         with:
           node-version: "22"
 
       - name: Install Copilot CLI
+        if: ${{ env.CONDITION == 'k3' }}
         run: npm install -g @github/copilot
 
       - name: Check Copilot auth token
+        if: ${{ env.CONDITION == 'k3' }}
         run: |
           if [ -z "$COPILOT_GITHUB_TOKEN" ]; then
             echo "::error::Missing required secret COPILOT_GITHUB_TOKEN."
@@ -92,6 +95,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
 
       - name: Log Copilot token account
+        if: ${{ env.CONDITION == 'k3' }}
         run: |
           LOGIN=$(curl -sS \
             -H "Authorization: Bearer $COPILOT_GITHUB_TOKEN" \
@@ -102,6 +106,7 @@ jobs:
           COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
 
       - name: Validate Copilot request permission
+        if: ${{ env.CONDITION == 'k3' }}
         run: |
           mkdir -p work
           set +e
