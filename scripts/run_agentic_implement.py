@@ -347,6 +347,161 @@ Work package (authoritative; includes slice object and minimal shared context):
             flush=True,
         )
 
+    required_deployment_files = [
+        Path("apps/api/Dockerfile"),
+        Path("apps/web/Dockerfile"),
+    ]
+    missing_required_files = [str(path.as_posix()) for path in required_deployment_files if not path.exists()]
+
+    if missing_required_files:
+        print(
+            f"[agentic] missing required deployment files after slice pass: {missing_required_files}",
+            flush=True,
+        )
+        finalize_prompt = f"""
+You are finalization agent for run {args.run_key}.
+
+Task:
+- Create the missing required deployment files listed below.
+- Keep all existing generated app behavior intact.
+- Do not add features beyond what is necessary for container build/deploy.
+
+Missing required files:
+{json.dumps(missing_required_files, indent=2)}
+
+Requirements:
+- For apps/api/Dockerfile: produce a Python image build that installs from requirements.txt and runs the existing FastAPI app with uvicorn on port 8000.
+- For apps/web/Dockerfile: produce a Node build + static serve runtime image appropriate for the generated Vite web app.
+- Keep file paths and project layout unchanged.
+- Modify files directly in this workspace.
+
+At the end, print a short JSON object only:
+{{"summary": "...", "changed_files": ["..."], "remaining_missing_files": ["..."]}}
+""".strip()
+
+        finalize_cmd = [
+            "copilot",
+            "--allow-all",
+            "--no-ask-user",
+            "--model",
+            args.model,
+            "-p",
+            finalize_prompt,
+        ]
+
+        finalize_result = run_cmd(
+            finalize_cmd,
+            timeout_seconds=slice_timeout_seconds,
+            heartbeat_label="finalize_required_files:primary",
+        )
+        finalize_raw = (finalize_result.stdout or "") + "\n" + (finalize_result.stderr or "")
+        if finalize_result.timed_out:
+            finalize_raw = (
+                finalize_raw
+                + f"\nTIMEOUT: Copilot finalization exceeded {slice_timeout_seconds} seconds.\n"
+            )
+
+        if finalize_result.returncode != 0:
+            finalize_error_blob = finalize_raw.lower()
+            if "interactive mode to enable this model" in finalize_error_blob:
+                finalize_fallback_cmd = [
+                    "copilot",
+                    "--allow-all",
+                    "--no-ask-user",
+                    "--model",
+                    "gpt-4.1",
+                    "-p",
+                    finalize_prompt,
+                ]
+                finalize_fallback_result = run_cmd(
+                    finalize_fallback_cmd,
+                    timeout_seconds=slice_timeout_seconds,
+                    heartbeat_label="finalize_required_files:fallback_gpt41",
+                )
+                finalize_fallback_raw = (finalize_fallback_result.stdout or "") + "\n" + (
+                    finalize_fallback_result.stderr or ""
+                )
+                if finalize_fallback_result.returncode != 0:
+                    finalize_fallback_cmd = [
+                        "copilot",
+                        "--allow-all",
+                        "--no-ask-user",
+                        "-p",
+                        finalize_prompt,
+                    ]
+                    finalize_fallback_result = run_cmd(
+                        finalize_fallback_cmd,
+                        timeout_seconds=slice_timeout_seconds,
+                        heartbeat_label="finalize_required_files:fallback_default_model",
+                    )
+                    finalize_fallback_raw = (finalize_fallback_result.stdout or "") + "\n" + (
+                        finalize_fallback_result.stderr or ""
+                    )
+            else:
+                finalize_fallback_cmd = [
+                    "copilot",
+                    "--allow-all",
+                    "--no-ask-user",
+                    "--model",
+                    "gpt-4.1",
+                    "-p",
+                    finalize_prompt,
+                ]
+                finalize_fallback_result = run_cmd(
+                    finalize_fallback_cmd,
+                    timeout_seconds=slice_timeout_seconds,
+                    heartbeat_label="finalize_required_files:fallback_gpt41",
+                )
+                finalize_fallback_raw = (finalize_fallback_result.stdout or "") + "\n" + (
+                    finalize_fallback_result.stderr or ""
+                )
+
+            finalize_raw = (
+                "PRIMARY_CMD_STDOUT:\n"
+                + (finalize_result.stdout or "")
+                + "\nPRIMARY_CMD_STDERR:\n"
+                + (finalize_result.stderr or "")
+                + "\nFALLBACK_CMD_STDOUT:\n"
+                + (finalize_fallback_result.stdout or "")
+                + "\nFALLBACK_CMD_STDERR:\n"
+                + (finalize_fallback_result.stderr or "")
+            )
+            finalize_result = finalize_fallback_result
+
+        (logs_dir / "finalize_required_files_output.txt").write_text(finalize_raw, encoding="utf-8")
+
+        changed_res = run_cmd(["git", "diff", "--name-only", "--", "."])
+        changed_files = [line.strip() for line in (changed_res.stdout or "").splitlines() if line.strip()]
+        if changed_files:
+            run_cmd(["git", "add", "."])
+            run_cmd(["git", "commit", "-m", f"agentic finalize required files ({args.run_key})"])
+
+        missing_after_finalize = [str(path.as_posix()) for path in required_deployment_files if not path.exists()]
+        finalize_summary = {
+            "stage": "finalize_required_files",
+            "run_key": args.run_key,
+            "exit_code": finalize_result.returncode,
+            "changed_files": changed_files,
+            "missing_before_finalize": missing_required_files,
+            "missing_after_finalize": missing_after_finalize,
+            "timed_out": finalize_result.timed_out,
+            "elapsed_seconds": finalize_result.elapsed_seconds,
+        }
+        (summary_dir / "finalize_required_files_summary.json").write_text(
+            json.dumps(finalize_summary, indent=2),
+            encoding="utf-8",
+        )
+
+        if finalize_result.returncode != 0:
+            raise RuntimeError("Copilot finalization step failed. See logs/finalize_required_files_output.txt")
+
+        if missing_after_finalize:
+            raise RuntimeError(
+                f"Required deployment files still missing after finalization: {missing_after_finalize}"
+            )
+
+        print("[agentic] required deployment files are now present", flush=True)
+
 
 if __name__ == "__main__":
     main()
