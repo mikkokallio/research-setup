@@ -92,8 +92,10 @@ jobs:
         run: |
           RUN_KEY="${{ inputs.run_key }}"
           REV_SUFFIX=$(echo -n "${RUN_KEY}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" | sha256sum | cut -c1-8)
+          IMAGE_TAG="${RUN_KEY}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           echo "run_key=$RUN_KEY" >> "$GITHUB_OUTPUT"
           echo "rev_suffix=$REV_SUFFIX" >> "$GITHUB_OUTPUT"
+          echo "image_tag=$IMAGE_TAG" >> "$GITHUB_OUTPUT"
 
       - name: ACR login
         run: az acr login --name $AZ_ACR
@@ -147,7 +149,7 @@ jobs:
             echo "apps/api/requirements.txt missing; writing minimal runtime requirements"
             printf 'fastapi\nuvicorn[standard]\n' > apps/api/requirements.txt
           fi
-          API_IMAGE="$AZ_ACR.azurecr.io/${{ env.REPO_NAME }}-api:${{ steps.run.outputs.run_key }}"
+          API_IMAGE="$AZ_ACR.azurecr.io/${{ env.REPO_NAME }}-api:${{ steps.run.outputs.image_tag }}"
           docker build -t "$API_IMAGE" apps/api
           docker push "$API_IMAGE"
           echo "API_IMAGE=$API_IMAGE" >> "$GITHUB_ENV"
@@ -169,12 +171,21 @@ jobs:
             --resource-group $AZ_RG \
             --query "[?properties.template.revisionSuffix=='${{ steps.run.outputs.rev_suffix }}'].properties.fqdn" \
             -o tsv)
+
+          if [ -z "$API_FQDN" ]; then
+            API_FQDN=$(az containerapp show \
+              --name $AZ_API_APP \
+              --resource-group $AZ_RG \
+              --query properties.configuration.ingress.fqdn \
+              -o tsv)
+          fi
+
           echo "api_fqdn=$API_FQDN" >> "$GITHUB_OUTPUT"
 
       - name: Build and push web
         run: |
           rm -rf apps/web/node_modules
-          WEB_IMAGE="$AZ_ACR.azurecr.io/${{ env.REPO_NAME }}-web:${{ steps.run.outputs.run_key }}"
+          WEB_IMAGE="$AZ_ACR.azurecr.io/${{ env.REPO_NAME }}-web:${{ steps.run.outputs.image_tag }}"
           docker build \
             --build-arg VITE_RUN_KEY=${{ steps.run.outputs.run_key }} \
             --build-arg VITE_MODEL=${{ inputs.model }} \
@@ -201,7 +212,35 @@ jobs:
             --resource-group $AZ_RG \
             --query "[?properties.template.revisionSuffix=='${{ steps.run.outputs.rev_suffix }}'].properties.fqdn" \
             -o tsv)
+
+          if [ -z "$WEB_FQDN" ]; then
+            WEB_FQDN=$(az containerapp show \
+              --name $AZ_WEB_APP \
+              --resource-group $AZ_RG \
+              --query properties.configuration.ingress.fqdn \
+              -o tsv)
+          fi
+
           echo "web_fqdn=$WEB_FQDN" >> "$GITHUB_OUTPUT"
+
+      - name: Route web traffic to latest revision
+        run: |
+          WEB_LATEST=$(az containerapp show \
+            --name $AZ_WEB_APP \
+            --resource-group $AZ_RG \
+            --query properties.latestRevisionName \
+            -o tsv)
+          az containerapp ingress traffic set \
+            --name $AZ_WEB_APP \
+            --resource-group $AZ_RG \
+            --revision-weight ${WEB_LATEST}=100 >/dev/null
+
+      - name: Configure API CORS for web origin
+        run: |
+          az containerapp update \
+            --name $AZ_API_APP \
+            --resource-group $AZ_RG \
+            --set-env-vars CORS_ALLOW_ORIGINS=https://${{ steps.web.outputs.web_fqdn }},http://127.0.0.1:5173,http://localhost:5173 >/dev/null
 
       - name: Deployment manifest
         run: |
