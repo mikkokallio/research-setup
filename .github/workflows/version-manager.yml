@@ -1,0 +1,263 @@
+name: version-manager
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: Manage mode
+        required: true
+        default: catalog
+        type: choice
+        options:
+          - catalog
+          - activate
+      run_key:
+        description: Optional run_key to select newest matching revisions
+        required: false
+        default: ""
+        type: string
+      web_revision:
+        description: Optional explicit web revision name (overrides run_key)
+        required: false
+        default: ""
+        type: string
+      api_revision:
+        description: Optional explicit API revision name (overrides run_key)
+        required: false
+        default: ""
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  AZ_RG: ${{ vars.AZ_RG }}
+  AZ_WEB_APP: ${{ vars.AZ_WEB_APP }}
+  AZ_API_APP: ${{ vars.AZ_API_APP }}
+
+jobs:
+  manage_versions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Export current revision inventory
+        run: |
+          az containerapp revision list \
+            --name "$AZ_WEB_APP" \
+            --resource-group "$AZ_RG" \
+            -o json > web_revisions.json
+
+          az containerapp revision list \
+            --name "$AZ_API_APP" \
+            --resource-group "$AZ_RG" \
+            -o json > api_revisions.json
+
+      - name: Build catalog and activation plan
+        id: plan
+        env:
+          ACTION: ${{ inputs.action }}
+          RUN_KEY: ${{ inputs.run_key }}
+          WEB_REVISION_INPUT: ${{ inputs.web_revision }}
+          API_REVISION_INPUT: ${{ inputs.api_revision }}
+          AZ_WEB_APP: ${{ env.AZ_WEB_APP }}
+          AZ_API_APP: ${{ env.AZ_API_APP }}
+          AZ_RG: ${{ env.AZ_RG }}
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          import os
+          from pathlib import Path
+
+          def load(path: str):
+              return json.loads(Path(path).read_text(encoding='utf-8'))
+
+          def env_value(env_items, key):
+              for item in env_items or []:
+                  if item.get('name') == key:
+                      return item.get('value', '')
+              return ''
+
+          def normalize(app, rows):
+              out = []
+              for row in rows:
+                  props = row.get('properties', {})
+                  container = ((props.get('template') or {}).get('containers') or [{}])[0]
+                  env_items = container.get('env', [])
+                  image = container.get('image', '')
+                  fqdn = props.get('fqdn', '')
+                  created = props.get('createdTime', '')
+                  item = {
+                      'app': app,
+                      'revision_name': row.get('name', ''),
+                      'created_time': created,
+                      'active': props.get('active', False),
+                      'traffic_weight': props.get('trafficWeight', 0),
+                      'running_state': props.get('runningState', ''),
+                      'health_state': props.get('healthState', ''),
+                      'image': image,
+                      'run_key_env': env_value(env_items, 'RUN_KEY'),
+                      'vite_run_key_env': env_value(env_items, 'VITE_RUN_KEY'),
+                      'run_model_env': env_value(env_items, 'RUN_MODEL') or env_value(env_items, 'VITE_MODEL'),
+                      'run_condition_env': env_value(env_items, 'RUN_CONDITION') or env_value(env_items, 'VITE_CONDITION'),
+                      'fqdn': fqdn,
+                      'url': f"https://{fqdn}" if fqdn else '',
+                  }
+                  out.append(item)
+              return sorted(out, key=lambda x: x['created_time'], reverse=True)
+
+          def match_run_key(item, run_key):
+              if not run_key:
+                  return False
+              if item.get('run_key_env') == run_key:
+                  return True
+              if item.get('vite_run_key_env') == run_key:
+                  return True
+              return run_key in (item.get('image') or '')
+
+          def pick_revision(rows, explicit, run_key):
+              if explicit:
+                  return explicit
+              if run_key:
+                  for row in rows:
+                      if match_run_key(row, run_key):
+                          return row['revision_name']
+              return ''
+
+          web_rows = normalize('web', load('web_revisions.json'))
+          api_rows = normalize('api', load('api_revisions.json'))
+
+          Path('version_catalog.json').write_text(
+              json.dumps({'web': web_rows, 'api': api_rows}, indent=2),
+              encoding='utf-8',
+          )
+
+          with Path('version_catalog.csv').open('w', newline='', encoding='utf-8') as f:
+              fieldnames = [
+                  'app','revision_name','created_time','active','traffic_weight','running_state','health_state',
+                  'image','run_key_env','vite_run_key_env','run_model_env','run_condition_env','fqdn','url'
+              ]
+              writer = csv.DictWriter(f, fieldnames=fieldnames)
+              writer.writeheader()
+              for row in web_rows + api_rows:
+                  writer.writerow(row)
+
+          action = os.environ.get('ACTION', 'catalog')
+          run_key = os.environ.get('RUN_KEY', '').strip()
+          web_input = os.environ.get('WEB_REVISION_INPUT', '').strip()
+          api_input = os.environ.get('API_REVISION_INPUT', '').strip()
+
+          plan = {
+              'action': action,
+              'run_key': run_key,
+              'web_revision_input': web_input,
+              'api_revision_input': api_input,
+              'web_target_revision': pick_revision(web_rows, web_input, run_key),
+              'api_target_revision': pick_revision(api_rows, api_input, run_key),
+              'notes': [
+                  'Explicit revision input takes precedence over run_key matching.',
+                  'run_key matching checks RUN_KEY/VITE_RUN_KEY env and image tag text.',
+              ],
+          }
+
+          Path('activation_plan.json').write_text(json.dumps(plan, indent=2), encoding='utf-8')
+          print(f"web_target={plan['web_target_revision']}")
+          print(f"api_target={plan['api_target_revision']}")
+          PY
+
+          WEB_TARGET=$(python - <<'PY'
+          import json
+          print(json.loads(open('activation_plan.json', encoding='utf-8').read()).get('web_target_revision',''))
+          PY
+          )
+          API_TARGET=$(python - <<'PY'
+          import json
+          print(json.loads(open('activation_plan.json', encoding='utf-8').read()).get('api_target_revision',''))
+          PY
+          )
+
+          echo "web_target=$WEB_TARGET" >> "$GITHUB_OUTPUT"
+          echo "api_target=$API_TARGET" >> "$GITHUB_OUTPUT"
+
+      - name: Activate selected web revision
+        if: ${{ inputs.action == 'activate' && steps.plan.outputs.web_target != '' }}
+        run: |
+          az containerapp ingress traffic set \
+            --name "$AZ_WEB_APP" \
+            --resource-group "$AZ_RG" \
+            --revision-weight "${{ steps.plan.outputs.web_target }}=100" >/dev/null
+
+      - name: Activate selected API revision
+        if: ${{ inputs.action == 'activate' && steps.plan.outputs.api_target != '' }}
+        run: |
+          az containerapp ingress traffic set \
+            --name "$AZ_API_APP" \
+            --resource-group "$AZ_RG" \
+            --revision-weight "${{ steps.plan.outputs.api_target }}=100" >/dev/null
+
+      - name: Build activation report
+        env:
+          ACTION: ${{ inputs.action }}
+          WEB_TARGET: ${{ steps.plan.outputs.web_target }}
+          API_TARGET: ${{ steps.plan.outputs.api_target }}
+        run: |
+          WEB_STABLE=$(az containerapp show --name "$AZ_WEB_APP" --resource-group "$AZ_RG" --query properties.configuration.ingress.fqdn -o tsv)
+          API_STABLE=$(az containerapp show --name "$AZ_API_APP" --resource-group "$AZ_RG" --query properties.configuration.ingress.fqdn -o tsv)
+
+          WEB_TARGET_FQDN=""
+          if [ -n "$WEB_TARGET" ]; then
+            WEB_TARGET_FQDN=$(az containerapp revision show \
+              --name "$AZ_WEB_APP" \
+              --resource-group "$AZ_RG" \
+              --revision "$WEB_TARGET" \
+              --query properties.fqdn -o tsv)
+          fi
+
+          API_TARGET_FQDN=""
+          if [ -n "$API_TARGET" ]; then
+            API_TARGET_FQDN=$(az containerapp revision show \
+              --name "$AZ_API_APP" \
+              --resource-group "$AZ_RG" \
+              --revision "$API_TARGET" \
+              --query properties.fqdn -o tsv)
+          fi
+
+          export WEB_STABLE API_STABLE WEB_TARGET_FQDN API_TARGET_FQDN
+
+          python - <<'PY'
+          import json
+          import os
+          from datetime import datetime, timezone
+
+          report = {
+              'timestamp': datetime.now(timezone.utc).isoformat(),
+              'action': os.environ.get('ACTION', ''),
+              'web_target_revision': os.environ.get('WEB_TARGET', ''),
+              'api_target_revision': os.environ.get('API_TARGET', ''),
+              'web_stable_url': f"https://{os.environ.get('WEB_STABLE','')}",
+              'api_stable_url': f"https://{os.environ.get('API_STABLE','')}",
+              'web_target_url': f"https://{os.environ.get('WEB_TARGET_FQDN','')}" if os.environ.get('WEB_TARGET_FQDN') else '',
+              'api_target_url': f"https://{os.environ.get('API_TARGET_FQDN','')}" if os.environ.get('API_TARGET_FQDN') else '',
+          }
+          with open('version_manager_report.json', 'w', encoding='utf-8') as f:
+              json.dump(report, f, indent=2)
+          PY
+
+      - name: Upload version management artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: version-manager-${{ github.run_id }}
+          path: |
+            version_catalog.csv
+            version_catalog.json
+            activation_plan.json
+            version_manager_report.json

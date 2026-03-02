@@ -35,6 +35,39 @@ See .env.example for a local reference.
 - The workflow uses Container Apps revisions to provide per-run URLs without creating 40 separate apps.
 - Keep resources and naming consistent across runs.
 
+## UAT and Version Transitions (No Copilot Needed)
+
+### 1) Deploy a specific generated version
+Use deploy replay to redeploy any previous implement artifact by run id + run key.
+
+```powershell
+gh workflow run deploy-replay.yml -f source_run_id=<SOURCE_RUN_ID> -f run_key=<RUN_KEY> -f model=gpt-5.3-codex -f condition=k3 -f tier=tier0
+```
+
+### 2) Export a catalog of available revisions
+This creates `version_catalog.csv/json` as workflow artifacts so you can pick versions to test.
+
+```powershell
+gh workflow run version-manager.yml -f action=catalog
+```
+
+### 3) Activate/rollback to a specific version
+Option A: target by `run_key` (newest matching web/api revisions).
+
+```powershell
+gh workflow run version-manager.yml -f action=activate -f run_key=<RUN_KEY>
+```
+
+Option B: target explicit revision names.
+
+```powershell
+gh workflow run version-manager.yml -f action=activate -f web_revision=<WEB_REVISION> -f api_revision=<API_REVISION>
+```
+
+### 4) UAT URLs
+- Stable UAT entrypoint is the web app ingress URL from latest deploy artifact (`deploy_info.json` / `deploy_replay_info.json`).
+- Revision-specific UAT URLs are available in `version_manager_report.json` and `version_catalog.csv` artifacts.
+
 ## Provision Azure
 Run the provisioning script after setting env vars or repo variables.
 

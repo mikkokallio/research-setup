@@ -253,6 +253,18 @@ jobs:
 
       - name: Deployment manifest
         run: |
+          WEB_REVISION=$(az containerapp show \
+            --name $AZ_WEB_APP \
+            --resource-group $AZ_RG \
+            --query properties.latestRevisionName \
+            -o tsv)
+          API_REVISION=$(az containerapp show \
+            --name $AZ_API_APP \
+            --resource-group $AZ_RG \
+            --query properties.latestRevisionName \
+            -o tsv)
+          export WEB_REVISION API_REVISION
+
           python - <<'PY'
           import json
           import os
@@ -261,9 +273,15 @@ jobs:
           payload = {
               "source_run_id": os.environ["SOURCE_RUN_ID"],
               "run_key": os.environ["RUN_KEY"],
+              "run_id": os.environ["RUN_ID"],
+              "run_attempt": os.environ["RUN_ATTEMPT"],
               "timestamp": datetime.now(timezone.utc).isoformat(),
               "web_url": f"https://{os.environ['WEB_FQDN']}",
               "api_url": f"https://{os.environ['API_FQDN']}",
+              "web_revision": os.environ.get("WEB_REVISION", ""),
+              "api_revision": os.environ.get("API_REVISION", ""),
+              "web_image": os.environ.get("WEB_IMAGE", ""),
+              "api_image": os.environ.get("API_IMAGE", ""),
           }
           with open("deploy_replay_info.json", "w", encoding="utf-8") as f:
               json.dump(payload, f, indent=2)
@@ -271,8 +289,12 @@ jobs:
         env:
           SOURCE_RUN_ID: ${{ inputs.source_run_id }}
           RUN_KEY: ${{ steps.run.outputs.run_key }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
           WEB_FQDN: ${{ steps.web.outputs.web_fqdn }}
           API_FQDN: ${{ steps.api.outputs.api_fqdn }}
+          WEB_IMAGE: ${{ env.WEB_IMAGE }}
+          API_IMAGE: ${{ env.API_IMAGE }}
 
       - name: Upload deploy replay artifact
         uses: actions/upload-artifact@v4
