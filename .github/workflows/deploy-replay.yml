@@ -173,6 +173,7 @@ jobs:
 
       - name: Build and push web
         run: |
+          rm -rf apps/web/node_modules
           WEB_IMAGE="$AZ_ACR.azurecr.io/${{ env.REPO_NAME }}-web:${{ steps.run.outputs.run_key }}"
           docker build \
             --build-arg VITE_RUN_KEY=${{ steps.run.outputs.run_key }} \
