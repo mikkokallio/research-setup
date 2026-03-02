@@ -83,13 +83,23 @@ jobs:
       - name: Check Copilot auth token
         run: |
           if [ -z "$COPILOT_GITHUB_TOKEN" ]; then
-            echo "::error::Missing required secret COPILOT_GITHUB_TOKEN (or fallback COPILOT_PAT)."
+            echo "::error::Missing required secret COPILOT_GITHUB_TOKEN."
             exit 1
           fi
         env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
-          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
-          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+
+      - name: Log Copilot token account
+        run: |
+          LOGIN=$(curl -sS \
+            -H "Authorization: Bearer $COPILOT_GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/user | python -c "import json,sys; print(json.load(sys.stdin).get('login','unknown'))")
+          echo "COPILOT_TOKEN_LOGIN=$LOGIN"
+        env:
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
 
       - name: Validate Copilot request permission
         run: |
@@ -123,9 +133,9 @@ jobs:
             exit 1
           fi
         env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
-          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
-          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
           MODEL: ${{ env.MODEL }}
 
       - name: Stage start
@@ -356,9 +366,9 @@ jobs:
           Path("work/slices/slices.txt").write_text("\n".join(listed) + "\n", encoding="utf-8")
           PY
         env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
-          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
-          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
           MODEL: ${{ env.MODEL }}
           CONDITION: ${{ env.CONDITION }}
           K: ${{ steps.k.outputs.k }}
@@ -472,13 +482,13 @@ jobs:
       - name: Check Copilot auth token
         run: |
           if [ -z "$COPILOT_GITHUB_TOKEN" ]; then
-            echo "::error::Missing required secret COPILOT_GITHUB_TOKEN (or fallback COPILOT_PAT)."
+            echo "::error::Missing required secret COPILOT_GITHUB_TOKEN."
             exit 1
           fi
         env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
-          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
-          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
 
       - name: Download split artifact
         uses: actions/download-artifact@v4
@@ -508,9 +518,9 @@ jobs:
             --split-plan "work/split_plan.json" \
             --out-dir "work/agentic"
         env:
-          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
-          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
-          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || secrets.COPILOT_PAT || github.token }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
           MODEL: ${{ env.MODEL }}
           CONDITION: ${{ env.CONDITION }}
 
