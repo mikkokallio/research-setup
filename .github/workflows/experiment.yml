@@ -728,6 +728,15 @@ jobs:
             --resource-group $AZ_RG \
             --query "[?properties.template.revisionSuffix=='${{ steps.run.outputs.rev_suffix }}'].properties.fqdn" \
             -o tsv)
+
+          if [ -z "$API_FQDN" ]; then
+            API_FQDN=$(az containerapp show \
+              --name $AZ_API_APP \
+              --resource-group $AZ_RG \
+              --query properties.configuration.ingress.fqdn \
+              -o tsv)
+          fi
+
           echo "api_fqdn=$API_FQDN" >> "$GITHUB_OUTPUT"
 
       - name: Build and push web
@@ -766,7 +775,28 @@ jobs:
             --resource-group $AZ_RG \
             --query "[?properties.template.revisionSuffix=='${{ steps.run.outputs.rev_suffix }}'].properties.fqdn" \
             -o tsv)
+
+          if [ -z "$WEB_FQDN" ]; then
+            WEB_FQDN=$(az containerapp show \
+              --name $AZ_WEB_APP \
+              --resource-group $AZ_RG \
+              --query properties.configuration.ingress.fqdn \
+              -o tsv)
+          fi
+
           echo "web_fqdn=$WEB_FQDN" >> "$GITHUB_OUTPUT"
+
+      - name: Route web traffic to latest revision
+        run: |
+          WEB_LATEST=$(az containerapp show \
+            --name $AZ_WEB_APP \
+            --resource-group $AZ_RG \
+            --query properties.latestRevisionName \
+            -o tsv)
+          az containerapp ingress traffic set \
+            --name $AZ_WEB_APP \
+            --resource-group $AZ_RG \
+            --revision-weight ${WEB_LATEST}=100 >/dev/null
 
       - name: Configure API ingress CORS for web origin
         run: |
