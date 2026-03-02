@@ -1,0 +1,232 @@
+name: deploy-replay
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: Source Actions run ID that produced implement artifacts
+        required: true
+        type: string
+      run_key:
+        description: Run key used in artifact name implement-<run_key>
+        required: true
+        default: gpt-5.3-codex-k3-tier0
+        type: string
+      model:
+        description: Model label for metadata
+        required: true
+        default: gpt-5.3-codex
+        type: string
+      condition:
+        description: Condition label for metadata
+        required: true
+        default: k3
+        type: string
+      tier:
+        description: Tier label for metadata
+        required: true
+        default: tier0
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+  id-token: write
+
+env:
+  REPO_NAME: ${{ vars.REPO_NAME || 'research-setup' }}
+  AZ_RG: ${{ vars.AZ_RG }}
+  AZ_ACR: ${{ vars.AZ_ACR }}
+  AZ_WEB_APP: ${{ vars.AZ_WEB_APP }}
+  AZ_API_APP: ${{ vars.AZ_API_APP }}
+
+jobs:
+  deploy_from_artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download implement artifact from source run
+        uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ inputs.source_run_id }}
+          github-token: ${{ github.token }}
+          name: implement-${{ inputs.run_key }}
+          path: .
+
+      - name: Inspect generated app files
+        run: |
+          echo "=== Generated API tree (apps/api) ==="
+          if [ -d apps/api ]; then
+            find apps/api -maxdepth 4 -type f | sort
+          else
+            echo "apps/api directory missing"
+          fi
+          echo "=== Generated WEB tree (apps/web) ==="
+          if [ -d apps/web ]; then
+            find apps/web -maxdepth 4 -type f | sort
+          else
+            echo "apps/web directory missing"
+          fi
+          echo "=== Dockerfile checks ==="
+          if [ -f apps/api/Dockerfile ]; then
+            echo "apps/api/Dockerfile present"
+          else
+            echo "apps/api/Dockerfile MISSING"
+          fi
+          if [ -f apps/web/Dockerfile ]; then
+            echo "apps/web/Dockerfile present"
+          else
+            echo "apps/web/Dockerfile MISSING"
+          fi
+
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Resolve run metadata
+        id: run
+        run: |
+          RUN_KEY="${{ inputs.run_key }}"
+          REV_SUFFIX=$(echo -n "${RUN_KEY}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" | sha256sum | cut -c1-8)
+          echo "run_key=$RUN_KEY" >> "$GITHUB_OUTPUT"
+          echo "rev_suffix=$REV_SUFFIX" >> "$GITHUB_OUTPUT"
+
+      - name: ACR login
+        run: az acr login --name $AZ_ACR
+
+      - name: Ensure ACA registry pull access
+        run: |
+          retry_aca() {
+            local cmd="$1"
+            local attempts=10
+            local delay=20
+            local n=1
+            while [ $n -le $attempts ]; do
+              set +e
+              out=$(eval "$cmd" 2>&1)
+              code=$?
+              set -e
+              if [ $code -eq 0 ]; then
+                return 0
+              fi
+              if echo "$out" | grep -q "ContainerAppOperationInProgress"; then
+                echo "Container app operation in progress, retry $n/$attempts after ${delay}s..."
+                sleep $delay
+                n=$((n+1))
+                continue
+              fi
+              echo "$out"
+              return $code
+            done
+            echo "$out"
+            return 1
+          }
+
+          ACR_ID=$(az acr show --name $AZ_ACR --resource-group $AZ_RG --query id -o tsv)
+          ACR_LOGIN=$(az acr show --name $AZ_ACR --resource-group $AZ_RG --query loginServer -o tsv)
+
+          retry_aca "az containerapp identity assign --name $AZ_API_APP --resource-group $AZ_RG >/dev/null"
+          retry_aca "az containerapp identity assign --name $AZ_WEB_APP --resource-group $AZ_RG >/dev/null"
+
+          API_PRINCIPAL=$(az containerapp identity show --name $AZ_API_APP --resource-group $AZ_RG --query principalId -o tsv)
+          WEB_PRINCIPAL=$(az containerapp identity show --name $AZ_WEB_APP --resource-group $AZ_RG --query principalId -o tsv)
+
+          az role assignment create --assignee-object-id "$API_PRINCIPAL" --assignee-principal-type ServicePrincipal --role AcrPull --scope "$ACR_ID" >/dev/null || true
+          az role assignment create --assignee-object-id "$WEB_PRINCIPAL" --assignee-principal-type ServicePrincipal --role AcrPull --scope "$ACR_ID" >/dev/null || true
+
+          retry_aca "az containerapp registry set --name $AZ_API_APP --resource-group $AZ_RG --server '$ACR_LOGIN' --identity system >/dev/null"
+          retry_aca "az containerapp registry set --name $AZ_WEB_APP --resource-group $AZ_RG --server '$ACR_LOGIN' --identity system >/dev/null"
+
+      - name: Build and push API
+        run: |
+          if [ ! -f apps/api/requirements.txt ]; then
+            echo "apps/api/requirements.txt missing; writing minimal runtime requirements"
+            printf 'fastapi\nuvicorn[standard]\n' > apps/api/requirements.txt
+          fi
+          API_IMAGE="$AZ_ACR.azurecr.io/${{ env.REPO_NAME }}-api:${{ steps.run.outputs.run_key }}"
+          docker build -t "$API_IMAGE" apps/api
+          docker push "$API_IMAGE"
+          echo "API_IMAGE=$API_IMAGE" >> "$GITHUB_ENV"
+
+      - name: Deploy API revision
+        run: |
+          az containerapp update \
+            --name $AZ_API_APP \
+            --resource-group $AZ_RG \
+            --image "$API_IMAGE" \
+            --revision-suffix ${{ steps.run.outputs.rev_suffix }} \
+            --set-env-vars RUN_KEY=${{ steps.run.outputs.run_key }} RUN_MODEL=${{ inputs.model }} RUN_CONDITION=${{ inputs.condition }}
+
+      - name: Resolve API revision URL
+        id: api
+        run: |
+          API_FQDN=$(az containerapp revision list \
+            --name $AZ_API_APP \
+            --resource-group $AZ_RG \
+            --query "[?properties.template.revisionSuffix=='${{ steps.run.outputs.rev_suffix }}'].properties.fqdn" \
+            -o tsv)
+          echo "api_fqdn=$API_FQDN" >> "$GITHUB_OUTPUT"
+
+      - name: Build and push web
+        run: |
+          WEB_IMAGE="$AZ_ACR.azurecr.io/${{ env.REPO_NAME }}-web:${{ steps.run.outputs.run_key }}"
+          docker build \
+            --build-arg VITE_RUN_KEY=${{ steps.run.outputs.run_key }} \
+            --build-arg VITE_MODEL=${{ inputs.model }} \
+            --build-arg VITE_CONDITION=${{ inputs.condition }} \
+            --build-arg VITE_TIER=${{ inputs.tier }} \
+            --build-arg VITE_API_URL=https://${{ steps.api.outputs.api_fqdn }} \
+            -t "$WEB_IMAGE" apps/web
+          docker push "$WEB_IMAGE"
+          echo "WEB_IMAGE=$WEB_IMAGE" >> "$GITHUB_ENV"
+
+      - name: Deploy web revision
+        run: |
+          az containerapp update \
+            --name $AZ_WEB_APP \
+            --resource-group $AZ_RG \
+            --image "$WEB_IMAGE" \
+            --revision-suffix ${{ steps.run.outputs.rev_suffix }}
+
+      - name: Resolve web revision URL
+        id: web
+        run: |
+          WEB_FQDN=$(az containerapp revision list \
+            --name $AZ_WEB_APP \
+            --resource-group $AZ_RG \
+            --query "[?properties.template.revisionSuffix=='${{ steps.run.outputs.rev_suffix }}'].properties.fqdn" \
+            -o tsv)
+          echo "web_fqdn=$WEB_FQDN" >> "$GITHUB_OUTPUT"
+
+      - name: Deployment manifest
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from datetime import datetime, timezone
+
+          payload = {
+              "source_run_id": os.environ["SOURCE_RUN_ID"],
+              "run_key": os.environ["RUN_KEY"],
+              "timestamp": datetime.now(timezone.utc).isoformat(),
+              "web_url": f"https://{os.environ['WEB_FQDN']}",
+              "api_url": f"https://{os.environ['API_FQDN']}",
+          }
+          with open("deploy_replay_info.json", "w", encoding="utf-8") as f:
+              json.dump(payload, f, indent=2)
+          PY
+        env:
+          SOURCE_RUN_ID: ${{ inputs.source_run_id }}
+          RUN_KEY: ${{ steps.run.outputs.run_key }}
+          WEB_FQDN: ${{ steps.web.outputs.web_fqdn }}
+          API_FQDN: ${{ steps.api.outputs.api_fqdn }}
+
+      - name: Upload deploy replay artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: deploy-replay-${{ steps.run.outputs.run_key }}
+          path: deploy_replay_info.json
