@@ -507,6 +507,7 @@ jobs:
           mkdir -p apps/web apps/api
 
       - name: Agentic coding loop
+        timeout-minutes: 25
         run: |
           python scripts/run_agentic_implement.py \
             --model "$MODEL" \
@@ -523,6 +524,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
           MODEL: ${{ env.MODEL }}
           CONDITION: ${{ env.CONDITION }}
+          COPILOT_SLICE_TIMEOUT_SEC: "420"
 
       - name: Build web (best effort)
         run: |

@@ -4,6 +4,7 @@ import os
 import re
 import subprocess
 import time
+from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -26,8 +27,37 @@ def parse_usage(raw_text: str):
     return result
 
 
-def run_cmd(cmd, cwd=None):
-    return subprocess.run(cmd, cwd=cwd, text=True, capture_output=True, check=False)
+@dataclass
+class CmdResult:
+    returncode: int
+    stdout: str
+    stderr: str
+    timed_out: bool = False
+
+
+def run_cmd(cmd, cwd=None, timeout_seconds=None):
+    try:
+        completed = subprocess.run(
+            cmd,
+            cwd=cwd,
+            text=True,
+            capture_output=True,
+            check=False,
+            timeout=timeout_seconds,
+        )
+        return CmdResult(
+            returncode=completed.returncode,
+            stdout=completed.stdout or "",
+            stderr=completed.stderr or "",
+            timed_out=False,
+        )
+    except subprocess.TimeoutExpired as exc:
+        return CmdResult(
+            returncode=124,
+            stdout=(exc.stdout or "") if isinstance(exc.stdout, str) else "",
+            stderr=(exc.stderr or "") if isinstance(exc.stderr, str) else "",
+            timed_out=True,
+        )
 
 
 def read_text(path: Path) -> str:
@@ -45,6 +75,7 @@ def main():
     parser.add_argument("--split-plan", required=False)
     parser.add_argument("--out-dir", required=True)
     args = parser.parse_args()
+    slice_timeout_seconds = int(os.getenv("COPILOT_SLICE_TIMEOUT_SEC", "420"))
 
     out_dir = Path(args.out_dir)
     logs_dir = out_dir / "logs"
@@ -100,6 +131,7 @@ def main():
         work_items = [(1, spec_text)]
 
     for index, slice_text in work_items:
+        print(f"[agentic] starting slice {index}/{len(work_items)}", flush=True)
         start_epoch = int(time.time())
         start_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -137,8 +169,14 @@ Work package (authoritative; includes slice object and minimal shared context):
             prompt,
         ]
 
-        result = run_cmd(cmd)
+        print(f"[agentic] invoking copilot for slice {index} with timeout {slice_timeout_seconds}s", flush=True)
+        result = run_cmd(cmd, timeout_seconds=slice_timeout_seconds)
         raw = (result.stdout or "") + "\n" + (result.stderr or "")
+        if result.timed_out:
+            raw = (
+                raw
+                + f"\nTIMEOUT: Copilot call exceeded {slice_timeout_seconds} seconds for slice {index}.\n"
+            )
         if result.returncode != 0:
             error_blob = raw.lower()
             if "interactive mode to enable this model" in error_blob:
@@ -151,7 +189,7 @@ Work package (authoritative; includes slice object and minimal shared context):
                     "-p",
                     prompt,
                 ]
-                fallback_result = run_cmd(fallback_cmd)
+                fallback_result = run_cmd(fallback_cmd, timeout_seconds=slice_timeout_seconds)
                 fallback_raw = (fallback_result.stdout or "") + "\n" + (fallback_result.stderr or "")
                 if fallback_result.returncode != 0:
                     fallback_cmd = [
@@ -161,7 +199,7 @@ Work package (authoritative; includes slice object and minimal shared context):
                         "-p",
                         prompt,
                     ]
-                    fallback_result = run_cmd(fallback_cmd)
+                    fallback_result = run_cmd(fallback_cmd, timeout_seconds=slice_timeout_seconds)
                     fallback_raw = (fallback_result.stdout or "") + "\n" + (fallback_result.stderr or "")
             else:
                 fallback_cmd = [
@@ -173,7 +211,7 @@ Work package (authoritative; includes slice object and minimal shared context):
                     "-p",
                     prompt,
                 ]
-                fallback_result = run_cmd(fallback_cmd)
+                fallback_result = run_cmd(fallback_cmd, timeout_seconds=slice_timeout_seconds)
                 fallback_raw = (fallback_result.stdout or "") + "\n" + (fallback_result.stderr or "")
             raw = (
                 "PRIMARY_CMD_STDOUT:\n"
@@ -250,6 +288,8 @@ Work package (authoritative; includes slice object and minimal shared context):
 
         if result.returncode != 0:
             raise RuntimeError(f"Copilot coding step failed for slice {index}. See logs/slice_{index}_copilot_output.txt")
+
+        print(f"[agentic] completed slice {index}/{len(work_items)}", flush=True)
 
 
 if __name__ == "__main__":
