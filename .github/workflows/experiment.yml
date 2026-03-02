@@ -236,7 +236,45 @@ jobs:
           {spec}
           """.strip()
 
-          cmd = [
+            def fallback_split(spec_text, count):
+              lines = [ln for ln in spec_text.splitlines() if ln.strip()]
+              if not lines:
+                lines = ["Implement the provided specification from scratch."]
+              chunk = max(1, (len(lines) + count - 1) // count)
+              slices_local = []
+              for idx in range(1, count + 1):
+                start_idx = (idx - 1) * chunk
+                end_idx = min(len(lines), idx * chunk)
+                part = lines[start_idx:end_idx] or lines
+                slices_local.append(
+                  {
+                    "id": f"slice_{idx}",
+                    "title": f"deterministic_slice_{idx}",
+                    "goal": "Implement assigned requirements from the provided spec section.",
+                    "instructions": "\n".join(part),
+                    "dependencies": [],
+                    "implementation_dependencies": [],
+                    "validation_dependencies": [],
+                    "source_requirements": part,
+                    "critical_contracts_needed": [],
+                    "tests_to_author_now": [],
+                    "tests_to_run_now": [],
+                    "tests_deferred_until_dependencies": [],
+                    "effort_points": 3,
+                  }
+                )
+              return {
+                "shared_context": {
+                  "critical_contracts": [],
+                  "cross_slice_assumptions": [],
+                },
+                "slices": slices_local,
+                "integration_notes": "Deterministic fallback split generated locally after splitter failure.",
+              }
+
+            data = None
+
+            cmd = [
               "copilot",
               "--allow-all",
               "--no-ask-user",
@@ -291,17 +329,22 @@ jobs:
               )
               Path("work/splitter_raw.txt").write_text(combined, encoding="utf-8")
               if fallback_result.returncode != 0:
-                  raise RuntimeError("Copilot splitter call failed for both requested model and fallback model")
+                  data = fallback_split(spec, k)
               result = fallback_result
-          raw = (result.stdout or "") + "\n" + (result.stderr or "")
-          Path("work/splitter_raw.txt").write_text(raw, encoding="utf-8")
+              if data is None:
+                raw = (result.stdout or "") + "\n" + (result.stderr or "")
+                Path("work/splitter_raw.txt").write_text(raw, encoding="utf-8")
 
-          start = raw.find("{")
-          end = raw.rfind("}")
-          if start == -1 or end == -1 or end <= start:
-              raise RuntimeError("Could not locate JSON object in splitter output")
+                start = raw.find("{")
+                end = raw.rfind("}")
+                if start == -1 or end == -1 or end <= start:
+                  data = fallback_split(spec, k)
+                else:
+                  try:
+                    data = json.loads(raw[start : end + 1])
+                  except Exception:
+                    data = fallback_split(spec, k)
 
-          data = json.loads(raw[start : end + 1])
           shared_context = data.get("shared_context")
           if not isinstance(shared_context, dict):
               shared_context = {}
@@ -309,16 +352,23 @@ jobs:
           shared_context.setdefault("cross_slice_assumptions", [])
           data["shared_context"] = shared_context
 
-          slices = data.get("slices", [])
-          if len(slices) != k:
-              raise RuntimeError(f"Splitter returned {len(slices)} slices, expected {k}")
+            slices = data.get("slices", [])
+            if len(slices) != k:
+              data = fallback_split(spec, k)
+              shared_context = data.get("shared_context", {})
+              slices = data.get("slices", [])
 
           listed = []
           for index in range(1, k + 1):
               expected_id = f"slice_{index}"
               item = next((s for s in slices if s.get("id") == expected_id), None)
               if item is None:
-                  raise RuntimeError(f"Missing {expected_id} in splitter output")
+                  item = slices[index - 1] if index - 1 < len(slices) else {
+                    "id": expected_id,
+                    "title": expected_id,
+                    "goal": "Implement the required portion of the specification.",
+                    "instructions": "Follow the specification exactly.",
+                  }
 
               deps = item.get("dependencies", []) or []
               impl_deps = item.get("implementation_dependencies", deps) or []
