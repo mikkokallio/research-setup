@@ -186,7 +186,7 @@ jobs:
           out_dir = Path("work/slices")
           out_dir.mkdir(parents=True, exist_ok=True)
 
-          if condition != "k3":
+            if k == 1:
               Path("work/splitter_raw.txt").write_text("Splitter skipped for non-k3 condition", encoding="utf-8")
               (out_dir / "slice_1.md").write_text(spec, encoding="utf-8")
               plan = {
